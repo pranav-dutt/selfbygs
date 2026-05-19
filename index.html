@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SELF by GS — Self Engineering for Leaders' Fortune</title>
+<meta name="description" content="Self Development Programs by Gaurav Sharma & Associates. Two journeys: Academia and Corporate." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Manrope:wght@300;400;500;600;700&family=Allison&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/shared.css" />
+
+<style>
+/* ============ LANDING (noir hero on dark; transitions into ivory) ============ */
+:root {
+  --hero-bg: #07070A;
+}
+body {
+  background: var(--ivory-soft);
+  color: var(--ink);
+}
+body.theme-noir { background: var(--hero-bg); }
+
+/* Preloader */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: grid;
+  place-items: center;
+  background: #07070A;
+  color: var(--gold);
+  transition: opacity 0.9s var(--ease-out), visibility 0.9s;
+}
+.preloader.gone { opacity: 0; visibility: hidden; pointer-events: none; }
+.preloader .mark {
+  font-family: var(--f-display);
+  font-weight: 600;
+  letter-spacing: 0.36em;
+  font-size: 32px;
+  display: flex; gap: 24px;
+}
+.preloader .mark span {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: prel 0.7s var(--ease-out) forwards;
+}
+.preloader .mark span:nth-child(1) { animation-delay: 0.05s; }
+.preloader .mark span:nth-child(2) { animation-delay: 0.18s; }
+.preloader .mark span:nth-child(3) { animation-delay: 0.31s; }
+.preloader .mark span:nth-child(4) { animation-delay: 0.44s; }
+.preloader .rule {
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  margin-top: 18px;
+  animation: ruleGrow 1.3s var(--ease-out) 0.7s forwards;
+}
+@keyframes prel {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes ruleGrow {
+  to { width: 240px; }
+}
+
+/* ============ HERO ============ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  color: #F7F2E6;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  padding: 140px 36px 80px;
+}
+.hero-bg-yt {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  overflow: hidden;
+  pointer-events: none;
+}
+.hero-bg-yt iframe {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 100vw;
+  height: 56.25vw;          /* 16:9 -> width-driven height */
+  min-height: 100vh;
+  min-width: 177.78vh;      /* 16:9 -> height-driven width */
+  transform: translate(-50%, -50%) scale(1.06);
+  border: 0;
+  pointer-events: none;
+  filter: saturate(0.85) brightness(0.55) contrast(1.05);
+}
+.hero-bg-fallback {
+  position: absolute;
+  inset: 0;
+  z-index: -4;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(201,162,77,0.16) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(201,162,77,0.10) 0%, transparent 60%),
+    linear-gradient(180deg, #0A090B 0%, #050507 100%);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(180deg, rgba(7,7,10,0.4) 0%, rgba(7,7,10,0.7) 60%, rgba(7,7,10,0.95) 100%),
+    radial-gradient(ellipse at center, transparent 30%, rgba(7,7,10,0.7) 100%);
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 80px;
+  align-items: end;
+}
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 11px;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+}
+.hero-eyebrow .l { width: 40px; height: 1px; background: var(--gold); }
+
+.hero h1 {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-size: clamp(48px, 7.2vw, 112px);
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: #FCF8EE;
+}
+.hero h1 .gold { color: var(--gold); font-style: italic; }
+.hero h1 .display-caps {
+  font-family: var(--f-display);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  font-size: 0.65em;
+  display: block;
+  margin-top: 8px;
+  text-transform: uppercase;
+}
+.hero h1 .script {
+  font-family: var(--f-script);
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--gold);
+  font-size: 0.7em;
+  display: inline-block;
+  transform: translateY(0.05em);
+}
+
+.hero .sub {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-size: clamp(18px, 1.4vw, 22px);
+  line-height: 1.6;
+  color: rgba(247, 242, 230, 0.78);
+  max-width: 540px;
+  margin: 36px 0 0;
+  font-style: italic;
+}
+
+.hero-side {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding-bottom: 8px;
+}
+.hero-side .gold-rule .line { width: 30px; }
+.hero-mini {
+  font-family: var(--f-sans);
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(247,242,230,0.75);
+  max-width: 320px;
+}
+
+.hero-actions {
+  margin-top: 44px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero-meta-row {
+  position: absolute;
+  bottom: 40px; left: 0; right: 0;
+  padding: 0 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(247,242,230,0.55);
+}
+.hero-meta-row .pill {
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-meta-row .pill .dot {
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+.hero-scroll-cue {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.hero-scroll-cue .stem {
+  width: 1px; height: 38px;
+  background: linear-gradient(180deg, transparent, var(--gold));
+  animation: dropDown 1.8s var(--ease-out) infinite;
+}
+@keyframes dropDown {
+  0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
+  40% { transform: scaleY(1); opacity: 1; transform-origin: top; }
+  41% { transform-origin: bottom; }
+  100% { transform: scaleY(0); opacity: 0; transform-origin: bottom; }
+}
+
+@media (max-width: 1000px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .hero-meta-row { flex-direction: column; gap: 16px; align-items: flex-start; }
+  .hero-side { padding-bottom: 0; }
+}
+
+/* ============ Tagline marquee ============ */
+.tagline-marquee {
+  background: #07070A;
+  color: var(--gold);
+  padding: 22px 0;
+  overflow: hidden;
+  position: relative;
+  border-top: 1px solid rgba(201,162,77,0.18);
+  border-bottom: 1px solid rgba(201,162,77,0.18);
+}
+.tagline-marquee .marquee-inner {
+  display: flex;
+  gap: 64px;
+  white-space: nowrap;
+  animation: marquee 38s linear infinite;
+  font-family: var(--f-display);
+  letter-spacing: 0.38em;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.tagline-marquee .marquee-inner span { display: inline-flex; align-items: center; gap: 64px; }
+.tagline-marquee .sep {
+  width: 5px; height: 5px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: inline-block;
+}
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+/* ============ Mission section (ivory) ============ */
+.mission {
+  background: var(--ivory-soft);
+  color: var(--ink);
+  padding: 160px 36px;
+}
+.mission .container { position: relative; }
+.mission .quote {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-size: clamp(34px, 4.2vw, 64px);
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+.mission .quote .gold { color: var(--gold-deep); font-style: italic; }
+.mission .quote em {
+  font-family: var(--f-script);
+  font-style: normal;
+  font-size: 1em;
+  color: var(--gold-deep);
+}
+
+.mission .attribution {
+  text-align: center;
+  margin-top: 60px;
+  font-family: var(--f-display);
+  letter-spacing: 0.4em;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: rgba(11,11,11,0.5);
+}
+.mission .attribution .script {
+  font-family: var(--f-script);
+  font-size: 26px;
+  letter-spacing: 0;
+  color: var(--ink);
+  text-transform: none;
+  display: block;
+  margin-top: 12px;
+}
+
+/* ============ Two journeys split ============ */
+.journeys {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 92vh;
+  position: relative;
+  isolation: isolate;
+}
+.journey {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 80px 60px;
+  transition: flex 0.8s var(--ease-out);
+  text-decoration: none;
+}
+.journey--academia {
+  background: var(--ivory);
+  color: var(--ink);
+}
+.journey--corporate {
+  background: #0B0B0E;
+  color: var(--bone);
+}
+.journey::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.8s var(--ease-out);
+  z-index: 0;
+}
+.journey--academia::before {
+  background:
+    radial-gradient(ellipse at 30% 30%, rgba(201,162,77,0.18) 0%, transparent 60%),
+    linear-gradient(180deg, #F7EFDF 0%, #EAD9B9 100%);
+}
+.journey--corporate::before {
+  background:
+    radial-gradient(ellipse at 70% 40%, rgba(201,162,77,0.22) 0%, transparent 60%),
+    linear-gradient(180deg, #161318 0%, #050505 100%);
+}
+.journey:hover::before { opacity: 1; }
+.journey > * { position: relative; z-index: 1; }
+
+.journey-num {
+  font-family: var(--f-display);
+  letter-spacing: 0.3em;
+  font-size: 11px;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.journey-num .line { width: 40px; height: 1px; background: var(--gold); }
+
+.journey h2 {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-size: clamp(48px, 5.5vw, 88px);
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+  margin: 32px 0 0;
+  max-width: 540px;
+}
+.journey h2 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.journey--academia h2 em { color: var(--gold-deep); }
+
+.journey p {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 19px;
+  line-height: 1.5;
+  margin: 28px 0 0;
+  max-width: 440px;
+  opacity: 0.78;
+}
+
+.journey-meta {
+  margin-top: 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.journey-meta .row {
+  display: flex; align-items: center; gap: 18px;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+.journey-meta .row .num {
+  font-family: var(--f-display);
+  font-weight: 500;
+  color: var(--gold);
+  width: 36px;
+  font-size: 12px;
+}
+.journey--academia .journey-meta .row .num { color: var(--gold-deep); }
+
+.journey-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 60px;
+  padding-top: 28px;
+  border-top: 1px solid currentColor;
+  border-color: rgba(127,127,127,0.2);
+}
+.journey-cta .label {
+  font-family: var(--f-sans);
+  font-size: 13px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+.journey-cta .icon {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  display: grid; place-items: center;
+  transition: background 0.3s, color 0.3s, transform 0.4s var(--ease-out);
+}
+.journey:hover .icon {
+  background: var(--gold);
+  color: #0B0B0B;
+  border-color: var(--gold);
+  transform: translateX(8px);
+}
+
+/* Big watermark inside each journey */
+.journey-watermark {
+  position: absolute;
+  bottom: -50px;
+  right: -20px;
+  z-index: 0;
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: clamp(140px, 18vw, 280px);
+  letter-spacing: 0;
+  line-height: 1;
+  opacity: 0.06;
+  pointer-events: none;
+  user-select: none;
+}
+.journey--academia .journey-watermark { color: var(--gold-deep); opacity: 0.12; }
+.journey--corporate .journey-watermark { color: var(--gold); opacity: 0.08; }
+
+@media (max-width: 900px) {
+  .journeys { grid-template-columns: 1fr; }
+  .journey { padding: 60px 32px; }
+}
+
+/* ============ Founders / Architects ============ */
+.architects {
+  background: var(--ivory);
+  color: var(--ink);
+  padding: 160px 36px;
+}
+.arch-head {
+  max-width: 1100px;
+  margin: 0 auto 90px;
+  text-align: center;
+}
+.arch-head .eyebrow { display: inline-block; }
+.arch-head .eyebrow { margin-bottom: 24px; }
+.arch-head h2 {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-size: clamp(40px, 4.6vw, 72px);
+  line-height: 1.04;
+  margin: 22px auto 0;
+  letter-spacing: -0.01em;
+  max-width: 900px;
+}
+.arch-head h2 em { color: var(--gold-deep); font-style: italic; }
+.arch-head p {
+  font-size: 17px;
+  line-height: 1.65;
+  color: rgba(11,11,11,0.7);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.arch-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.arch-card {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 32px;
+}
+.arch-portrait {
+  aspect-ratio: 3 / 4;
+  background:
+    repeating-linear-gradient(135deg, rgba(11,11,11,0.06) 0 6px, transparent 6px 14px),
+    linear-gradient(135deg, #E8D9B6 0%, #C9A24D 100%);
+  border: 1px solid rgba(201,162,77,0.4);
+  position: relative;
+  display: grid;
+  place-items: end;
+  padding: 18px;
+  font-family: monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(11,11,11,0.5);
+}
+.arch-portrait::before {
+  content: 'PORTRAIT';
+  position: absolute;
+  top: 18px; left: 18px;
+  font-family: monospace;
+  font-size: 9px;
+  letter-spacing: 0.32em;
+  color: rgba(11,11,11,0.45);
+}
+.arch-card h3 {
+  font-family: var(--f-serif);
+  font-weight: 400;
+  font-size: 32px;
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+.arch-card .role {
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 18px;
+}
+.arch-card .bio {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(11,11,11,0.7);
+}
+.arch-card .sig {
+  font-family: var(--f-script);
+  font-size: 32px;
+  color: var(--ink);
+  margin-top: 14px;
+  display: block;
+  opacity: 0.7;
+}
+
+@media (max-width: 900px) {
+  .arch-head { grid-template-columns: 1fr; gap: 30px; margin-bottom: 60px; }
+  .arch-grid { grid-template-columns: 1fr; gap: 60px; }
+  .arch-card { grid-template-columns: 1fr; }
+  .arch-portrait { max-width: 240px; }
+}
+
+/* ============ Philosophy Pillars ============ */
+.pillars {
+  background: var(--ink);
+  color: var(--bone);
+  padding: 180px 36px;
+  position: relative;
+  overflow: hidden;
+}
+.pillars::before {
+  content: 'SELF';
+  position: absolute;
+  bottom: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 480px;
+  letter-spacing: 0.04em;
+  color: rgba(201,162,77,0.04);
+  line-height: 1;
+  pointer-events: none;
+}
+.pillars-head {
+  text-align: center;
+  margin-bottom: 90px;
+}
+.pillars-head h2 {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-size: clamp(36px, 4vw, 64px);
+  line-height: 1.1;
+  margin: 18px 0 0;
+  letter-spacing: -0.01em;
+}
+.pillars-head h2 em { color: var(--gold); font-style: italic; }
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(201,162,77,0.18);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.pillar {
+  background: var(--ink);
+  padding: 48px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  transition: background 0.5s;
+  position: relative;
+}
+.pillar:hover { background: #1B1A14; }
+.pillar .num {
+  font-family: var(--f-display);
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 0.32em;
+}
+.pillar h4 {
+  font-family: var(--f-serif);
+  font-weight: 400;
+  font-size: 28px;
+  margin: 0;
+}
+.pillar p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--bone-mute);
+  margin: 0;
+}
+.pillar .pillar-letter {
+  position: absolute;
+  top: 18px; right: 18px;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 1;
+  color: var(--gold);
+  opacity: 0.1;
+  letter-spacing: 0;
+}
+@media (max-width: 900px) {
+  .pillars-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ============ Numbers strip ============ */
+.numbers {
+  padding: 100px 36px;
+  background: var(--ivory);
+  color: var(--ink);
+  border-top: 1px solid rgba(201,162,77,0.25);
+  border-bottom: 1px solid rgba(201,162,77,0.25);
+}
+.numbers-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 60px;
+}
+.numbers-grid .stat {
+  text-align: left;
+}
+.numbers-grid .num {
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: clamp(40px, 5vw, 72px);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.numbers-grid .num .gold {
+  color: var(--gold-deep);
+  font-size: 0.6em;
+  letter-spacing: 0;
+}
+.numbers-grid .lbl {
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(11,11,11,0.6);
+  margin-top: 8px;
+  border-top: 1px solid rgba(11,11,11,0.18);
+  padding-top: 12px;
+}
+@media (max-width: 900px) {
+  .numbers-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+}
+
+/* ============ Voices (testimonials) ============ */
+.voices {
+  padding: 160px 36px;
+  background: var(--ivory-soft);
+  color: var(--ink);
+}
+.voices-head { max-width: 1400px; margin: 0 auto 60px; text-align: center; }
+.voices-head h2 {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-size: clamp(36px, 4vw, 64px);
+  margin: 18px 0 0;
+  letter-spacing: -0.01em;
+}
+.voices-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.voice {
+  background: #fff;
+  border: 1px solid rgba(11,11,11,0.06);
+  padding: 36px 32px;
+  position: relative;
+  transition: transform 0.5s var(--ease-out), box-shadow 0.5s;
+}
+.voice:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 80px -20px rgba(11,11,11,0.18);
+}
+.voice .gold-rule { margin-bottom: 18px; }
+.voice blockquote {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 1.5;
+  margin: 0 0 24px;
+  color: var(--ink);
+}
+.voice .author {
+  display: flex; gap: 14px; align-items: center;
+}
+.voice .avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #E8D9B6, #C9A24D);
+  font-family: var(--f-display);
+  display: grid; place-items: center;
+  color: #0B0B0B;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.voice .meta { font-size: 13px; line-height: 1.4; }
+.voice .meta strong { display: block; font-weight: 600; }
+.voice .meta span { color: rgba(11,11,11,0.55); font-size: 12px; }
+@media (max-width: 900px) {
+  .voices-grid { grid-template-columns: 1fr; }
+}
+
+/* ============ CTA / Lead capture invitation ============ */
+.lead-cta {
+  background: linear-gradient(180deg, #0B0B0E 0%, #050507 100%);
+  color: var(--bone);
+  padding: 180px 36px 140px;
+  position: relative;
+  overflow: hidden;
+}
+.lead-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(201,162,77,0.16), transparent 60%),
+    radial-gradient(ellipse at 10% 80%, rgba(201,162,77,0.08), transparent 60%);
+}
+.lead-cta-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+}
+.lead-cta h2 {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-size: clamp(44px, 5.4vw, 88px);
+  line-height: 1.04;
+  margin: 22px 0 0;
+  letter-spacing: -0.02em;
+}
+.lead-cta h2 em { font-style: italic; color: var(--gold); }
+.lead-cta p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--bone-mute);
+  max-width: 620px;
+  margin: 28px auto 0;
+}
+.lead-cta .btn-row {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+.lead-cta .clarity-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: 38px;
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+}
+.lead-cta .clarity-row .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--gold);
+  animation: pulse 2s infinite;
+}
+
+/* ============ Footer ============ */
+.site-footer.theme-dark {
+  background: #050507;
+  color: var(--bone);
+  border-top: 1px solid rgba(201,162,77,0.2);
+}
+.theme-dark .footer-grid h5 { color: var(--gold); opacity: 1; }
+.theme-dark .footer-grid li a { color: var(--bone); }
+.theme-dark .footer-bottom { color: var(--bone-mute); border-color: rgba(201,162,77,0.18); }
+
+.foot-logo {
+  font-family: var(--f-display);
+  font-size: 28px;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.foot-by {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--bone);
+  letter-spacing: 0;
+  font-weight: 300;
+}
+.foot-blurb {
+  margin-top: 18px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--bone-mute);
+  max-width: 320px;
+}
+</style>
+</head>
+
+<body class="theme-noir">
+
+<!-- Grain overlay -->
+<div class="grain"></div>
+
+<!-- ===== Preloader ===== -->
+<div class="preloader" id="preloader">
+  <div style="text-align:center">
+    <div class="mark">
+      <span>S</span><span>E</span><span>L</span><span>F</span>
+    </div>
+    <div class="rule"></div>
+  </div>
+</div>
+
+<!-- ===== Header ===== -->
+<header class="site-header" style="color: rgb(255, 255, 255); border-color: rgb(255, 255, 255)">
+  <a href="index.html" class="brand-mark">
+    <span class="dot"></span>
+    <span>SELF</span>
+    <span class="by">by GS</span>
+  </a>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="academia.html">Academia</a>
+    <a href="corporate.html">Corporate</a>
+    <a href="team.html">Team</a>
+    <a href="#contact">Contact Us</a>
+  </nav>
+  <button class="nav-cta" data-open-lead data-title="Begin Your Clarity Call" data-label="Clarity Call · Free 30 min">Book a Clarity Call</button>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" data-screen-label="01 Hero">
+  <div class="hero-bg-fallback"></div>
+  <!-- Hero video background. Swap the embed URL below for a final brand video. -->
+  <div class="hero-bg-yt">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/U9hYQ-N1ARo?autoplay=1&mute=1&loop=1&playlist=U9hYQ-N1ARo&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1&fs=0"
+      title="SELF by GS"
+      allow="autoplay; encrypted-media; picture-in-picture"
+      allowfullscreen></iframe>
+  </div>
+
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow reveal">
+        <span class="l"></span>
+        <span>Self Engineering for Leaders' Fortune</span>
+      </div>
+
+      <h1>
+        <span class="reveal-mask"><span>Built not by chance</span></span><br />
+        <span class="reveal-mask" style="--d:200ms"><span><span class="gold">by design.</span></span></span>
+      </h1>
+
+      <p class="sub reveal" style="--d:600ms">
+        Two journeys.&nbsp;&nbsp;One philosophy.<br />
+        Capability built quietly, deliberately, and at depth — for the
+        <span style="color: var(--gold); font-style: normal;">students</span> who will lead,
+        and the <span style="color: var(--gold); font-style: normal;">organisations</span>
+        that need them to.
+      </p>
+
+      <div class="hero-actions reveal" style="--d:800ms">
+        <button class="btn btn--solid hoverable" data-open-lead data-title="Begin Your Clarity Call" data-label="Clarity Call · Free 30 min">
+          Book a Clarity Call <span class="arrow"></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="hero-side reveal" style="--d:1000ms">
+      <div class="gold-rule"><span class="line"></span><span class="bead"></span><span class="line"></span></div>
+      <p class="hero-mini">
+        The development arm of <strong style="color:var(--gold); font-family: var(--f-display); font-weight: 500; letter-spacing: 0.08em;">Gaurav Sharma &amp; Associates</strong> — 25+ years of combined entrepreneurial and academic experience translated into programs that build leadership, communication, and capability from the inside out.
+      </p>
+      <div class="hero-mini" style="font-family: var(--f-display); font-size: 13px; line-height: 1.6; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 500;">
+        by Gaurav Sharma &amp; Associates
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-meta-row">
+    <div class="pill"><span class="dot"></span><span>Active Cohorts · 2026</span></div>
+    <div class="hero-scroll-cue">
+      <span>Scroll</span>
+      <span class="stem"></span>
+    </div>
+    <div class="pill">India · Delhi NCR · Remote</div>
+  </div>
+</section>
+
+<!-- ===== Tagline marquee ===== -->
+<div class="tagline-marquee" data-marquee>
+  <div class="marquee-inner">
+    <span>SELF Development Programs <span class="sep"></span></span>
+    <span>www.selfbygs.com <span class="sep"></span></span>
+    <span>Self Engineering for Leaders' Fortune <span class="sep"></span></span>
+    <span>By Gaurav Sharma &amp; Associates <span class="sep"></span></span>
+    <span>Awareness · Capability · Leadership <span class="sep"></span></span>
+  </div>
+</div>
+
+<!-- ===== Mission ===== -->
+<section class="mission" id="approach">
+  <div class="container">
+    <p class="quote reveal">
+      In a world full of information,<br />
+      <span class="gold">students</span> need <em>more guidance</em> than ever<br />
+      and <span class="gold">organisations</span> need people who can lead.
+    </p>
+    <div class="attribution reveal" style="--d:200ms">
+      A Developmental Response
+      <span class="script" style="font-family: var(--f-display); font-weight: 500; font-size: 13px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--ink); display: block; margin-top: 14px;">by Gaurav Sharma &amp; Associates</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Two journeys split ===== -->
+<section class="journeys" data-screen-label="02 Journeys">
+
+  <a class="journey journey--academia hoverable" href="academia.html">
+    <div>
+      <div class="journey-num"><span class="line"></span><span>I · Academia</span></div>
+      <h2>Building <em>more prepared,</em> aware &amp; capable <em>students &amp; educators.</em></h2>
+      <p>Mentoring, direction, decision-making — for the students, educators, and institutions shaping what comes next.</p>
+    </div>
+
+    <div class="journey-meta">
+      <div class="row"><span class="num">01</span><span>Career Architecture Lab</span></div>
+      <div class="row"><span class="num">02</span><span>Young Leaders Program · YLP &amp; YLP Pro</span></div>
+      <div class="row"><span class="num">03</span><span>Educator Impact · Beyond Teaching</span></div>
+    </div>
+
+    <div class="journey-cta">
+      <div class="label">Enter Academia</div>
+      <div class="icon">→</div>
+    </div>
+
+    <div class="journey-watermark">A</div>
+  </a>
+
+  <a class="journey journey--corporate hoverable" href="corporate.html">
+    <div>
+      <div class="journey-num"><span class="line"></span><span>II · Corporate</span></div>
+      <h2>Building <em>effective organisations</em> from the inside.</h2>
+      <p>Behaviour, ownership, alignment. The human side of organisational performance — diagnosed, developed, transformed.</p>
+    </div>
+
+    <div class="journey-meta">
+      <div class="row"><span class="num">01</span><span>Executive Effectiveness Programs</span></div>
+      <div class="row"><span class="num">02</span><span>Core Skills Interventions</span></div>
+      <div class="row"><span class="num">03</span><span>Custom Solutions &amp; Diagnostics</span></div>
+    </div>
+
+    <div class="journey-cta">
+      <div class="label">Enter Corporate</div>
+      <div class="icon">→</div>
+    </div>
+
+    <div class="journey-watermark">C</div>
+  </a>
+</section>
+
+<!-- ===== Architects ===== -->
+<section class="architects">
+  <div class="arch-head">
+    <div>
+      <div class="eyebrow reveal">The Architects</div>
+      <h2 class="reveal" style="--d:120ms">A practice built over <em>25+ years</em> of entrepreneurial and academic experience.</h2>
+    </div>
+  </div>
+
+  <div class="arch-grid">
+    <article class="arch-card reveal" data-tilt="3">
+      <div class="arch-portrait">replace · GS</div>
+      <div>
+        <h3>Gaurav Sharma</h3>
+        <div class="role">Founder &amp; Chief Mentor · SELF</div>
+        <p class="bio">
+          <strong style="color:var(--ink); font-weight:600;">IIM Calcutta</strong> alumnus and <strong style="color:var(--ink); font-weight:600;">Master Certified Intelligent Leadership Executive Coach</strong>, GS brings <strong style="color:var(--gold-deep); font-weight:600;">16+ years</strong> of experience in leadership and human capability development across institutions and organisations.
+        </p>
+        <a href="team.html#gs" class="btn hoverable" style="margin-top: 18px; padding: 12px 22px; font-size: 11px; color: var(--gold-deep); border-color: var(--gold-deep);">Read full profile <span class="arrow"></span></a>
+      </div>
+    </article>
+
+    <article class="arch-card reveal" style="--d:160ms" data-tilt="3">
+      <div class="arch-portrait">replace · Dr. TSG</div>
+      <div>
+        <h3>Dr. Tanya Soin Gaurav</h3>
+        <div class="role">Chief Architect · Learning &amp; Development</div>
+        <p class="bio">
+          <strong style="color:var(--ink); font-weight:600;">Doctorate in Human Resource Management</strong> and HR Analytics certified from <strong style="color:var(--ink); font-weight:600;">IIM Rohtak</strong>, Tanya brings <strong style="color:var(--gold-deep); font-weight:600;">13+ years</strong> of experience in behavioural development, Training &amp; Development, and organisational learning.
+        </p>
+        <a href="team.html#tsg" class="btn hoverable" style="margin-top: 18px; padding: 12px 22px; font-size: 11px; color: var(--gold-deep); border-color: var(--gold-deep);">Read full profile <span class="arrow"></span></a>
+      </div>
+    </article>
+  </div>
+
+  <div style="text-align:center; margin-top: 70px;" class="reveal" style="--d:320ms">
+    <a href="team.html" class="btn hoverable" style="color: var(--gold-deep); border-color: var(--gold-deep);">Meet the full team <span class="arrow"></span></a>
+  </div>
+</section>
+
+<!-- ===== Pillars (SELF Approach) ===== -->
+<section class="pillars" id="pillars">
+  <div class="pillars-head">
+    <div class="gold-rule center reveal"><span class="line"></span><span class="bead"></span><span class="line"></span></div>
+    <div class="eyebrow reveal" style="margin-top:18px">The SELF Approach</div>
+    <h2 class="reveal" style="--d:140ms">Six principles. <em>Used on both sides.</em></h2>
+    <p class="reveal" style="--d:240ms; font-size:16px; line-height:1.65; color:var(--bone-mute); max-width:680px; margin:28px auto 0;">The same philosophy guides every program — whether it's a student designing a career, an educator strengthening their classroom, or an organisation aligning its leadership. Six working principles that hold across both journeys.</p>
+  </div>
+
+  <div class="pillars-grid">
+    <div class="pillar reveal">
+      <div class="num">01</div>
+      <h4>Awareness First</h4>
+      <p>Every intervention begins with seeing clearly — strengths, gaps, behaviour, context. No diagnosis, no design.</p>
+      <span class="pillar-letter">A</span>
+    </div>
+    <div class="pillar reveal" style="--d:120ms">
+      <div class="num">02</div>
+      <h4>Capability over Content</h4>
+      <p>We build working capability — through practice, feedback, and depth — not slide decks or generic curricula.</p>
+      <span class="pillar-letter">C</span>
+    </div>
+    <div class="pillar reveal" style="--d:240ms">
+      <div class="num">03</div>
+      <h4>Behaviour-Led</h4>
+      <p>Real change shows up in behaviour. Communication, ownership, presence — not certificates or completion rates.</p>
+      <span class="pillar-letter">B</span>
+    </div>
+    <div class="pillar reveal" style="--d:360ms">
+      <div class="num">04</div>
+      <h4>Designed, Not Delivered</h4>
+      <p>Every program is designed around the student, educator, team, or organisation in front of us — not pulled from a library.</p>
+      <span class="pillar-letter">D</span>
+    </div>
+    <div class="pillar reveal" style="--d:60ms">
+      <div class="num">05</div>
+      <h4>Radical Candor</h4>
+      <p>We tell honestly whether SELF is a fit — or what is. No pitch culture. No padding. Clarity is the kindness.</p>
+      <span class="pillar-letter">R</span>
+    </div>
+    <div class="pillar reveal" style="--d:180ms">
+      <div class="num">06</div>
+      <h4>Capability Compounds</h4>
+      <p>The work doesn't end with a workshop. Capability built here continues to grow long after the program closes.</p>
+      <span class="pillar-letter">C</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Programs strip · ACADEMIA (light) ===== -->
+<section class="programs-strip programs-strip--light">
+  <div class="head">
+    <div>
+      <div class="eyebrow reveal">Programs</div>
+      <h2 class="reveal" style="--d:120ms">Two sides. <em>One development practice.</em></h2>
+    </div>
+    <p class="reveal" style="--d:240ms">Each program is designed around a real challenge — not a generic curriculum. Click any program to see its detailed design, framework, and outcomes.</p>
+  </div>
+
+  <div class="prog-side">
+    <div class="prog-side-head reveal">
+      <div class="prog-side-title">
+        <span class="roman">I · Academia</span>
+        <h3>For <em>students &amp; educators</em></h3>
+      </div>
+      <div class="prog-side-meta">3 Programs · Cohort-based</div>
+    </div>
+
+    <div class="prog-grid">
+      <a class="prog-card reveal" href="programs/career-architecture.html" data-tilt="3">
+        <div class="pc-badge">1 : 1</div>
+        <div class="side-tag"><span class="l"></span>Students · Grade 9+</div>
+        <h4>Career Architecture<br />Decision Design Lab</h4>
+        <ul>
+          <li>Discover self beyond marks &amp; labels</li>
+          <li>Explore real careers, not advertised ones</li>
+          <li>Build personal filters &amp; criteria</li>
+          <li>Decide with clarity &amp; ownership</li>
+        </ul>
+        <div class="pc-foot">
+          <span>View program →</span>
+          <div class="go">→</div>
+        </div>
+      </a>
+
+      <a class="prog-card reveal" style="--d:120ms" href="programs/young-leaders.html" data-tilt="3">
+        <div class="pc-badge">Cohort</div>
+        <div class="side-tag"><span class="l"></span>College-Ready Students</div>
+        <h4>Young Leaders Program<br />YLP &amp; YLP Pro</h4>
+        <ul>
+          <li>Communication, presence &amp; storytelling</li>
+          <li>Interviews, FAQs &amp; professional grooming</li>
+          <li>Leadership, teamwork &amp; emotional intelligence</li>
+          <li>AI for students — practical &amp; applied</li>
+        </ul>
+        <div class="pc-foot">
+          <span>View program →</span>
+          <div class="go">→</div>
+        </div>
+      </a>
+
+      <a class="prog-card reveal" style="--d:240ms" href="programs/beyond-teaching.html" data-tilt="3">
+        <div class="pc-badge">FDP</div>
+        <div class="side-tag"><span class="l"></span>Educators · Faculty</div>
+        <h4>Beyond Teaching<br />Educator Impact</h4>
+        <ul>
+          <li>Mentoring sensitivity &amp; presence</li>
+          <li>Behavioural &amp; communication mastery</li>
+          <li>Faculty development beyond pedagogy</li>
+          <li>Student-readiness facilitation</li>
+        </ul>
+        <div class="pc-foot">
+          <span>View program →</span>
+          <div class="go">→</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Programs strip · CORPORATE (dark) ===== -->
+<section class="programs-strip programs-strip--dark">
+  <div class="prog-side">
+    <div class="prog-side-head reveal">
+      <div class="prog-side-title">
+        <span class="roman">II · Corporate</span>
+        <h3>For <em>organisations</em></h3>
+      </div>
+      <div class="prog-side-meta">3 Practices · All Custom Built</div>
+    </div>
+
+    <div class="prog-grid">
+      <a class="prog-card dark reveal" href="programs/executive-effectiveness.html" data-tilt="3">
+        <div class="pc-badge">B2B</div>
+        <div class="side-tag"><span class="l"></span>Leadership · Managers</div>
+        <h4>Executive Effectiveness<br />Programs</h4>
+        <ul>
+          <li>Behaviour, ownership &amp; alignment</li>
+          <li>Communication &amp; team effectiveness</li>
+          <li>Real workplace realities — not lectures</li>
+          <li>LEAD framework · execution-focused</li>
+        </ul>
+        <div class="pc-foot">
+          <span>View program →</span>
+          <div class="go">→</div>
+        </div>
+      </a>
+
+      <a class="prog-card dark reveal" style="--d:120ms" href="programs/core-skills.html" data-tilt="3">
+        <div class="pc-badge">Custom</div>
+        <div class="side-tag"><span class="l"></span>Capability · Workshops</div>
+        <h4>Core Skills<br />Interventions</h4>
+        <ul>
+          <li>Communication, presentation &amp; sales</li>
+          <li>Negotiation, collaboration, ownership</li>
+          <li>AI productivity for working professionals</li>
+          <li>Experiential &amp; custom-built for your team</li>
+        </ul>
+        <div class="pc-foot">
+          <span>View program →</span>
+          <div class="go">→</div>
+        </div>
+      </a>
+
+      <a class="prog-card dark reveal" style="--d:240ms" href="programs/diagnostic-audit.html" data-tilt="3">
+        <div class="pc-badge">Custom</div>
+        <div class="side-tag"><span class="l"></span>Diagnostics · Bespoke</div>
+        <h4>Diagnostic Audit<br />&amp; Custom Solutions</h4>
+        <ul>
+          <li>Capture reality &amp; locate gaps (CLEAR)</li>
+          <li>Move beyond symptoms to root causes</li>
+          <li>Designed around your organisational reality</li>
+          <li>Built on radical candor &amp; real growth</li>
+        </ul>
+        <div class="pc-foot">
+          <span>View program →</span>
+          <div class="go">→</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Numbers ===== -->
+<section class="numbers">
+  <div class="numbers-grid">
+    <div class="stat reveal">
+      <div class="num">25<span class="gold">YRS+</span></div>
+      <div class="lbl">Combined entrepreneurial &amp; academic practice</div>
+    </div>
+    <div class="stat reveal" style="--d:120ms">
+      <div class="num">2<span class="gold">JOURNEYS</span></div>
+      <div class="lbl">Academia · Corporate · One philosophy</div>
+    </div>
+    <div class="stat reveal" style="--d:240ms">
+      <div class="num">7<span class="gold">PROGRAMS</span></div>
+      <div class="lbl">Across leadership, capability &amp; readiness</div>
+    </div>
+    <div class="stat reveal" style="--d:360ms">
+      <div class="num">∞<span class="gold">DEPTH</span></div>
+      <div class="lbl">Designed for cohorts, not for content libraries</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Voices ===== -->
+<section class="voices" id="voices">
+  <div class="voices-head">
+    <div class="gold-rule center reveal"><span class="line"></span><span class="bead"></span><span class="line"></span></div>
+    <div class="eyebrow reveal" style="margin-top:18px">Voices</div>
+    <h2 class="reveal" style="--d:120ms">What participants <em>remember.</em></h2>
+  </div>
+
+  <div class="voices-grid">
+    <article class="voice reveal" data-tilt="3">
+      <div class="gold-rule"><span class="line"></span><span class="bead"></span></div>
+      <blockquote>"I didn't realise how much my decisions were borrowed. The lab gave me a way to think — and the answers came from me."</blockquote>
+      <div class="author">
+        <div class="avatar">AR</div>
+        <div class="meta"><strong>Aarav R.</strong><span>Career Architecture · Class XII</span></div>
+      </div>
+    </article>
+    <article class="voice reveal" style="--d:140ms" data-tilt="3">
+      <div class="gold-rule"><span class="line"></span><span class="bead"></span></div>
+      <blockquote>"Our managers stopped reacting and started leading. The shift was behavioural — not a checklist."</blockquote>
+      <div class="author">
+        <div class="avatar">PS</div>
+        <div class="meta"><strong>Priya S.</strong><span>L&amp;D Head · BFSI</span></div>
+      </div>
+    </article>
+    <article class="voice reveal" style="--d:280ms" data-tilt="3">
+      <div class="gold-rule"><span class="line"></span><span class="bead"></span></div>
+      <blockquote>"Beyond Teaching reminded me what I came into this profession for. Students felt it within the first session."</blockquote>
+      <div class="author">
+        <div class="avatar">VK</div>
+        <div class="meta"><strong>Vikram K.</strong><span>Faculty · College Programme</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== Lead CTA ===== -->
+<section class="lead-cta" id="contact">
+  <div class="lead-cta-inner">
+    <div class="gold-rule center reveal"><span class="line"></span><span class="bead"></span><span class="line"></span></div>
+    <div class="eyebrow reveal" style="margin-top:22px">A Quiet Beginning</div>
+    <h2 class="reveal" style="--d:120ms">Book a <em>clarity call</em>.<br />Decide nothing. Discover something.</h2>
+    <p class="reveal" style="--d:240ms">A 30-minute conversation. No pitch. We listen, we ask the right questions, and we tell you honestly whether SELF is a fit — or what is.</p>
+
+    <div class="btn-row reveal" style="--d:360ms">
+      <button class="btn btn--solid hoverable" data-open-lead data-title="Begin Your Clarity Call" data-label="Clarity Call · Free 30 min">
+        Book a Clarity Call <span class="arrow"></span>
+      </button>
+    </div>
+
+    <div class="clarity-row reveal" style="--d:480ms">
+      <span class="dot"></span><span>Limited cohorts · Apply before next intake</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="site-footer theme-dark">
+  <div class="footer-grid">
+    <div>
+      <div class="foot-logo">SELF <span style="font-size: 16px; letter-spacing: 0.28em; opacity: 0.8;">BY GS</span></div>
+      <div class="foot-by">Self Engineering for Leaders' Fortune</div>
+      <p class="foot-blurb">The development arm of <strong style="color:var(--gold); font-family:var(--f-display); font-weight:500; letter-spacing:0.06em;">Gaurav Sharma &amp; Associates</strong>. Self Development Programs — built quietly, deliberately, and at depth.</p>
+    </div>
+    <div>
+      <h5>Explore</h5>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="academia.html">Academia</a></li>
+        <li><a href="corporate.html">Corporate</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Programs</h5>
+      <ul>
+        <li><a href="academia.html#career-architecture">Career Architecture</a></li>
+        <li><a href="academia.html#ylp">Young Leaders · YLP</a></li>
+        <li><a href="academia.html#beyond-teaching">Beyond Teaching · FDP</a></li>
+        <li><a href="corporate.html#executive">Executive Effectiveness</a></li>
+        <li><a href="corporate.html#core-skills">Core Skills</a></li>
+        <li><a href="corporate.html#custom">Diagnostic Audit</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Engage</h5>
+      <ul>
+        <li><a href="#" data-open-lead data-title="Book a Clarity Call" data-label="Clarity Call · Free 30 min">Book a Clarity Call</a></li>
+        <li><a href="mailto:hello@selfbygs.com">hello@selfbygs.com</a></li>
+        <li><a href="tel:+91">+91 · share on request</a></li>
+        <li><a href="#" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+        <li><a href="#" target="_blank" rel="noopener">Instagram ↗</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© SELF by GS · 2026 · Gaurav Sharma &amp; Associates</span>
+    <span>www.selfbygs.com · India · Delhi NCR</span>
+  </div>
+</footer>
+
+<!-- ===== Lead modal ===== -->
+<div class="lead-modal" id="lead-modal" role="dialog" aria-modal="true" aria-labelledby="lead-title">
+  <div class="lead-card">
+    <aside class="lead-aside">
+      <div>
+        <div class="meta-row"><span class="dot"></span><span>Clarity Call · Free 30 min</span></div>
+        <h3 id="lead-title">Begin Your Clarity Call</h3>
+        <p>A short, honest conversation. We listen first, then we tell you whether SELF is a fit — or what is.</p>
+      </div>
+      <div class="quote">Don't choose a path.<br/>Learn how to design one.</div>
+    </aside>
+
+    <div class="lead-body">
+      <button class="lead-close" aria-label="Close">✕</button>
+
+      <div class="lead-steps">
+        <span class="lead-step-pill is-active"></span>
+        <span class="lead-step-pill"></span>
+        <span class="lead-step-pill"></span>
+        <span class="lead-step-pill"></span>
+      </div>
+
+      <div class="lead-step-wrap">
+
+        <div class="lead-step is-active">
+          <div class="step-eyebrow">Step 01 / 04</div>
+          <h4>Who is this for?</h4>
+          <div class="step-sub">Choose one — we'll tailor the rest of the conversation.</div>
+          <div class="chip-row">
+            <button class="chip">Student · Career clarity</button>
+            <button class="chip">Student · YLP / Placement readiness</button>
+            <button class="chip">Parent · For my child</button>
+            <button class="chip">Educator · School / College</button>
+            <button class="chip">Institution · Bulk programs</button>
+            <button class="chip">L&amp;D · For my team</button>
+            <button class="chip">Founder / Leadership</button>
+          </div>
+          <div class="step-actions">
+            <button class="step-back" data-back disabled>← Back</button>
+            <button class="btn btn--solid hoverable" data-next>Continue <span class="arrow"></span></button>
+          </div>
+        </div>
+
+        <div class="lead-step">
+          <div class="step-eyebrow">Step 02 / 04</div>
+          <h4>Which intervention?</h4>
+          <div class="step-sub">Pick all that interest you. We'll bring the right person to the call.</div>
+          <div class="chip-row" data-multi="true">
+            <button class="chip">Career Architecture · Decision Lab</button>
+            <button class="chip">Young Leaders Program (YLP)</button>
+            <button class="chip">YLP Pro · Placement</button>
+            <button class="chip">Beyond Teaching · FDP</button>
+            <button class="chip">Executive Effectiveness</button>
+            <button class="chip">Core Skills (Communication, Sales, AI…)</button>
+            <button class="chip">Custom Solution</button>
+            <button class="chip">Not sure yet</button>
+          </div>
+          <div class="step-actions">
+            <button class="step-back" data-back>← Back</button>
+            <button class="btn btn--solid hoverable" data-next>Continue <span class="arrow"></span></button>
+          </div>
+        </div>
+
+        <div class="lead-step">
+          <div class="step-eyebrow">Step 03 / 04</div>
+          <h4>How should we reach you?</h4>
+          <div class="step-sub">We respond within 1 business day. Always honest, never pushy.</div>
+          <div class="field">
+            <label>Full name</label>
+            <input type="text" placeholder="Your name" />
+          </div>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="field">
+              <label>Email</label>
+              <input type="email" placeholder="you@example.com" />
+            </div>
+            <div class="field">
+              <label>Mobile (with code)</label>
+              <input type="tel" placeholder="+91 98xx xx xx xx" />
+            </div>
+          </div>
+          <div class="field">
+            <label>Organisation / Institution (optional)</label>
+            <input type="text" placeholder="Where you study or work" />
+          </div>
+          <div class="step-actions">
+            <button class="step-back" data-back>← Back</button>
+            <button class="btn btn--solid hoverable" data-next>Continue <span class="arrow"></span></button>
+          </div>
+        </div>
+
+        <div class="lead-step">
+          <div class="step-eyebrow">Step 04 / 04</div>
+          <h4>One last thing.</h4>
+          <div class="step-sub">In a line or two — what's the real reason you're here?</div>
+          <div class="field">
+            <label>Context</label>
+            <textarea rows="4" placeholder="I'm trying to figure out…"></textarea>
+          </div>
+          <div class="field">
+            <label>Preferred time</label>
+            <select>
+              <option>Weekday · Morning (10am–12pm IST)</option>
+              <option>Weekday · Afternoon (1pm–4pm IST)</option>
+              <option>Weekday · Evening (5pm–8pm IST)</option>
+              <option>Weekend · I'll pick a slot</option>
+            </select>
+          </div>
+          <div class="step-actions">
+            <button class="step-back" data-back>← Back</button>
+            <button class="btn btn--solid hoverable" data-submit>Request the Call <span class="arrow"></span></button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="lead-success" style="display:none">
+        <div class="check">✓</div>
+        <h4 style="font-family: var(--f-serif); font-size: 32px; margin:0 0 10px;">Thank you — we'll be in touch.</h4>
+        <p style="color: var(--bone-mute); font-size: 15px;">Look out for a personal note from the SELF team within one business day.</p>
+        <div class="gold-rule center" style="margin: 30px 0; justify-content:center; display:flex;"><span class="line"></span><span class="bead"></span><span class="line"></span></div>
+        <p style="color: var(--bone-mute); font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;">In the meantime · explore the journeys</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/shared.js"></script>
+<script>
+  // Preloader fade
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('preloader').classList.add('gone');
+    }, 1700);
+  });
+</script>
+</body>
+</html>
