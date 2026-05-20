@@ -53,6 +53,52 @@
   onScroll();
 })();
 
+// ---------- Nav dropdown click-to-toggle (mobile + accessibility) ----------
+(function initNavDropdown() {
+  document.querySelectorAll('.nav .has-menu').forEach((item) => {
+    const trigger = item.querySelector('a');
+    if (!trigger) return;
+    // On hover-capable devices CSS handles it; intercept click for keyboard/touch.
+    trigger.addEventListener('click', (e) => {
+      // Allow click-through if the trigger has no dropdown
+      if (!item.querySelector('.nav-dropdown')) return;
+      e.preventDefault();
+      const open = item.classList.toggle('is-open');
+      document.querySelectorAll('.nav .has-menu.is-open').forEach((other) => {
+        if (other !== item) other.classList.remove('is-open');
+      });
+    });
+  });
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav .has-menu')) {
+      document.querySelectorAll('.nav .has-menu.is-open').forEach((i) => i.classList.remove('is-open'));
+    }
+  });
+})();
+
+// ---------- Mobile drawer ----------
+(function initMobileDrawer() {
+  const toggle = document.querySelector('.mobile-toggle');
+  const drawer = document.querySelector('.mobile-drawer');
+  if (!toggle || !drawer) return;
+  const open = () => { toggle.classList.add('is-open'); drawer.classList.add('is-open'); document.body.style.overflow = 'hidden'; };
+  const close = () => { toggle.classList.remove('is-open'); drawer.classList.remove('is-open'); document.body.style.overflow = ''; };
+  toggle.addEventListener('click', () => {
+    if (drawer.classList.contains('is-open')) close(); else open();
+  });
+  // Close on link click
+  drawer.querySelectorAll('a').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      // Don't close on details summary
+      if (a.closest('details summary')) return;
+      close();
+    });
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('is-open')) close();
+  });
+})();
+
 // ---------- Reveal on scroll ----------
 (function initReveal() {
   const io = new IntersectionObserver((entries) => {
@@ -180,11 +226,143 @@
   }
 })();
 
+// ---------- Reels (horizontal card scroll with prev/next) ----------
+(function initReels() {
+  const reels = [
+    { wrap: '[data-vreel]',  track: '[data-vreel-track]',  prev: '.vreel-prev',  next: '.vreel-next'  },
+    { wrap: '[data-treel]',  track: '[data-treel-track]',  prev: '.treel-prev',  next: '.treel-next'  },
+  ];
+  reels.forEach((sel) => {
+    document.querySelectorAll(sel.wrap).forEach((wrap) => {
+      const track = wrap.querySelector(sel.track);
+      const prev = wrap.querySelector(sel.prev);
+      const next = wrap.querySelector(sel.next);
+      if (!track) return;
+
+      const stepBy = () => {
+        const child = track.firstElementChild;
+        if (!child) return 320;
+        const style = getComputedStyle(track);
+        const gap = parseFloat(style.columnGap || style.gap || '24');
+        return child.getBoundingClientRect().width + gap;
+      };
+
+      const updateState = () => {
+        const max = track.scrollWidth - track.clientWidth - 2;
+        if (prev) prev.classList.toggle('is-disabled', track.scrollLeft <= 1);
+        if (next) next.classList.toggle('is-disabled', track.scrollLeft >= max);
+      };
+
+      if (prev) prev.addEventListener('click', () => track.scrollBy({ left: -stepBy(), behavior: 'smooth' }));
+      if (next) next.addEventListener('click', () => track.scrollBy({ left:  stepBy(), behavior: 'smooth' }));
+      track.addEventListener('scroll', () => requestAnimationFrame(updateState), { passive: true });
+      window.addEventListener('resize', updateState);
+      updateState();
+
+      // Drag-to-scroll (desktop)
+      let down = false, sx = 0, sl = 0;
+      track.addEventListener('mousedown', (e) => {
+        if (e.target.closest('a, button')) return;
+        down = true; sx = e.pageX; sl = track.scrollLeft;
+        track.style.cursor = 'grabbing';
+      });
+      document.addEventListener('mousemove', (e) => {
+        if (!down) return;
+        e.preventDefault();
+        track.scrollLeft = sl - (e.pageX - sx);
+      });
+      document.addEventListener('mouseup', () => { down = false; track.style.cursor = ''; });
+    });
+  });
+})();
+
+// ---------- Carousels (prev/next + state) ----------
+(function initCarousels() {
+  document.querySelectorAll('[data-carousel]').forEach((wrap) => {
+    const track = wrap.querySelector('[data-carousel-track]');
+    const prev = wrap.querySelector('.carousel-prev');
+    const next = wrap.querySelector('.carousel-next');
+    if (!track) return;
+
+    const scrollAmount = () => {
+      const child = track.firstElementChild;
+      if (!child) return 320;
+      const style = getComputedStyle(track);
+      const gap = parseFloat(style.columnGap || style.gap || '24');
+      return child.getBoundingClientRect().width + gap;
+    };
+
+    const updateState = () => {
+      const max = track.scrollWidth - track.clientWidth - 2;
+      if (prev) prev.classList.toggle('is-disabled', track.scrollLeft <= 1);
+      if (next) next.classList.toggle('is-disabled', track.scrollLeft >= max);
+    };
+
+    if (prev) prev.addEventListener('click', () => {
+      track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+    });
+    if (next) next.addEventListener('click', () => {
+      track.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+    });
+
+    track.addEventListener('scroll', () => requestAnimationFrame(updateState), { passive: true });
+    window.addEventListener('resize', updateState);
+    updateState();
+
+    // Drag-to-scroll on desktop
+    let isDown = false, startX = 0, startScroll = 0;
+    track.addEventListener('mousedown', (e) => {
+      // Don't hijack clicks on links/buttons within cards
+      if (e.target.closest('a, button')) return;
+      isDown = true;
+      track.style.cursor = 'grabbing';
+      startX = e.pageX;
+      startScroll = track.scrollLeft;
+    });
+    document.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      track.scrollLeft = startScroll - (e.pageX - startX);
+    });
+    document.addEventListener('mouseup', () => { isDown = false; track.style.cursor = ''; });
+  });
+})();
+
 // ---------- Marquee duplicate (for seamless loops) ----------
 (function initMarquee() {
   document.querySelectorAll('[data-marquee]').forEach((m) => {
     const inner = m.querySelector('.marquee-inner');
     if (!inner) return;
     inner.innerHTML += inner.innerHTML;
+  });
+  document.querySelectorAll('[data-marquee-track]').forEach((track) => {
+    track.innerHTML += track.innerHTML;
+  });
+  document.querySelectorAll('[data-moments-track]').forEach((track) => {
+    track.innerHTML += track.innerHTML;
+  });
+})();
+
+// ---------- Video testimonial cards (click to load) ----------
+(function initVidCards() {
+  document.querySelectorAll('.vid-card[data-video]').forEach((card) => {
+    card.addEventListener('click', () => {
+      const url = card.dataset.video;
+      if (!url) return; // placeholder card — do nothing
+      const thumb = card.querySelector('.vid-thumb');
+      if (!thumb || thumb.querySelector('iframe')) return;
+      // Detect YouTube vs Vimeo and build embed
+      let embed = url;
+      const ytMatch = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|watch\?v=|shorts\/))([\w-]{6,})/);
+      if (ytMatch) {
+        embed = `https://www.youtube-nocookie.com/embed/${ytMatch[1]}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+      }
+      const iframe = document.createElement('iframe');
+      iframe.src = embed;
+      iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; fullscreen');
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;z-index:5;';
+      thumb.appendChild(iframe);
+    });
   });
 })();

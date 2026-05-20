@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact · SELF</title>
+<meta name="description" content="Reach out to SELF — namaste@selfbygs.com, WhatsApp +91 78911 22201. Registered office: Jaipur, Rajasthan." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Manrope:wght@300;400;500;600;700&family=Allison&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/shared.css" />
+
+<style>
+body { background: var(--ivory-soft); color: var(--ink); }
+body.theme-light .site-header { color: var(--ink); }
+
+/* Hero */
+.ct-hero {
+  position: relative;
+  padding: 180px 36px 100px;
+  background:
+    radial-gradient(ellipse at 80% -10%, rgba(201,162,77,0.20) 0%, transparent 55%),
+    radial-gradient(ellipse at 0% 100%, rgba(201,162,77,0.10) 0%, transparent 55%),
+    linear-gradient(180deg, var(--ivory) 0%, var(--ivory-soft) 100%);
+  overflow: hidden;
+  isolation: isolate;
+}
+.ct-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(11,11,11,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11,11,11,0.025) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at 30% 50%, black, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at 30% 50%, black, transparent 75%);
+  z-index: -1;
+}
+.ct-hero-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  align-items: end;
+}
+.ct-eyebrow {
+  display: flex; align-items: center; gap: 14px;
+  font-size: 11px; letter-spacing: 0.42em; text-transform: uppercase;
+  color: var(--gold-deep); font-weight: 500; margin-bottom: 28px;
+}
+.ct-eyebrow .l { width: 40px; height: 1px; background: var(--gold-deep); }
+.ct-hero h1 {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-size: clamp(48px, 6.6vw, 96px);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+.ct-hero h1 em { font-style: italic; color: var(--gold-deep); }
+.ct-hero .lede {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(18px, 1.4vw, 22px);
+  line-height: 1.6;
+  color: rgba(11,11,11,0.7);
+  max-width: 500px;
+  margin: 32px 0 0;
+}
+.ct-hero-side .ladder {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 22px;
+}
+.ct-hero-side .mini {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(11,11,11,0.7);
+  max-width: 360px;
+}
+.ct-hero-side .mini strong { color: var(--gold-deep); font-weight: 600; }
+
+@media (max-width: 900px) {
+  .ct-hero { padding: 140px 22px 70px; }
+  .ct-hero-inner { grid-template-columns: 1fr; gap: 36px; }
+}
+
+/* Contact methods */
+.ct-methods {
+  padding: 80px 36px 120px;
+  background: var(--ivory-soft);
+}
+.ct-methods-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+@media (max-width: 900px) { .ct-methods-grid { grid-template-columns: 1fr; } }
+
+.ct-card {
+  background: var(--ivory);
+  border: 1px solid rgba(201,162,77,0.22);
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform 0.4s var(--ease-out), border-color 0.4s, box-shadow 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+.ct-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(201,162,77,0.5);
+  box-shadow: 0 30px 60px -25px rgba(11,11,11,0.18);
+}
+.ct-card .ic {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: rgba(201,162,77,0.10);
+  border: 1px solid var(--gold-deep);
+  display: grid;
+  place-items: center;
+  margin-bottom: 8px;
+  transition: background 0.3s;
+}
+.ct-card:hover .ic { background: var(--gold-deep); color: var(--ivory); }
+.ct-card .ic svg { width: 22px; height: 22px; fill: var(--gold-deep); transition: fill 0.3s; }
+.ct-card:hover .ic svg { fill: var(--ivory); }
+.ct-card .ct-label {
+  font-family: var(--f-display);
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  font-weight: 500;
+}
+.ct-card h3 {
+  font-family: var(--f-serif);
+  font-weight: 400;
+  font-size: 26px;
+  letter-spacing: -0.005em;
+  margin: 0;
+  line-height: 1.2;
+}
+.ct-card .ct-val {
+  font-family: var(--f-display);
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  margin-top: 4px;
+  word-break: break-word;
+}
+.ct-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(11,11,11,0.65);
+  margin: 0;
+}
+.ct-card .ct-go {
+  margin-top: auto;
+  padding-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(11,11,11,0.1);
+  font-family: var(--f-display);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+.ct-card .ct-go .arr {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-deep);
+  display: grid;
+  place-items: center;
+  transition: transform 0.3s var(--ease-out);
+}
+.ct-card:hover .ct-go .arr { transform: translateX(4px); }
+
+/* Office */
+.ct-office {
+  padding: 140px 36px;
+  background: var(--ivory);
+  border-top: 1px solid rgba(201,162,77,0.22);
+  border-bottom: 1px solid rgba(201,162,77,0.22);
+}
+.ct-office-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+@media (max-width: 900px) { .ct-office-inner { grid-template-columns: 1fr; gap: 50px; } }
+
+.ct-office h2 {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-size: clamp(36px, 4.4vw, 64px);
+  line-height: 1.05;
+  margin: 18px 0 0;
+  letter-spacing: -0.01em;
+}
+.ct-office h2 em { font-style: italic; color: var(--gold-deep); }
+.ct-office .addr {
+  margin-top: 36px;
+  padding: 28px 30px;
+  background: var(--ivory-soft);
+  border-left: 2px solid var(--gold-deep);
+  font-family: var(--f-serif);
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.ct-office .addr strong { display: block; font-weight: 600; margin-bottom: 8px; color: var(--gold-deep); font-family: var(--f-display); font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; }
+.ct-office .meta {
+  margin-top: 30px;
+  display: grid;
+  gap: 18px;
+}
+.ct-office .meta .row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 14px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(11,11,11,0.1);
+  font-size: 15px;
+  align-items: baseline;
+}
+.ct-office .meta .row:last-child { border-bottom: 1px solid rgba(11,11,11,0.1); }
+.ct-office .meta .lbl {
+  font-family: var(--f-display);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  font-weight: 500;
+}
+
+.map-card {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background:
+    repeating-linear-gradient(135deg, rgba(201,162,77,0.15) 0 10px, transparent 10px 22px),
+    linear-gradient(135deg, #F3E6C6 0%, #C9A24D 100%);
+  border: 1px solid rgba(201,162,77,0.4);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.map-card .pin {
+  width: 22px; height: 22px;
+  border-radius: 50% 50% 50% 0;
+  background: var(--ink);
+  transform: rotate(-45deg);
+  position: relative;
+  box-shadow: 0 14px 30px -10px rgba(11,11,11,0.5);
+}
+.map-card .pin::after {
+  content: '';
+  position: absolute;
+  top: 6px; left: 6px;
+  width: 10px; height: 10px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+.map-card .pin-label {
+  position: absolute;
+  bottom: 28px; left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--f-display);
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: rgba(251,247,238,0.95);
+  padding: 8px 16px;
+  border-radius: 100px;
+  border: 1px solid rgba(11,11,11,0.1);
+  white-space: nowrap;
+}
+.map-card .corner {
+  position: absolute;
+  top: 18px; left: 18px;
+  font-family: monospace;
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(11,11,11,0.55);
+}
+.map-card .corner.r { left: auto; right: 18px; text-align: right; }
+.map-card .coords {
+  position: absolute;
+  bottom: 18px; right: 18px;
+  font-family: monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: rgba(11,11,11,0.55);
+}
+
+/* Hours / quick info */
+.ct-info {
+  padding: 100px 36px;
+  background: var(--ivory-soft);
+}
+.ct-info-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(11,11,11,0.08);
+  border: 1px solid rgba(11,11,11,0.08);
+}
+@media (max-width: 900px) { .ct-info-grid { grid-template-columns: 1fr; } }
+.ct-info-cell {
+  background: var(--ivory);
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.ct-info-cell .lbl {
+  font-family: var(--f-display);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  font-weight: 500;
+}
+.ct-info-cell h4 {
+  font-family: var(--f-serif);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.2;
+  margin: 0;
+}
+.ct-info-cell p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(11,11,11,0.65);
+  margin: 0;
+}
+
+
+/* CTA */
+.ct-cta {
+  padding: 140px 36px;
+  text-align: center;
+  background: linear-gradient(180deg, #0B0B0E 0%, #050507 100%);
+  color: var(--bone);
+  position: relative;
+  overflow: hidden;
+}
+.ct-cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(201,162,77,0.18), transparent 60%),
+    radial-gradient(ellipse at 10% 80%, rgba(201,162,77,0.08), transparent 60%);
+}
+.ct-cta-inner { position: relative; max-width: 900px; margin: 0 auto; }
+.ct-cta h2 {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-size: clamp(40px, 5vw, 72px);
+  line-height: 1.04;
+  margin: 24px 0 0;
+  letter-spacing: -0.015em;
+}
+.ct-cta h2 em { font-style: italic; color: var(--gold); }
+.ct-cta p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--bone-mute);
+  max-width: 620px;
+  margin: 28px auto 0;
+}
+.ct-cta .btn-row { display: flex; justify-content: center; gap: 18px; margin-top: 44px; flex-wrap: wrap; }
+
+</style>
+</head>
+
+<body class="theme-light">
+<div class="grain" style="opacity:0.18"></div>
+
+<!-- ===== Header ===== -->
+<header class="site-header">
+  <a href="index.html" class="brand-mark" style="color:var(--ink)">
+    <span class="dot"></span>
+    <span>SELF</span>
+  </a>
+  <nav class="nav" style="color:var(--ink)">
+    <a href="index.html">Home</a>
+    <div class="has-menu">
+      <a href="corporate.html">Corporate</a>
+      <div class="nav-dropdown">
+        <div class="dd-head">Corporate · Programs</div>
+        <a class="dd-item" href="programs/executive-effectiveness.html"><span class="num">01</span><span>Executive Effectiveness</span><span class="arrow"></span></a>
+        <a class="dd-item" href="programs/core-skills.html"><span class="num">02</span><span>Core Skills Interventions</span><span class="arrow"></span></a>
+        <a class="dd-item" href="programs/diagnostic-audit.html"><span class="num">03</span><span>Diagnostic Audit &amp; Custom</span><span class="arrow"></span></a>
+      </div>
+    </div>
+    <div class="has-menu">
+      <a href="academia.html">Academia</a>
+      <div class="nav-dropdown">
+        <div class="dd-head">Academia · Programs</div>
+        <a class="dd-item" href="programs/career-architecture.html"><span class="num">01</span><span>Career Architecture Lab</span><span class="arrow"></span></a>
+        <a class="dd-item" href="programs/young-leaders.html"><span class="num">02</span><span>Young Leaders Program</span><span class="arrow"></span></a>
+        <a class="dd-item" href="programs/beyond-teaching.html"><span class="num">03</span><span>Beyond Teaching · FDP</span><span class="arrow"></span></a>
+      </div>
+    </div>
+    <a href="team.html">Team</a>
+    <a href="contact.html" style="color:var(--gold-deep)">Contact</a>
+  </nav>
+  <button class="nav-cta" data-open-lead data-title="Begin Your Clarity Call" data-label="Clarity Call · Free 30 min" style="color:var(--gold-deep); border-color:var(--gold-deep);">Book a Clarity Call</button>
+  <button class="mobile-toggle" aria-label="Open menu" style="color:var(--ink)"><span></span><span></span><span></span></button>
+</header>
+
+<!-- ===== Mobile drawer ===== -->
+<div class="mobile-drawer" id="mobile-drawer">
+  <nav class="md-nav">
+    <a href="index.html">Home</a>
+    <details>
+      <summary>Corporate</summary>
+      <div class="md-sub">
+        <a href="corporate.html">Corporate · Overview</a>
+        <a href="programs/executive-effectiveness.html">Executive Effectiveness</a>
+        <a href="programs/core-skills.html">Core Skills</a>
+        <a href="programs/diagnostic-audit.html">Diagnostic Audit</a>
+      </div>
+    </details>
+    <details>
+      <summary>Academia</summary>
+      <div class="md-sub">
+        <a href="academia.html">Academia · Overview</a>
+        <a href="programs/career-architecture.html">Career Architecture</a>
+        <a href="programs/young-leaders.html">Young Leaders Program</a>
+        <a href="programs/beyond-teaching.html">Beyond Teaching · FDP</a>
+      </div>
+    </details>
+    <a href="team.html">Team</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="md-foot">
+    <button class="btn btn--solid hoverable" data-open-lead data-title="Begin Your Clarity Call" data-label="Clarity Call · Free 30 min">Book a Clarity Call <span class="arrow"></span></button>
+  </div>
+</div>
+
+<!-- ===== Hero ===== -->
+<section class="ct-hero" data-screen-label="01 Contact Hero">
+  <div class="ct-hero-inner">
+    <div>
+      <div class="ct-eyebrow reveal"><span class="l"></span><span>Get In Touch</span></div>
+      <h1>
+        <span class="reveal-mask"><span>Contact <em>Us.</em></span></span>
+      </h1>
+      <p class="lede reveal" style="--d:240ms">
+        For any support related issues — reach out. We respond within one business day, always honestly, never pushy.
+      </p>
+    </div>
+    <div class="ct-hero-side reveal" style="--d:400ms">
+      <div class="ladder"><span class="ladder-line">Awareness <span class="arr"></span> Capability <span class="arr"></span> Leadership</span></div>
+      <p class="mini">
+        The development arm of <strong>Gaurav Sharma &amp; Associates</strong>. Registered in Jaipur, Rajasthan.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Contact Methods ===== -->
+<section class="ct-methods">
+  <div class="ct-methods-grid">
+    <a class="ct-card reveal hoverable" href="mailto:namaste@selfbygs.com">
+      <div class="ic">
+        <svg viewBox="0 0 24 24"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
+      </div>
+      <div class="ct-label">Email</div>
+      <h3>Write to us</h3>
+      <div class="ct-val">namaste@selfbygs.com</div>
+      <p>For program enquiries, partnerships, or anything else — drop us a line and we'll respond within a business day.</p>
+      <div class="ct-go"><span>Send email</span><div class="arr">→</div></div>
+    </a>
+
+    <a class="ct-card reveal hoverable" style="--d:120ms" href="https://wa.me/+917891122201" target="_blank" rel="noopener">
+      <div class="ic">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </div>
+      <div class="ct-label">WhatsApp</div>
+      <h3>Need support? <em style="color: var(--gold-deep)">WhatsApp us</em></h3>
+      <div class="ct-val">+91 78911 22201</div>
+      <p>Faster turnaround on quick questions, scheduling, or sharing details about your context.</p>
+      <div class="ct-go"><span>Open chat</span><div class="arr">→</div></div>
+    </a>
+
+    <a class="ct-card reveal hoverable" style="--d:240ms" href="#" data-open-lead data-title="Begin Your Clarity Call" data-label="Clarity Call · Free 30 min">
+      <div class="ic">
+        <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.58l2.2-2.21c.28-.27.36-.66.25-1.01C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM12 3v10l3-3h6V3h-9z"/></svg>
+      </div>
+      <div class="ct-label">Clarity Call</div>
+      <h3>Book a 30-min call</h3>
+      <div class="ct-val">Free · No pitch · Honest</div>
+      <p>The best way to start. We listen first, then we tell you whether SELF is a fit — or what is.</p>
+      <div class="ct-go"><span>Book a slot</span><div class="arr">→</div></div>
+    </a>
+  </div>
+</section>
+
+<!-- ===== Office / Address ===== -->
+<section class="ct-office">
+  <div class="ct-office-inner">
+    <div>
+      <div class="ct-eyebrow reveal"><span class="l"></span><span>Registered Office</span></div>
+      <h2 class="reveal" style="--d:120ms">Find us in <em>Jaipur.</em></h2>
+
+      <div class="addr reveal" style="--d:240ms">
+        <strong>SELF · Registered Office</strong>
+        1/3 A, Yudhister Marg,<br/>
+        ESIC Colony, C-Scheme,<br/>
+        Jaipur, Rajasthan 302001<br/>
+        India
+      </div>
+
+      <div class="meta reveal" style="--d:360ms">
+        <div class="row"><span class="lbl">Email</span><a href="mailto:namaste@selfbygs.com" style="color: var(--ink);">namaste@selfbygs.com</a></div>
+        <div class="row"><span class="lbl">WhatsApp</span><a href="https://wa.me/+917891122201" target="_blank" rel="noopener" style="color: var(--ink);">+91 78911 22201</a></div>
+        <div class="row"><span class="lbl">Hours</span><span>Mon – Fri · 10am – 6pm IST</span></div>
+        <div class="row"><span class="lbl">Mode</span><span>In-person · Hybrid · Remote (India &amp; Global)</span></div>
+      </div>
+    </div>
+
+    <div class="map-card reveal" style="--d:200ms" aria-hidden="true">
+      <div class="corner">SELF · IN</div>
+      <div class="corner r">26.91° N<br/>75.79° E</div>
+      <div class="pin-label">Jaipur · Rajasthan</div>
+      <div class="pin"></div>
+      <div class="coords">N 26°54'36" · E 75°47'24"</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Info strip ===== -->
+<section class="ct-info">
+  <div class="ct-info-grid">
+    <div class="ct-info-cell reveal">
+      <div class="lbl">Response Time</div>
+      <h4>Within 1 business day</h4>
+      <p>Always honest, never pushy. We read every message ourselves.</p>
+    </div>
+    <div class="ct-info-cell reveal" style="--d:120ms">
+      <div class="lbl">Working Across</div>
+      <h4>India &amp; Global</h4>
+      <p>In-person engagements across India. Remote programs across the world.</p>
+    </div>
+    <div class="ct-info-cell reveal" style="--d:240ms">
+      <div class="lbl">For Press / Speaking</div>
+      <h4>Direct line</h4>
+      <p>For media, podcast invites, or speaking enquiries — email with subject line "Press".</p>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ===== CTA ===== -->
+<section class="ct-cta">
+  <div class="ct-cta-inner">
+    <div class="gold-rule center reveal" style="justify-content:center; display:flex;"><span class="line"></span><span class="bead"></span><span class="line"></span></div>
+    <div class="eyebrow reveal" style="--d:80ms; margin-top:18px">Begin</div>
+    <h2 class="reveal" style="--d:160ms">Or just <em>book a clarity call</em>.<br/>It's free, it's honest, it's 30 minutes.</h2>
+    <p class="reveal" style="--d:240ms">We listen. We ask the right questions. We tell you honestly whether SELF is a fit — or what is.</p>
+    <div class="btn-row reveal" style="--d:360ms">
+      <button class="btn btn--solid hoverable" data-open-lead data-title="Begin Your Clarity Call" data-label="Clarity Call · Free 30 min">Book a Clarity Call <span class="arrow"></span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="site-footer theme-light">
+  <div class="footer-grid">
+    <div>
+      <div class="foot-logo">SELF</div>
+      <div class="foot-by">Self Engineering for Leaders' Fortune</div>
+      <p class="foot-blurb">The development arm of <strong style="color: var(--gold-deep); font-family: var(--f-display); font-weight: 500; letter-spacing: 0.06em;">Gaurav Sharma &amp; Associates</strong>. Self Development Programs — built quietly, deliberately, and at depth.</p>
+      <div class="foot-social">
+        <a href="https://www.linkedin.com/in/voiceitgaurav/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zM8 19H5V8h3v11zM6.5 6.73C5.53 6.73 4.75 5.95 4.75 5s.78-1.73 1.75-1.73 1.75.78 1.75 1.73-.78 1.73-1.75 1.73zM20 19h-3v-5.6c0-1.1-.9-2-2-2s-2 .9-2 2V19h-3V8h3v1.4c.7-1 1.7-1.6 3-1.6 2.21 0 4 1.79 4 4V19z"/></svg></a>
+        <a href="https://www.instagram.com/voiceitgaurav/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153.555.556.9 1.111 1.153 1.772.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.25a1.25 1.25 0 1 0-2.5 0 1.25 1.25 0 0 0 2.5 0zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg></a>
+        <a href="https://www.youtube.com/@voiceitgaurav" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        <a href="https://www.facebook.com/profile.php?id=100002611554241" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h5>Explore</h5>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="corporate.html">Corporate</a></li>
+        <li><a href="academia.html">Academia</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Programs</h5>
+      <ul>
+        <li><a href="programs/executive-effectiveness.html">Executive Effectiveness</a></li>
+        <li><a href="programs/core-skills.html">Core Skills</a></li>
+        <li><a href="programs/diagnostic-audit.html">Diagnostic Audit</a></li>
+        <li><a href="programs/career-architecture.html">Career Architecture</a></li>
+        <li><a href="programs/young-leaders.html">Young Leaders · YLP</a></li>
+        <li><a href="programs/beyond-teaching.html">Beyond Teaching · FDP</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Engage</h5>
+      <ul>
+        <li><a href="#" data-open-lead data-title="Book a Clarity Call" data-label="Clarity Call · Free 30 min">Book a Clarity Call</a></li>
+        <li><a href="mailto:namaste@selfbygs.com">namaste@selfbygs.com</a></li>
+        <li><a href="https://wa.me/+917891122201" target="_blank" rel="noopener">WhatsApp · +91 78911 22201</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© SELF · 2026 · Gaurav Sharma &amp; Associates</span>
+    <span>Jaipur · Rajasthan · India</span>
+  </div>
+  <div class="footer-legal">
+    <div class="footer-legal-links">
+      <a href="contact.html">Contact</a>
+      <a href="#privacy">Privacy Policy</a>
+      <a href="#terms">Terms</a>
+      <a href="#refund">Refund &amp; Cancellation</a>
+    </div>
+    <span class="loc">Jaipur · India · Remote</span>
+  </div>
+</footer>
+
+<!-- ===== Lead modal (same as index) ===== -->
+<div class="lead-modal" id="lead-modal" role="dialog" aria-modal="true">
+  <div class="lead-card">
+    <aside class="lead-aside">
+      <div>
+        <div class="meta-row"><span class="dot"></span><span>Clarity Call · Free 30 min</span></div>
+        <h3 id="lead-title">Begin Your Clarity Call</h3>
+        <p>A short, honest conversation. We listen first, then we tell you whether SELF is a fit — or what is.</p>
+      </div>
+      <div class="quote">Don't choose a path.<br/>Learn how to design one.</div>
+    </aside>
+    <div class="lead-body">
+      <button class="lead-close" aria-label="Close">✕</button>
+      <div class="lead-steps">
+        <span class="lead-step-pill is-active"></span>
+        <span class="lead-step-pill"></span>
+        <span class="lead-step-pill"></span>
+        <span class="lead-step-pill"></span>
+      </div>
+      <div class="lead-step-wrap">
+        <div class="lead-step is-active">
+          <div class="step-eyebrow">Step 01 / 04</div>
+          <h4>Who is this for?</h4>
+          <div class="step-sub">Choose one — we'll tailor the rest of the conversation.</div>
+          <div class="chip-row">
+            <button class="chip">Student · Career clarity</button>
+            <button class="chip">Student · YLP / Placement readiness</button>
+            <button class="chip">Parent · For my child</button>
+            <button class="chip">Educator · School / College</button>
+            <button class="chip">Institution · Bulk programs</button>
+            <button class="chip">L&amp;D · For my team</button>
+            <button class="chip">Founder / Leadership</button>
+          </div>
+          <div class="step-actions">
+            <button class="step-back" data-back disabled>← Back</button>
+            <button class="btn btn--solid hoverable" data-next>Continue <span class="arrow"></span></button>
+          </div>
+        </div>
+        <div class="lead-step">
+          <div class="step-eyebrow">Step 02 / 04</div>
+          <h4>Which intervention?</h4>
+          <div class="step-sub">Pick all that interest you.</div>
+          <div class="chip-row" data-multi="true">
+            <button class="chip">Career Architecture · Decision Lab</button>
+            <button class="chip">Young Leaders Program (YLP)</button>
+            <button class="chip">YLP Pro · Placement</button>
+            <button class="chip">Beyond Teaching · FDP</button>
+            <button class="chip">Executive Effectiveness</button>
+            <button class="chip">Core Skills</button>
+            <button class="chip">Custom Solution</button>
+            <button class="chip">Not sure yet</button>
+          </div>
+          <div class="step-actions">
+            <button class="step-back" data-back>← Back</button>
+            <button class="btn btn--solid hoverable" data-next>Continue <span class="arrow"></span></button>
+          </div>
+        </div>
+        <div class="lead-step">
+          <div class="step-eyebrow">Step 03 / 04</div>
+          <h4>How should we reach you?</h4>
+          <div class="step-sub">We respond within 1 business day.</div>
+          <div class="field"><label>Full name</label><input type="text" placeholder="Your name" /></div>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="field"><label>Email</label><input type="email" placeholder="you@example.com" /></div>
+            <div class="field"><label>Mobile</label><input type="tel" placeholder="+91 98xx xx xx xx" /></div>
+          </div>
+          <div class="field"><label>Organisation (optional)</label><input type="text" placeholder="Where you study or work" /></div>
+          <div class="step-actions">
+            <button class="step-back" data-back>← Back</button>
+            <button class="btn btn--solid hoverable" data-next>Continue <span class="arrow"></span></button>
+          </div>
+        </div>
+        <div class="lead-step">
+          <div class="step-eyebrow">Step 04 / 04</div>
+          <h4>One last thing.</h4>
+          <div class="step-sub">What's the real reason you're here?</div>
+          <div class="field"><label>Context</label><textarea rows="4" placeholder="I'm trying to figure out…"></textarea></div>
+          <div class="field"><label>Preferred time</label>
+            <select>
+              <option>Weekday · Morning (10am–12pm IST)</option>
+              <option>Weekday · Afternoon (1pm–4pm IST)</option>
+              <option>Weekday · Evening (5pm–8pm IST)</option>
+              <option>Weekend · I'll pick a slot</option>
+            </select>
+          </div>
+          <div class="step-actions">
+            <button class="step-back" data-back>← Back</button>
+            <button class="btn btn--solid hoverable" data-submit>Request the Call <span class="arrow"></span></button>
+          </div>
+        </div>
+      </div>
+      <div class="lead-success" style="display:none">
+        <div class="check">✓</div>
+        <h4 style="font-family: var(--f-serif); font-size: 32px; margin:0 0 10px;">Thank you — we'll be in touch.</h4>
+        <p style="color: var(--bone-mute); font-size: 15px;">Look out for a personal note from the SELF team within one business day.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/shared.js"></script>
+</body>
+</html>

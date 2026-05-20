@@ -19,26 +19,77 @@
 
 <!-- ===== Header ===== -->
 <header class="site-header">
-  <a href="../index.html" class="brand-mark" style="color:var(--bone)">
+  <a href="../index.html" class="brand-mark">
     <span class="dot"></span>
     <span>SELF</span>
-    <span class="by">by GS</span>
   </a>
-  <nav class="nav" style="color:var(--bone)">
+  <nav class="nav">
     <a href="../index.html">Home</a>
-    <a href="../academia.html">Academia</a>
-    <a href="../corporate.html" style="color: var(--gold)">Corporate</a>
+    <div class="has-menu">
+      <a href="../corporate.html" style="color:var(--gold)">Corporate</a>
+      <div class="nav-dropdown">
+        <div class="dd-head">Corporate · Programs</div>
+        <a class="dd-item" href="executive-effectiveness.html"><span class="num">01</span><span>Executive Effectiveness</span><span class="arrow"></span></a>
+        <a class="dd-item" href="core-skills.html"><span class="num">02</span><span>Core Skills Interventions</span><span class="arrow"></span></a>
+        <a class="dd-item" href="diagnostic-audit.html"><span class="num">03</span><span>Diagnostic Audit &amp; Custom</span><span class="arrow"></span></a>
+      </div>
+    </div>
+    <div class="has-menu">
+      <a href="../academia.html">Academia</a>
+      <div class="nav-dropdown">
+        <div class="dd-head">Academia · Programs</div>
+        <a class="dd-item" href="career-architecture.html"><span class="num">01</span><span>Career Architecture Lab</span><span class="arrow"></span></a>
+        <a class="dd-item" href="young-leaders.html"><span class="num">02</span><span>Young Leaders Program</span><span class="arrow"></span></a>
+        <a class="dd-item" href="beyond-teaching.html"><span class="num">03</span><span>Beyond Teaching · FDP</span><span class="arrow"></span></a>
+      </div>
+    </div>
     <a href="../team.html">Team</a>
-    <a href="#contact">Contact Us</a>
+    <a href="../contact.html">Contact</a>
   </nav>
-  <button class="nav-cta" data-open-lead data-title="Executive Effectiveness · Clarity Call" data-label="Executive Effectiveness Program">Book a Clarity Call</button>
+  <button class="nav-cta" data-open-lead data-title="Book a Clarity Call" data-label="Clarity Call · Free 30 min">Book a Clarity Call</button>
+  <button class="mobile-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
 </header>
+
+<!-- ===== Mobile drawer ===== -->
+<div class="mobile-drawer" id="mobile-drawer">
+  <nav class="md-nav">
+    <a href="../index.html">Home</a>
+    <details open>
+      <summary>Corporate</summary>
+      <div class="md-sub">
+        <a href="../corporate.html">Corporate · Overview</a>
+        <a href="executive-effectiveness.html">Executive Effectiveness</a>
+        <a href="core-skills.html">Core Skills</a>
+        <a href="diagnostic-audit.html">Diagnostic Audit</a>
+      </div>
+    </details>
+    <details>
+      <summary>Academia</summary>
+      <div class="md-sub">
+        <a href="../academia.html">Academia · Overview</a>
+        <a href="career-architecture.html">Career Architecture</a>
+        <a href="young-leaders.html">Young Leaders Program</a>
+        <a href="beyond-teaching.html">Beyond Teaching · FDP</a>
+      </div>
+    </details>
+    <a href="../team.html">Team</a>
+    <a href="../contact.html">Contact</a>
+  </nav>
+  <div class="md-foot">
+    <button class="btn btn--solid hoverable" data-open-lead data-title="Book a Clarity Call" data-label="Clarity Call · Free 30 min">Book a Clarity Call <span class="arrow"></span></button>
+  </div>
+</div>
 
 <!-- ===== Breadcrumb ===== -->
 <div class="pd-crumb">
-  <a href="../index.html">Home</a><span class="sep">/</span>
-  <a href="../corporate.html">Corporate</a><span class="sep">/</span>
-  <span class="current">Executive Effectiveness</span>
+  <div class="pd-crumb-row">
+    <nav class="pd-trail" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a><span class="sep"></span>
+      <a href="../corporate.html">Corporate</a><span class="sep"></span>
+      <span class="current">Executive Effectiveness</span>
+    </nav>
+    <a href="../corporate.html" class="pd-back hoverable"><span class="ar"></span><span>Back to Corporate</span></a>
+  </div>
 </div>
 
 <!-- ===== Hero ===== -->
@@ -82,7 +133,7 @@
     <h2 class="reveal" style="--d:120ms">Four shifts. <em>One layer of leaders.</em></h2>
     <p class="reveal" style="--d:240ms">Each letter is a capability shift — the working leadership outcomes we design for in every engagement.</p>
   </div>
-  <div class="pd-fw-grid">
+  <div class="pd-fw-grid is-four">
     <div class="pd-fw-step reveal"><div class="letter">L</div><div><div class="title">Lead Self First</div><div class="desc">Build ownership, awareness, and consistency.</div></div></div>
     <div class="pd-fw-step reveal" style="--d:100ms"><div class="letter">E</div><div><div class="title">Engage People Better</div><div class="desc">Strengthen communication and team effectiveness.</div></div></div>
     <div class="pd-fw-step reveal" style="--d:200ms"><div class="letter">A</div><div><div class="title">Align Teams &amp; Execution</div><div class="desc">Improve coordination, accountability, collaboration.</div></div></div>
@@ -191,36 +242,59 @@
 <footer class="site-footer theme-dark">
   <div class="footer-grid">
     <div>
-      <div class="foot-logo" style="font-family: var(--f-display); font-size: 28px; letter-spacing: 0.22em; color: var(--gold); margin-bottom: 8px; font-weight: 600;">SELF <span style="font-size: 16px; letter-spacing: 0.28em; opacity: 0.8;">BY GS</span></div>
-      <div class="foot-by" style="font-family: var(--f-serif); font-style: italic; font-size: 18px; color: var(--bone); font-weight: 300;">Self Engineering for Leaders' Fortune</div>
+      <div class="foot-logo">SELF</div>
+      <div class="foot-by">Self Engineering for Leaders' Fortune</div>
       <p class="foot-blurb">The development arm of <strong style="color:var(--gold); font-family:var(--f-display); font-weight:500; letter-spacing:0.06em;">Gaurav Sharma &amp; Associates</strong>. Self Development Programs — built quietly, deliberately, and at depth.</p>
+      <div class="foot-social">
+        <a href="https://www.linkedin.com/in/voiceitgaurav/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zM8 19H5V8h3v11zM6.5 6.73C5.53 6.73 4.75 5.95 4.75 5s.78-1.73 1.75-1.73 1.75.78 1.75 1.73-.78 1.73-1.75 1.73zM20 19h-3v-5.6c0-1.1-.9-2-2-2s-2 .9-2 2V19h-3V8h3v1.4c.7-1 1.7-1.6 3-1.6 2.21 0 4 1.79 4 4V19z"/></svg></a>
+        <a href="https://www.instagram.com/voiceitgaurav/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153.555.556.9 1.111 1.153 1.772.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.25a1.25 1.25 0 1 0-2.5 0 1.25 1.25 0 0 0 2.5 0zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg></a>
+        <a href="https://www.youtube.com/@voiceitgaurav" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        <a href="https://www.facebook.com/profile.php?id=100002611554241" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/></svg></a>
+      </div>
     </div>
-    <div><h5>Explore</h5><ul>
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="../academia.html">Academia</a></li>
-      <li><a href="../corporate.html">Corporate</a></li>
-      <li><a href="../team.html">Team</a></li>
-      <li><a href="#contact">Contact Us</a></li>
-    </ul></div>
-    <div><h5>Programs</h5><ul>
-      <li><a href="career-architecture.html">Career Architecture</a></li>
-      <li><a href="young-leaders.html">Young Leaders · YLP</a></li>
-      <li><a href="beyond-teaching.html">Beyond Teaching · FDP</a></li>
-      <li><a href="executive-effectiveness.html">Executive Effectiveness</a></li>
-      <li><a href="core-skills.html">Core Skills</a></li>
-      <li><a href="diagnostic-audit.html">Diagnostic Audit</a></li>
-    </ul></div>
-    <div><h5>Engage</h5><ul>
-      <li><a href="#" data-open-lead data-title="Book a Clarity Call" data-label="Clarity Call · Free 30 min">Book a Clarity Call</a></li>
-      <li><a href="mailto:hello@selfbygs.com">hello@selfbygs.com</a></li>
-      <li><a href="tel:+91">+91 · share on request</a></li>
-      <li><a href="#" target="_blank" rel="noopener">LinkedIn ↗</a></li>
-      <li><a href="#" target="_blank" rel="noopener">Instagram ↗</a></li>
-    </ul></div>
+    <div>
+      <h5>Explore</h5>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../corporate.html">Corporate</a></li>
+        <li><a href="../academia.html">Academia</a></li>
+        <li><a href="../team.html">Team</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Programs</h5>
+      <ul>
+        <li><a href="executive-effectiveness.html">Executive Effectiveness</a></li>
+        <li><a href="core-skills.html">Core Skills</a></li>
+        <li><a href="diagnostic-audit.html">Diagnostic Audit</a></li>
+        <li><a href="career-architecture.html">Career Architecture</a></li>
+        <li><a href="young-leaders.html">Young Leaders · YLP</a></li>
+        <li><a href="beyond-teaching.html">Beyond Teaching · FDP</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Engage</h5>
+      <ul>
+        <li><a href="#" data-open-lead data-title="Book a Clarity Call" data-label="Clarity Call · Free 30 min">Book a Clarity Call</a></li>
+        <li><a href="mailto:namaste@selfbygs.com">namaste@selfbygs.com</a></li>
+        <li><a href="https://wa.me/+917891122201" target="_blank" rel="noopener">WhatsApp · +91 78911 22201</a></li>
+        <li><a href="../contact.html">Contact Us</a></li>
+      </ul>
+    </div>
   </div>
   <div class="footer-bottom">
-    <span>© SELF by GS · 2026 · Gaurav Sharma &amp; Associates</span>
-    <span>www.selfbygs.com · India · Delhi NCR</span>
+    <span>© SELF · 2026 · Gaurav Sharma &amp; Associates</span>
+    <span>Jaipur · Rajasthan · India</span>
+  </div>
+  <div class="footer-legal">
+    <div class="footer-legal-links">
+      <a href="../contact.html">Contact</a>
+      <a href="#privacy">Privacy Policy</a>
+      <a href="#terms">Terms</a>
+      <a href="#refund">Refund &amp; Cancellation</a>
+    </div>
+    <span class="loc">Jaipur · India · Remote</span>
   </div>
 </footer>
 
