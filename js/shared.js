@@ -253,15 +253,15 @@
   reels.forEach((sel) => {
     document.querySelectorAll(sel.wrap).forEach((wrap) => {
       const track = wrap.querySelector(sel.track);
-      const prev = wrap.querySelector(sel.prev);
-      const next = wrap.querySelector(sel.next);
+      const prev  = wrap.querySelector(sel.prev);
+      const next  = wrap.querySelector(sel.next);
       if (!track) return;
 
+      // Step size = one card + gap
       const stepBy = () => {
         const child = track.firstElementChild;
         if (!child) return 320;
-        const style = getComputedStyle(track);
-        const gap = parseFloat(style.columnGap || style.gap || '24');
+        const gap = parseFloat(getComputedStyle(track).columnGap || '24');
         return child.getBoundingClientRect().width + gap;
       };
 
@@ -277,22 +277,76 @@
       window.addEventListener('resize', updateState);
       updateState();
 
-      // Drag-to-scroll (desktop)
-      let down = false, sx = 0, sl = 0;
+      // ── Momentum drag-to-scroll ──────────────────────────────────────────
+      let isDragging = false, startX = 0, startScroll = 0;
+      let lastX = 0, lastTime = 0, velX = 0, rafId = null, didDrag = false;
+
+      const cancelMomentum = () => { if (rafId) { cancelAnimationFrame(rafId); rafId = null; } };
+
+      const applyMomentum = () => {
+        velX *= 0.90;
+        if (Math.abs(velX) < 0.4) { cancelMomentum(); return; }
+        track.scrollLeft += velX;
+        rafId = requestAnimationFrame(applyMomentum);
+      };
+
+      track.style.cursor = 'grab';
+      track.style.userSelect = 'none';
+
       track.addEventListener('mousedown', (e) => {
-        if (e.target.closest('a, button')) return;
-        down = true; sx = e.pageX; sl = track.scrollLeft;
+        if (e.button !== 0) return;
+        cancelMomentum();
+        isDragging = true; didDrag = false;
+        startX = e.clientX; startScroll = track.scrollLeft;
+        lastX = e.clientX; lastTime = performance.now(); velX = 0;
         track.style.cursor = 'grabbing';
-      });
-      document.addEventListener('mousemove', (e) => {
-        if (!down) return;
         e.preventDefault();
-        track.scrollLeft = sl - (e.pageX - sx);
       });
-      document.addEventListener('mouseup', () => { down = false; track.style.cursor = ''; });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const dx = e.clientX - startX;
+        if (Math.abs(dx) > 5) didDrag = true;
+        const now = performance.now();
+        const dt  = Math.max(now - lastTime, 1);
+        velX = (e.clientX - lastX) / dt * 14;   // positive = scroll left
+        lastX = e.clientX; lastTime = now;
+        track.scrollLeft = startScroll - dx;
+      }, { passive: true });
+
+      window.addEventListener('mouseup', () => {
+        if (!isDragging) return;
+        isDragging = false;
+        track.style.cursor = 'grab';
+        if (Math.abs(velX) > 1) rafId = requestAnimationFrame(applyMomentum);
+      });
+
+      // Suppress click after drag
+      track.addEventListener('click', (e) => {
+        if (didDrag) { e.stopPropagation(); e.preventDefault(); didDrag = false; }
+      }, true);
+
+      // Touch with momentum
+      let tStartX = 0, tStartScroll = 0;
+      track.addEventListener('touchstart', (e) => {
+        cancelMomentum();
+        tStartX = e.touches[0].clientX; tStartScroll = track.scrollLeft;
+        lastX = tStartX; lastTime = performance.now(); velX = 0;
+      }, { passive: true });
+      track.addEventListener('touchmove', (e) => {
+        const cx = e.touches[0].clientX;
+        const now = performance.now(); const dt = Math.max(now - lastTime, 1);
+        velX = (lastX - cx) / dt * 14;
+        lastX = cx; lastTime = now;
+        track.scrollLeft = tStartScroll - (cx - tStartX);
+      }, { passive: true });
+      track.addEventListener('touchend', () => {
+        if (Math.abs(velX) > 1) rafId = requestAnimationFrame(applyMomentum);
+      }, { passive: true });
     });
   });
 })();
+
 
 // ---------- Carousels (prev/next + state) ----------
 (function initCarousels() {
@@ -385,40 +439,129 @@
   });
 })();
 
-// ---------- Vreel video cards (click to play) ----------
+// ── Vreel video cards — play / pause / mute with smooth state ──────────────
 (function initVreelCards() {
+
+  // SVG icons
+  const ICONS = {
+    play:   '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>',
+    pause:  '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>',
+    sound:  '<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>',
+    muted:  '<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 0 0 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/></svg>',
+  };
+
   document.querySelectorAll('.vreel-card[data-video]').forEach((card) => {
-    const media = card.querySelector('.vreel-media');
-    if (!media) return;
-    const url = card.dataset.video;
-    card.addEventListener('click', (e) => {
+    const media      = card.querySelector('.vreel-media');
+    const cover      = card.querySelector('.vreel-cover');
+    const playWrap   = card.querySelector('.vreel-play');
+    const playBtn    = card.querySelector('.vreel-play-btn');
+    const tapOverlay = card.querySelector('.vreel-tap-overlay');
+    const muteBtn    = card.querySelector('.vreel-mute');
+    if (!media || !playBtn) return;
+
+    const url = (card.dataset.video || '').trim();
+    let vid = null;   // the <video> element, null until first play
+
+    // ── helpers ──────────────────────────────────────────────────────────────
+    const setPlayIcon  = (playing) => {
+      playBtn.innerHTML = playing ? ICONS.pause : ICONS.play;
+      playBtn.setAttribute('aria-label', playing ? 'Pause' : 'Play');
+    };
+
+    const setMuteIcon  = (muted) => {
+      muteBtn.innerHTML = muted ? ICONS.muted : ICONS.sound;
+      muteBtn.setAttribute('aria-label', muted ? 'Unmute' : 'Mute');
+      card.classList.toggle('is-muted', muted);
+    };
+
+    const markPlaying  = (yes) => {
+      card.classList.toggle('is-playing', yes);
+      setPlayIcon(yes);
+    };
+
+    // ── load video on first play ──────────────────────────────────────────
+    const loadAndPlay = () => {
+      if (vid) return;                // already created
       if (!url) return;
-      if (media.querySelector('video, iframe')) return; // already loaded
-      const cover = media.querySelector('.vreel-cover');
-      const play = media.querySelector('.vreel-play');
-      const muteBtn = media.querySelector('.vreel-mute');
-      // Check if mp4/webm (direct video) or YouTube
-      const ytMatch = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|watch\?v=|shorts\/))([\\w-]{6,})/);
-      if (ytMatch) {
-        const iframe = document.createElement('iframe');
-        iframe.src = `https://www.youtube-nocookie.com/embed/${ytMatch[1]}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
-        iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; fullscreen');
-        iframe.setAttribute('allowfullscreen', '');
-        iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;z-index:5;';
-        media.appendChild(iframe);
-      } else {
-        const vid = document.createElement('video');
-        vid.src = url;
-        vid.controls = true;
-        vid.autoplay = true;
-        vid.playsInline = true;
-        vid.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:5;background:#000;';
-        media.appendChild(vid);
-        vid.play().catch(() => {});
+
+      vid = document.createElement('video');
+      vid.src         = url;
+      vid.playsInline = true;
+      vid.preload     = 'auto';
+      vid.muted       = false;
+      vid.style.cssText =
+        'position:absolute;inset:0;width:100%;height:100%;' +
+        'object-fit:cover;z-index:5;background:#000;';
+      media.appendChild(vid);
+
+      // Fade cover out smoothly
+      if (cover) {
+        cover.style.transition = 'opacity 0.5s ease';
+        cover.style.opacity    = '0';
+        cover.style.zIndex     = '0';
       }
-      if (cover) cover.style.opacity = '0';
-      if (play) play.style.opacity = '0';
-      if (muteBtn) muteBtn.style.opacity = '0';
+
+      vid.addEventListener('playing', () => markPlaying(true));
+      vid.addEventListener('pause',   () => markPlaying(false));
+      vid.addEventListener('ended',   () => {
+        markPlaying(false);
+        // Replay from start on end
+        vid.currentTime = 0;
+      });
+
+      // If autoplay is blocked by browser policy, try muted first
+      vid.play().catch(() => {
+        vid.muted = true;
+        setMuteIcon(true);
+        vid.play().catch(() => {});
+      });
+
+      markPlaying(true);
+      setMuteIcon(vid.muted);
+    };
+
+    // ── toggle play / pause ──────────────────────────────────────────────
+    const togglePlay = (e) => {
+      e.stopPropagation();
+      if (!vid) { loadAndPlay(); return; }
+      if (vid.paused) {
+        vid.play().catch(() => {});
+      } else {
+        vid.pause();
+      }
+    };
+
+    // ── toggle mute ──────────────────────────────────────────────────────
+    const toggleMute = (e) => {
+      e.stopPropagation();
+      if (!vid) { loadAndPlay(); return; }
+      vid.muted = !vid.muted;
+      setMuteIcon(vid.muted);
+    };
+
+    // ── event wiring ─────────────────────────────────────────────────────
+    // Play button click
+    playBtn.addEventListener('click', togglePlay);
+
+    // Tap overlay (covers video while playing) → pause
+    if (tapOverlay) {
+      tapOverlay.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (vid && !vid.paused) vid.pause();
+      });
+    }
+
+    // Mute button
+    muteBtn.addEventListener('click', toggleMute);
+
+    // Prevent card drag from triggering play (check didDrag flag set by initReels)
+    media.addEventListener('click', (e) => {
+      // if the click was already handled by playBtn or muteBtn, skip
+      if (e.target === playBtn || playBtn.contains(e.target)) return;
+      if (e.target === muteBtn || muteBtn.contains(e.target)) return;
+      if (e.target === tapOverlay) return;
+      // Only trigger on the cover / pre-play media area
+      if (!vid) loadAndPlay();
     });
   });
 })();

@@ -937,8 +937,8 @@ body.theme-noir { background: var(--hero-bg); }
 }
 .moment-tile {
   flex: 0 0 auto;
-  width: 360px;
-  aspect-ratio: 4 / 5;
+  width: 520px;
+  aspect-ratio: 6 / 4;
   position: relative;
   overflow: hidden;
   background: var(--bg, linear-gradient(135deg, #1A1812, #C9A24D));
@@ -975,15 +975,7 @@ body.theme-noir { background: var(--hero-bg); }
     linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.65) 100%),
     radial-gradient(ellipse at 50% 30%, rgba(201,162,77,0.20), transparent 60%);
 }
-.moment-tile .meta {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  padding: 22px 24px 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  z-index: 2;
-}
+.moment-tile .meta { display: none; }
 .moment-tile .meta .tag {
   font-family: var(--f-display);
   font-size: 10px;
@@ -1011,7 +1003,7 @@ body.theme-noir { background: var(--hero-bg); }
   opacity: 0.55;
 }
 @media (max-width: 700px) {
-  .moment-tile { width: 260px; }
+  .moment-tile { width: 280px; aspect-ratio: 6/4; }
   .moments-track { gap: 18px; padding: 8px 18px; }
 }
 
@@ -1040,22 +1032,30 @@ body.theme-noir { background: var(--hero-bg); }
 
 .vreel-card {
   position: relative;
-  background: #0E0E12;
-  border: 1px solid rgba(201,162,77,0.18);
-  overflow: hidden;
-  transition: transform 0.45s var(--ease-out), border-color 0.4s, box-shadow 0.5s;
+  background: transparent;
+  border: none;
+  overflow: visible;
+  transition: transform 0.45s var(--ease-out);
   cursor: pointer;
   display: flex;
   flex-direction: column;
 }
+.vreel-card .vreel-media {
+  border: 1px solid rgba(201,162,77,0.18);
+  overflow: hidden;
+  border-radius: 4px;
+  transition: border-color 0.4s, box-shadow 0.5s;
+}
 .vreel-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
+}
+.vreel-card:hover .vreel-media {
   border-color: rgba(201,162,77,0.5);
-  box-shadow: 0 30px 60px -25px rgba(0,0,0,0.5);
+  box-shadow: 0 24px 50px -20px rgba(0,0,0,0.6);
 }
 .vreel-media {
   position: relative;
-  aspect-ratio: 9 / 13;
+  aspect-ratio: 1 / 1;
   background:
     radial-gradient(ellipse at 50% 30%, rgba(201,162,77,0.20), transparent 60%),
     linear-gradient(135deg, #1B1812 0%, #06060A 100%);
@@ -1070,81 +1070,135 @@ body.theme-noir { background: var(--hero-bg); }
 }
 .vreel-mute {
   position: absolute;
-  top: 14px; left: 14px;
-  z-index: 3;
-  width: 30px; height: 30px;
+  top: 12px; right: 12px;
+  z-index: 10;
+  width: 36px; height: 36px;
   border-radius: 50%;
-  background: rgba(10,10,12,0.55);
-  border: 1px solid rgba(232,228,218,0.25);
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-.vreel-mute:hover { background: rgba(10,10,12,0.85); }
-.vreel-mute svg { width: 16px; height: 16px; fill: var(--bone); opacity: 0.9; }
-.vreel-play {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  z-index: 2;
-  background: rgba(0,0,0,0.20);
-  transition: background 0.3s;
-}
-.vreel-card:hover .vreel-play { background: rgba(0,0,0,0.40); }
-.vreel-play .ring {
-  width: 64px; height: 64px;
-  border-radius: 50%;
-  border: 1px solid var(--gold);
-  background: rgba(201,162,77,0.18);
+  background: rgba(10,10,12,0.60);
+  border: 1px solid rgba(255,255,255,0.20);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   display: grid;
   place-items: center;
-  transition: transform 0.4s var(--ease-out), background 0.3s;
-  position: relative;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: background 0.2s, opacity 0.25s, transform 0.2s, border-color 0.2s;
 }
-.vreel-card:hover .vreel-play .ring { transform: scale(1.1); background: var(--gold); }
-.vreel-play .ring::before {
-  content: '';
-  display: block;
-  width: 0; height: 0;
-  border-left: 16px solid var(--gold);
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  margin-left: 4px;
-  transition: border-left-color 0.3s;
+/* Only show mute button when video is playing */
+.vreel-card.is-playing .vreel-mute {
+  opacity: 1;
+  pointer-events: auto;
 }
-.vreel-card:hover .vreel-play .ring::before { border-left-color: #0B0B0B; }
-
-.vreel-meta {
+.vreel-mute:hover {
+  background: rgba(201,162,77,0.85);
+  border-color: var(--gold);
+  transform: scale(1.1);
+}
+.vreel-mute svg { width: 16px; height: 16px; fill: #fff; transition: fill 0.2s; display: block; }
+.vreel-mute:hover svg { fill: #0B0B0B; }
+/* Muted state indicator */
+.vreel-card.is-muted .vreel-mute {
+  background: rgba(180,30,30,0.65);
+  border-color: rgba(255,80,80,0.4);
+}
+/* ── Centre play/pause overlay button ─────────────── */
+.vreel-play {
   position: absolute;
-  left: 14px; right: 14px; bottom: 14px;
-  z-index: 3;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 8;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  background: rgba(10,10,12,0.80);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(201,162,77,0.20);
-  border-radius: 100px;
+  gap: 0;
+  pointer-events: auto;
+  transition: opacity 0.3s;
 }
-.vreel-avatar {
-  width: 32px; height: 32px;
-  flex: 0 0 32px;
+.vreel-play-btn {
+  width: 52px; height: 52px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #E8D9B6, #C9A24D);
-  border: 1px solid rgba(201,162,77,0.4);
+  border: 1.5px solid rgba(255,255,255,0.85);
+  background: rgba(10,10,12,0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s;
+  color: #fff;
+  flex-shrink: 0;
+}
+.vreel-play-btn:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  transform: scale(1.08);
+}
+.vreel-play-btn:hover svg { fill: #0B0B0B; }
+.vreel-play-btn svg {
+  width: 20px; height: 20px;
+  fill: #fff;
+  transition: fill 0.25s;
+  pointer-events: none;
+}
+/* Show only on hover when NOT playing, always show when playing */
+.vreel-card:not(.is-playing) .vreel-play {
+  opacity: 0;
+}
+.vreel-card:not(.is-playing):hover .vreel-play {
+  opacity: 1;
+}
+.vreel-card.is-playing .vreel-play {
+  opacity: 1;
+}
+/* Full-cover dim overlay (click anywhere to pause) — only while playing */
+.vreel-tap-overlay {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  cursor: pointer;
+}
+.vreel-card.is-playing .vreel-tap-overlay { display: block; }
+
+.vreel-meta {
+  display: none;
+}
+.vreel-below {
+  padding: 14px 4px 0;
+  text-align: center;
+}
+/* ── Vreel polish ──────────────────────────────────────── */
+/* Smooth cover fade */
+.vreel-cover {
+  transition: opacity 0.5s ease;
+  z-index: 1;
+}
+/* Hide .ring if it survived */
+.vreel-play .ring { display: none; }
+/* Play btn pulse on hover (pre-play) */
+.vreel-card:not(.is-playing):hover .vreel-play-btn {
+  background: rgba(201,162,77,0.80);
+  border-color: var(--gold);
+}
+.vreel-card:not(.is-playing):hover .vreel-play-btn svg { fill: #0B0B0B; }
+/* When playing, pause icon sits bottom-centre */
+.vreel-card.is-playing .vreel-play {
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+/* Tap-overlay shows a subtle darkening to hint at pause */
+.vreel-tap-overlay:hover {
+  background: rgba(0,0,0,0.12);
 }
 .vreel-name {
   font-family: var(--f-sans);
   font-weight: 600;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--bone);
-  line-height: 1.15;
+  line-height: 1.3;
+  display: block;
 }
 .vreel-role {
   font-family: var(--f-display);
@@ -1152,7 +1206,8 @@ body.theme-noir { background: var(--hero-bg); }
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-top: 2px;
+  margin-top: 4px;
+  display: block;
 }
 
 .vreel-controls {
@@ -1876,102 +1931,81 @@ body.theme-noir { background: var(--hero-bg); }
 
   <div class="vreel" data-vreel>
     <div class="vreel-track" data-vreel-track>
-      <article class="vreel-card reveal" data-video="https://selfbygs.com/wp-content/uploads/2025/09/overtheyears.webm">
+      <article class="vreel-card reveal" data-video="https://selfbygs.com/wp-content/uploads/2025/09/IMG_7789.webm">
         <div class="vreel-media">
-          <img class="vreel-cover" src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/07/6-4.png?w=1920&ssl=1" alt="Gaurav Sharma" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-          <button class="vreel-mute" aria-label="Sound off"><svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 0 0 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/></svg></button>
-          <div class="vreel-play"><span class="ring"></span></div>
+          <img class="vreel-cover" src="assets/cover-shweta.png" alt="Dr. Shweta Jain" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:opacity 0.3s;">
+          <button class="vreel-mute" aria-label="Mute" title="Mute/Unmute"><svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 0 0 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/></svg></button>
+          <div class="vreel-tap-overlay" aria-label="Pause"></div><div class="vreel-play"><button class="vreel-play-btn" aria-label="Play"><svg viewBox="0 0 24 24" class="icon-play"><path d="M8 5v14l11-7z"/></svg><svg viewBox="0 0 24 24" class="icon-pause" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg></button></div>
         </div>
-        <div class="vreel-meta">
-          <div class="vreel-avatar" style="background-image:url('https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/07/6-4.png?w=1920&ssl=1');background-size:cover;background-position:center;"></div>
-          <div>
-            <div class="vreel-name">Gaurav Sharma</div>
-            <div class="vreel-role">SELF · Over the Years</div>
-          </div>
+        <div class="vreel-below">
+          <span class="vreel-name">Dr. Shweta Jain</span>
+          <span class="vreel-role">Director · ICFAI Business School, Jaipur</span>
         </div>
       </article>
-      <article class="vreel-card reveal" style="--d:100ms" data-video="https://selfbygs.com/wp-content/uploads/2025/09/IMG_7789.webm">
+      <article class="vreel-card reveal" style="--d:80ms" data-video="https://selfbygs.com/wp-content/uploads/2025/08/WhatsApp-Video-2025-08-08-at-14.16.51.mp4">
         <div class="vreel-media">
-          <img class="vreel-cover" src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/07/Dr.-Shweta-Jain-Director-Global-Head-Apple-Care-5.png?w=1920&ssl=1" alt="Dr. Shweta Jain" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-          <button class="vreel-mute" aria-label="Sound off"><svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 0 0 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/></svg></button>
-          <div class="vreel-play"><span class="ring"></span></div>
+          <img class="vreel-cover" src="assets/cover-neetika.png" alt="Neetika Agrawal" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:opacity 0.3s;">
+          <button class="vreel-mute" aria-label="Mute" title="Mute/Unmute"><svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 0 0 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/></svg></button>
+          <div class="vreel-tap-overlay" aria-label="Pause"></div><div class="vreel-play"><button class="vreel-play-btn" aria-label="Play"><svg viewBox="0 0 24 24" class="icon-play"><path d="M8 5v14l11-7z"/></svg><svg viewBox="0 0 24 24" class="icon-pause" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg></button></div>
         </div>
-        <div class="vreel-meta">
-          <div class="vreel-avatar" style="background-image:url('https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/07/Dr.-Shweta-Jain-Director-Global-Head-Apple-Care-5.png?w=1920&ssl=1');background-size:cover;background-position:center;"></div>
-          <div>
-            <div class="vreel-name">Dr. Shweta Jain</div>
-            <div class="vreel-role">Director & Global Head · Apple Care</div>
-          </div>
+        <div class="vreel-below">
+          <span class="vreel-name">Neetika Agrawal</span>
+          <span class="vreel-role">Student · IIFT Delhi</span>
         </div>
       </article>
-      <article class="vreel-card reveal" style="--d:200ms" data-video="https://selfbygs.com/wp-content/uploads/2025/09/Prep-Hero-1.webm">
+      <article class="vreel-card reveal" style="--d:160ms" data-video="https://selfbygs.com/wp-content/uploads/2025/09/Prep-Hero-1.webm">
         <div class="vreel-media">
-          <img class="vreel-cover" src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/Shrey-Sharma-Founder-and-CEO-Cyntexa-4.png?w=1920&ssl=1" alt="Shrey Sharma" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-          <button class="vreel-mute" aria-label="Sound off"><svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 0 0 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/></svg></button>
-          <div class="vreel-play"><span class="ring"></span></div>
+          <img class="vreel-cover" src="assets/cover-diya.png" alt="Diya Kumari ji" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:opacity 0.3s;">
+          <button class="vreel-mute" aria-label="Mute" title="Mute/Unmute"><svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 0 0 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/></svg></button>
+          <div class="vreel-tap-overlay" aria-label="Pause"></div><div class="vreel-play"><button class="vreel-play-btn" aria-label="Play"><svg viewBox="0 0 24 24" class="icon-play"><path d="M8 5v14l11-7z"/></svg><svg viewBox="0 0 24 24" class="icon-pause" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg></button></div>
         </div>
-        <div class="vreel-meta">
-          <div class="vreel-avatar" style="background-image:url('https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/Shrey-Sharma-Founder-and-CEO-Cyntexa-4.png?w=1920&ssl=1');background-size:cover;background-position:center;"></div>
-          <div>
-            <div class="vreel-name">Shrey Sharma</div>
-            <div class="vreel-role">Founder & CEO · Cyntexa</div>
-          </div>
+        <div class="vreel-below">
+          <span class="vreel-name">Diya Kumari ji</span>
+          <span class="vreel-role">Deputy CM · Rajasthan</span>
         </div>
       </article>
-      <article class="vreel-card reveal" style="--d:300ms" data-video="https://selfbygs.com/wp-content/uploads/2025/07/vid.mp4">
+      <article class="vreel-card reveal" style="--d:240ms" data-video="https://selfbygs.com/wp-content/uploads/2025/07/vid.mp4">
         <div class="vreel-media">
-          <img class="vreel-cover" src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/07/Shrey-Sharma-Founder-and-CEO-Cyntexa-2.png?w=1920&ssl=1" alt="Participant" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-          <button class="vreel-mute" aria-label="Sound off"><svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 0 0 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/></svg></button>
-          <div class="vreel-play"><span class="ring"></span></div>
+          <img class="vreel-cover" src="assets/cover-shrey.png" alt="Shrey Sharma" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:opacity 0.3s;">
+          <button class="vreel-mute" aria-label="Mute" title="Mute/Unmute"><svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 0 0 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/></svg></button>
+          <div class="vreel-tap-overlay" aria-label="Pause"></div><div class="vreel-play"><button class="vreel-play-btn" aria-label="Play"><svg viewBox="0 0 24 24" class="icon-play"><path d="M8 5v14l11-7z"/></svg><svg viewBox="0 0 24 24" class="icon-pause" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg></button></div>
         </div>
-        <div class="vreel-meta">
-          <div class="vreel-avatar" style="background-image:url('https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/07/Shrey-Sharma-Founder-and-CEO-Cyntexa-2.png?w=1920&ssl=1');background-size:cover;background-position:center;"></div>
-          <div>
-            <div class="vreel-name">Participant</div>
-            <div class="vreel-role">SELF · Program</div>
-          </div>
+        <div class="vreel-below">
+          <span class="vreel-name">Shrey Sharma</span>
+          <span class="vreel-role">Founder & CEO · Cyntexa</span>
+        </div>
+      </article>
+      <article class="vreel-card reveal" style="--d:320ms" data-video="https://selfbygs.com/wp-content/uploads/2025/08/InShot_20250811_124748132.mp4">
+        <div class="vreel-media">
+          <img class="vreel-cover" src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/7-1.png?w=1920&ssl=1" alt="Chinmaya" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:opacity 0.3s;">
+          <button class="vreel-mute" aria-label="Mute" title="Mute/Unmute"><svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 0 0 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/></svg></button>
+          <div class="vreel-tap-overlay" aria-label="Pause"></div><div class="vreel-play"><button class="vreel-play-btn" aria-label="Play"><svg viewBox="0 0 24 24" class="icon-play"><path d="M8 5v14l11-7z"/></svg><svg viewBox="0 0 24 24" class="icon-pause" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg></button></div>
+        </div>
+        <div class="vreel-below">
+          <span class="vreel-name">Chinmaya</span>
+          <span class="vreel-role">SELF · Program</span>
         </div>
       </article>
       <article class="vreel-card reveal" style="--d:400ms" data-video="https://selfbygs.com/wp-content/uploads/2025/08/WhatsApp-Video-2025-08-11-at-15.13.03.mp4">
         <div class="vreel-media">
-          <img class="vreel-cover" src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/7-1.png?w=1920&ssl=1" alt="Participant" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-          <button class="vreel-mute" aria-label="Sound off"><svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 0 0 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/></svg></button>
-          <div class="vreel-play"><span class="ring"></span></div>
+          <img class="vreel-cover" src="assets/cover-shaurya.png" alt="Shaurya Vig" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:opacity 0.3s;">
+          <button class="vreel-mute" aria-label="Mute" title="Mute/Unmute"><svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 0 0 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/></svg></button>
+          <div class="vreel-tap-overlay" aria-label="Pause"></div><div class="vreel-play"><button class="vreel-play-btn" aria-label="Play"><svg viewBox="0 0 24 24" class="icon-play"><path d="M8 5v14l11-7z"/></svg><svg viewBox="0 0 24 24" class="icon-pause" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg></button></div>
         </div>
-        <div class="vreel-meta">
-          <div class="vreel-avatar" style="background-image:url('https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/7-1.png?w=1920&ssl=1');background-size:cover;background-position:center;"></div>
-          <div>
-            <div class="vreel-name">Participant</div>
-            <div class="vreel-role">SELF · Program</div>
-          </div>
+        <div class="vreel-below">
+          <span class="vreel-name">Shaurya Vig</span>
+          <span class="vreel-role">BA Economics · Amity University</span>
         </div>
       </article>
-      <article class="vreel-card reveal" style="--d:500ms" data-video="https://selfbygs.com/wp-content/uploads/2025/08/WhatsApp-Video-2025-08-08-at-14.16.51.mp4">
+      <article class="vreel-card reveal" style="--d:480ms" data-video="https://selfbygs.com/wp-content/uploads/2025/09/overtheyears.webm">
         <div class="vreel-media">
-          <img class="vreel-cover" src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/6-1.png?w=1920&ssl=1" alt="Participant" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-          <button class="vreel-mute" aria-label="Sound off"><svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 0 0 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/></svg></button>
-          <div class="vreel-play"><span class="ring"></span></div>
+          <img class="vreel-cover" src="assets/cover-rashi.png" alt="Rashi Sharma" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:opacity 0.3s;">
+          <button class="vreel-mute" aria-label="Mute" title="Mute/Unmute"><svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 0 0 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/></svg></button>
+          <div class="vreel-tap-overlay" aria-label="Pause"></div><div class="vreel-play"><button class="vreel-play-btn" aria-label="Play"><svg viewBox="0 0 24 24" class="icon-play"><path d="M8 5v14l11-7z"/></svg><svg viewBox="0 0 24 24" class="icon-pause" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg></button></div>
         </div>
-        <div class="vreel-meta">
-          <div class="vreel-avatar" style="background-image:url('https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/6-1.png?w=1920&ssl=1');background-size:cover;background-position:center;"></div>
-          <div>
-            <div class="vreel-name">Participant</div>
-            <div class="vreel-role">SELF · Program</div>
-          </div>
-        </div>
-      </article>
-      <article class="vreel-card reveal" style="--d:600ms" data-video="https://selfbygs.com/wp-content/uploads/2025/08/InShot_20250811_124748132.mp4">
-        <div class="vreel-media">
-          <img class="vreel-cover" src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/Shrey-Sharma-Founder-and-CEO-Cyntexa-3.png?w=1920&ssl=1" alt="Participant" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-          <button class="vreel-mute" aria-label="Sound off"><svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 0 0 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/></svg></button>
-          <div class="vreel-play"><span class="ring"></span></div>
-        </div>
-        <div class="vreel-meta">
-          <div class="vreel-avatar" style="background-image:url('https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/Shrey-Sharma-Founder-and-CEO-Cyntexa-3.png?w=1920&ssl=1');background-size:cover;background-position:center;"></div>
-          <div>
-            <div class="vreel-name">Participant</div>
-            <div class="vreel-role">SELF · Program</div>
-          </div>
+        <div class="vreel-below">
+          <span class="vreel-name">Rashi Sharma</span>
+          <span class="vreel-role">Business Development · NamAstro</span>
         </div>
       </article>
     </div>
