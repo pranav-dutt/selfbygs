@@ -55,13 +55,31 @@
 
 // ---------- Nav dropdown click-to-toggle (mobile + accessibility) ----------
 (function initNavDropdown() {
+  const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   document.querySelectorAll('.nav .has-menu').forEach((item) => {
     const trigger = item.querySelector('a');
     if (!trigger) return;
-    // On hover-capable devices CSS handles it; intercept click for keyboard/touch.
+    // On hover-capable devices, CSS handles dropdown show on hover.
+    // Let the link navigate normally on click. Only toggle for touch/keyboard.
     trigger.addEventListener('click', (e) => {
       // Allow click-through if the trigger has no dropdown
       if (!item.querySelector('.nav-dropdown')) return;
+      // On desktop (hover device): if dropdown is not open, open it;
+      // if already open, navigate (let default happen).
+      if (hasHover) {
+        if (item.classList.contains('is-open')) {
+          // Second click → navigate; let default through
+          item.classList.remove('is-open');
+          return;
+        }
+        // First click → just show dropdown, prevent nav
+        e.preventDefault();
+        item.classList.add('is-open');
+        document.querySelectorAll('.nav .has-menu.is-open').forEach((other) => {
+          if (other !== item) other.classList.remove('is-open');
+        });
+        return;
+      }
       e.preventDefault();
       const open = item.classList.toggle('is-open');
       document.querySelectorAll('.nav .has-menu.is-open').forEach((other) => {
@@ -363,6 +381,44 @@
       iframe.setAttribute('allowfullscreen', '');
       iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;z-index:5;';
       thumb.appendChild(iframe);
+    });
+  });
+})();
+
+// ---------- Vreel video cards (click to play) ----------
+(function initVreelCards() {
+  document.querySelectorAll('.vreel-card[data-video]').forEach((card) => {
+    const media = card.querySelector('.vreel-media');
+    if (!media) return;
+    const url = card.dataset.video;
+    card.addEventListener('click', (e) => {
+      if (!url) return;
+      if (media.querySelector('video, iframe')) return; // already loaded
+      const cover = media.querySelector('.vreel-cover');
+      const play = media.querySelector('.vreel-play');
+      const muteBtn = media.querySelector('.vreel-mute');
+      // Check if mp4/webm (direct video) or YouTube
+      const ytMatch = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|watch\?v=|shorts\/))([\\w-]{6,})/);
+      if (ytMatch) {
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube-nocookie.com/embed/${ytMatch[1]}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+        iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; fullscreen');
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;z-index:5;';
+        media.appendChild(iframe);
+      } else {
+        const vid = document.createElement('video');
+        vid.src = url;
+        vid.controls = true;
+        vid.autoplay = true;
+        vid.playsInline = true;
+        vid.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:5;background:#000;';
+        media.appendChild(vid);
+        vid.play().catch(() => {});
+      }
+      if (cover) cover.style.opacity = '0';
+      if (play) play.style.opacity = '0';
+      if (muteBtn) muteBtn.style.opacity = '0';
     });
   });
 })();

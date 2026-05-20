@@ -956,10 +956,21 @@ body.theme-noir { background: var(--hero-bg); }
     repeating-linear-gradient(135deg, rgba(255,255,255,0.04) 0 8px, transparent 8px 18px);
   mix-blend-mode: overlay;
 }
+.moment-tile img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  transition: transform 0.6s var(--ease-out);
+}
+.moment-tile:hover img { transform: scale(1.04); }
 .moment-tile::before {
   content: '';
   position: absolute;
   inset: 0;
+  z-index: 1;
   background:
     linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.65) 100%),
     radial-gradient(ellipse at 50% 30%, rgba(201,162,77,0.20), transparent 60%);
@@ -1564,7 +1575,7 @@ body.theme-noir { background: var(--hero-bg); }
 
   <div class="arch-grid">
     <article class="arch-card reveal" data-tilt="3">
-      <div class="arch-portrait">replace · GS</div>
+      <div class="arch-portrait" style="padding:0;overflow:hidden;"><img src="https://course.selfbygs.com/wp-content/uploads/2025/10/IMG_8369-min-scaled.jpg" alt="Gaurav Sharma" style="width:100%;height:100%;object-fit:cover;object-position:top;"></div>
       <div>
         <h3>Gaurav Sharma</h3>
         <div class="role">Founder &amp; Chief Mentor · SELF</div>
@@ -1781,43 +1792,40 @@ body.theme-noir { background: var(--hero-bg); }
 
   <div class="moments-track-wrap">
     <div class="moments-track" data-moments-track>
-      <!-- 8 placeholder tiles. Replace each .ph background with a real image when ready -->
-      <div class="moment-tile" style="--bg: linear-gradient(135deg, #1A1812 0%, #4A3A1A 60%, #C9A24D 130%);">
-        <div class="ph"></div>
-        <div class="meta"><span class="tag">YLP Cohort · Jaipur</span><span class="lbl">Group session</span></div>
+      <div class="moment-tile" style="--bg:#1A1812;">
+        <img src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/1-2.png?fit=1800%2C1200&ssl=1" alt="SELF Sessions" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+        <div class="meta"><span class="tag">SELF · Sessions</span><span class="lbl">In the room</span></div>
       </div>
-      <div class="moment-tile" style="--bg: linear-gradient(135deg, #1F1F25 0%, #2D2A1E 50%, #9C7A2E 130%);">
-        <div class="ph"></div>
-        <div class="meta"><span class="tag">Career Architecture</span><span class="lbl">1 : 1 lab</span></div>
+      <div class="moment-tile" style="--bg:#1F1F25;">
+        <img src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/2-2.png?fit=1800%2C1200&ssl=1" alt="SELF Sessions" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+        <div class="meta"><span class="tag">SELF · Sessions</span><span class="lbl">In the room</span></div>
       </div>
-      <div class="moment-tile" style="--bg: linear-gradient(135deg, #0E0E12 0%, #1F1B12 60%, #C9A24D 140%);">
-        <div class="ph"></div>
-        <div class="meta"><span class="tag">Beyond Teaching · FDP</span><span class="lbl">Educator workshop</span></div>
+      <div class="moment-tile" style="--bg:#0E0E12;">
+        <img src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/3-1.png?fit=1800%2C1200&ssl=1" alt="SELF Sessions" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+        <div class="meta"><span class="tag">SELF · Sessions</span><span class="lbl">In the room</span></div>
       </div>
-      <div class="moment-tile" style="--bg: linear-gradient(135deg, #14130E 0%, #3B2E13 60%, #E8C77A 130%);">
-        <div class="ph"></div>
-        <div class="meta"><span class="tag">Executive Programs</span><span class="lbl">Leadership intervention</span></div>
+      <div class="moment-tile" style="--bg:#14130E;">
+        <img src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/4-2.png?fit=1800%2C1200&ssl=1" alt="SELF Sessions" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+        <div class="meta"><span class="tag">SELF · Sessions</span><span class="lbl">In the room</span></div>
       </div>
-      <div class="moment-tile" style="--bg: linear-gradient(135deg, #1B1B1F 0%, #2B2316 50%, #9C7A2E 130%);">
-        <div class="ph"></div>
-        <div class="meta"><span class="tag">Core Skills</span><span class="lbl">Workshop in flow</span></div>
+      <div class="moment-tile" style="--bg:#1B1B1F;">
+        <img src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/5-2.png?fit=1800%2C1200&ssl=1" alt="SELF Sessions" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+        <div class="meta"><span class="tag">SELF · Sessions</span><span class="lbl">In the room</span></div>
       </div>
-      <div class="moment-tile" style="--bg: linear-gradient(135deg, #0A0A0C 0%, #1C160B 60%, #C9A24D 140%);">
-        <div class="ph"></div>
-        <div class="meta"><span class="tag">YLP Pro</span><span class="lbl">Mock interview</span></div>
+      <div class="moment-tile" style="--bg:#0A0A0C;">
+        <img src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/6-3.png?fit=1800%2C1200&ssl=1" alt="SELF Sessions" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+        <div class="meta"><span class="tag">SELF · Sessions</span><span class="lbl">In the room</span></div>
       </div>
-      <div class="moment-tile" style="--bg: linear-gradient(135deg, #181820 0%, #322714 60%, #E8C77A 130%);">
-        <div class="ph"></div>
-        <div class="meta"><span class="tag">Diagnostic Audit</span><span class="lbl">Strategic conversation</span></div>
+      <div class="moment-tile" style="--bg:#181820;">
+        <img src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/7-3.png?fit=1800%2C1200&ssl=1" alt="SELF Sessions" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+        <div class="meta"><span class="tag">SELF · Sessions</span><span class="lbl">In the room</span></div>
       </div>
-      <div class="moment-tile" style="--bg: linear-gradient(135deg, #13130E 0%, #3A2D14 50%, #C9A24D 140%);">
-        <div class="ph"></div>
-        <div class="meta"><span class="tag">Open House</span><span class="lbl">Q &amp; A</span></div>
+      <div class="moment-tile" style="--bg:#13130E;">
+        <img src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/8-2.png?fit=1800%2C1200&ssl=1" alt="SELF Sessions" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+        <div class="meta"><span class="tag">SELF · Sessions</span><span class="lbl">In the room</span></div>
       </div>
     </div>
   </div>
-
-  <p class="moments-foot">Imagery will be replaced with photographs from live cohorts.</p>
 </section>
 
 <!-- ===== Logo slider · credentials & affiliations ===== -->
@@ -1868,81 +1876,101 @@ body.theme-noir { background: var(--hero-bg); }
 
   <div class="vreel" data-vreel>
     <div class="vreel-track" data-vreel-track>
-      <article class="vreel-card reveal" data-video="">
+      <article class="vreel-card reveal" data-video="https://selfbygs.com/wp-content/uploads/2025/09/overtheyears.webm">
         <div class="vreel-media">
+          <img class="vreel-cover" src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/07/6-4.png?w=1920&ssl=1" alt="Gaurav Sharma" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           <button class="vreel-mute" aria-label="Sound off"><svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 0 0 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/></svg></button>
           <div class="vreel-play"><span class="ring"></span></div>
         </div>
         <div class="vreel-meta">
-          <div class="vreel-avatar"></div>
+          <div class="vreel-avatar" style="background-image:url('https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/07/6-4.png?w=1920&ssl=1');background-size:cover;background-position:center;"></div>
           <div>
-            <div class="vreel-name">Name pending</div>
-            <div class="vreel-role">Career Architecture</div>
+            <div class="vreel-name">Gaurav Sharma</div>
+            <div class="vreel-role">SELF · Over the Years</div>
           </div>
         </div>
       </article>
-      <article class="vreel-card reveal" data-video="">
+      <article class="vreel-card reveal" style="--d:100ms" data-video="https://selfbygs.com/wp-content/uploads/2025/09/IMG_7789.webm">
         <div class="vreel-media">
+          <img class="vreel-cover" src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/07/Dr.-Shweta-Jain-Director-Global-Head-Apple-Care-5.png?w=1920&ssl=1" alt="Dr. Shweta Jain" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           <button class="vreel-mute" aria-label="Sound off"><svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 0 0 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/></svg></button>
           <div class="vreel-play"><span class="ring"></span></div>
         </div>
         <div class="vreel-meta">
-          <div class="vreel-avatar"></div>
+          <div class="vreel-avatar" style="background-image:url('https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/07/Dr.-Shweta-Jain-Director-Global-Head-Apple-Care-5.png?w=1920&ssl=1');background-size:cover;background-position:center;"></div>
           <div>
-            <div class="vreel-name">Name pending</div>
-            <div class="vreel-role">L&amp;D · BFSI</div>
+            <div class="vreel-name">Dr. Shweta Jain</div>
+            <div class="vreel-role">Director & Global Head · Apple Care</div>
           </div>
         </div>
       </article>
-      <article class="vreel-card reveal" data-video="">
+      <article class="vreel-card reveal" style="--d:200ms" data-video="https://selfbygs.com/wp-content/uploads/2025/09/Prep-Hero-1.webm">
         <div class="vreel-media">
+          <img class="vreel-cover" src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/Shrey-Sharma-Founder-and-CEO-Cyntexa-4.png?w=1920&ssl=1" alt="Shrey Sharma" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           <button class="vreel-mute" aria-label="Sound off"><svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 0 0 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/></svg></button>
           <div class="vreel-play"><span class="ring"></span></div>
         </div>
         <div class="vreel-meta">
-          <div class="vreel-avatar"></div>
+          <div class="vreel-avatar" style="background-image:url('https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/Shrey-Sharma-Founder-and-CEO-Cyntexa-4.png?w=1920&ssl=1');background-size:cover;background-position:center;"></div>
           <div>
-            <div class="vreel-name">Name pending</div>
-            <div class="vreel-role">Faculty · Institution</div>
+            <div class="vreel-name">Shrey Sharma</div>
+            <div class="vreel-role">Founder & CEO · Cyntexa</div>
           </div>
         </div>
       </article>
-      <article class="vreel-card reveal" data-video="">
+      <article class="vreel-card reveal" style="--d:300ms" data-video="https://selfbygs.com/wp-content/uploads/2025/07/vid.mp4">
         <div class="vreel-media">
+          <img class="vreel-cover" src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/07/Shrey-Sharma-Founder-and-CEO-Cyntexa-2.png?w=1920&ssl=1" alt="Participant" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           <button class="vreel-mute" aria-label="Sound off"><svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 0 0 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/></svg></button>
           <div class="vreel-play"><span class="ring"></span></div>
         </div>
         <div class="vreel-meta">
-          <div class="vreel-avatar"></div>
+          <div class="vreel-avatar" style="background-image:url('https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/07/Shrey-Sharma-Founder-and-CEO-Cyntexa-2.png?w=1920&ssl=1');background-size:cover;background-position:center;"></div>
           <div>
-            <div class="vreel-name">Name pending</div>
-            <div class="vreel-role">YLP · College</div>
+            <div class="vreel-name">Participant</div>
+            <div class="vreel-role">SELF · Program</div>
           </div>
         </div>
       </article>
-      <article class="vreel-card reveal" data-video="">
+      <article class="vreel-card reveal" style="--d:400ms" data-video="https://selfbygs.com/wp-content/uploads/2025/08/WhatsApp-Video-2025-08-11-at-15.13.03.mp4">
         <div class="vreel-media">
+          <img class="vreel-cover" src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/7-1.png?w=1920&ssl=1" alt="Participant" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           <button class="vreel-mute" aria-label="Sound off"><svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 0 0 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/></svg></button>
           <div class="vreel-play"><span class="ring"></span></div>
         </div>
         <div class="vreel-meta">
-          <div class="vreel-avatar"></div>
+          <div class="vreel-avatar" style="background-image:url('https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/7-1.png?w=1920&ssl=1');background-size:cover;background-position:center;"></div>
           <div>
-            <div class="vreel-name">Name pending</div>
-            <div class="vreel-role">Parent · CAL</div>
+            <div class="vreel-name">Participant</div>
+            <div class="vreel-role">SELF · Program</div>
           </div>
         </div>
       </article>
-      <article class="vreel-card reveal" data-video="">
+      <article class="vreel-card reveal" style="--d:500ms" data-video="https://selfbygs.com/wp-content/uploads/2025/08/WhatsApp-Video-2025-08-08-at-14.16.51.mp4">
         <div class="vreel-media">
+          <img class="vreel-cover" src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/6-1.png?w=1920&ssl=1" alt="Participant" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           <button class="vreel-mute" aria-label="Sound off"><svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 0 0 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/></svg></button>
           <div class="vreel-play"><span class="ring"></span></div>
         </div>
         <div class="vreel-meta">
-          <div class="vreel-avatar"></div>
+          <div class="vreel-avatar" style="background-image:url('https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/6-1.png?w=1920&ssl=1');background-size:cover;background-position:center;"></div>
           <div>
-            <div class="vreel-name">Name pending</div>
-            <div class="vreel-role">Executive Programs</div>
+            <div class="vreel-name">Participant</div>
+            <div class="vreel-role">SELF · Program</div>
+          </div>
+        </div>
+      </article>
+      <article class="vreel-card reveal" style="--d:600ms" data-video="https://selfbygs.com/wp-content/uploads/2025/08/InShot_20250811_124748132.mp4">
+        <div class="vreel-media">
+          <img class="vreel-cover" src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/Shrey-Sharma-Founder-and-CEO-Cyntexa-3.png?w=1920&ssl=1" alt="Participant" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <button class="vreel-mute" aria-label="Sound off"><svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 0 0 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/></svg></button>
+          <div class="vreel-play"><span class="ring"></span></div>
+        </div>
+        <div class="vreel-meta">
+          <div class="vreel-avatar" style="background-image:url('https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/Shrey-Sharma-Founder-and-CEO-Cyntexa-3.png?w=1920&ssl=1');background-size:cover;background-position:center;"></div>
+          <div>
+            <div class="vreel-name">Participant</div>
+            <div class="vreel-role">SELF · Program</div>
           </div>
         </div>
       </article>
@@ -1969,50 +1997,90 @@ body.theme-noir { background: var(--hero-bg); }
     <div class="treel-track" data-treel-track>
       <figure class="treel-card reveal">
         <div class="tv-mark">"</div>
-        <blockquote>Placeholder — written testimonial from a student or parent. To be replaced with actual feedback from past Career Architecture cohorts.</blockquote>
+        <div class="treel-avatar-wrap" style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+          <img src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/07/3-1.png?fit=500%2C500&ssl=1" alt="Divyansh Kachaloia" loading="lazy" style="width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0;">
+        </div>
+        <blockquote>Being mentored by GS taught me to face fear, embrace change, and take pride in who I am. His words stayed with me at every stage, creating a space where growth feels safe, strength builds quietly, and discovering yourself becomes part of the journey.</blockquote>
         <figcaption>
-          <span class="who-name">Name pending</span>
-          <span class="who-role">Parent · Career Architecture Lab</span>
+          <span class="who-name">Divyansh Kachaloia</span>
+          <span class="who-role">India's Celebrated Beatboxer · Winner of India's Got Talent</span>
         </figcaption>
       </figure>
-      <figure class="treel-card reveal" style="--d:120ms">
+      <figure class="treel-card reveal" style="--d:80ms">
         <div class="tv-mark">"</div>
-        <blockquote>Placeholder — corporate leader testimonial about the Executive Effectiveness or Diagnostic Audit work. Awaiting actual content.</blockquote>
+        <div class="treel-avatar-wrap" style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+          <img src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/07/1-1.png?fit=500%2C500&ssl=1" alt="Sayema Rahman" loading="lazy" style="width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0;">
+        </div>
+        <blockquote>Watching Gaurav with his students was a reminder of what real learning looks like: open, honest, and barrier-free. The space he creates is exactly what so many learners need today — safe, empowering, and full of possibility.</blockquote>
         <figcaption>
-          <span class="who-name">Name pending</span>
-          <span class="who-role">Leadership · Industry</span>
+          <span class="who-name">Sayema Rahman</span>
+          <span class="who-role">RJ · Radio Mirchi</span>
+        </figcaption>
+      </figure>
+      <figure class="treel-card reveal" style="--d:160ms">
+        <div class="tv-mark">"</div>
+        <div class="treel-avatar-wrap" style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+          <img src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/07/2.png?fit=500%2C500&ssl=1" alt="Avani Chaturvedi" loading="lazy" style="width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0;">
+        </div>
+        <blockquote>Gaurav Sir inspired me to stretch my limits and believe in what once felt impossible. His words, energy, and guidance helped shape my mindset early on — pushing boundaries, staying grounded in values, and unlocking what's truly possible with the right attitude.</blockquote>
+        <figcaption>
+          <span class="who-name">Avani Chaturvedi</span>
+          <span class="who-role">India's first woman fighter pilot</span>
         </figcaption>
       </figure>
       <figure class="treel-card reveal" style="--d:240ms">
         <div class="tv-mark">"</div>
-        <blockquote>Placeholder — educator / institutional head feedback on Beyond Teaching FDP. Awaiting actual content.</blockquote>
+        <div class="treel-avatar-wrap" style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+          <img src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/07/Screenshot_20250701-152246_Instagram.jpg?fit=857%2C864&ssl=1" alt="Harshika Agarwal" loading="lazy" style="width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0;">
+        </div>
+        <blockquote>Sometimes all it takes is a small spark to ignite something bigger. Gaurav Sir helped me see a new world of possibilities — a turning point that shaped my journey. Every challenge became a chance to grow, and that mindset made all the difference.</blockquote>
         <figcaption>
-          <span class="who-name">Name pending</span>
-          <span class="who-role">Educator · Institution</span>
+          <span class="who-name">Harshika Agarwal</span>
+          <span class="who-role">Alumna · XLRI</span>
         </figcaption>
       </figure>
-      <figure class="treel-card reveal">
+      <figure class="treel-card reveal" style="--d:320ms">
         <div class="tv-mark">"</div>
-        <blockquote>Placeholder — young professional / YLP graduate feedback. Awaiting actual content.</blockquote>
+        <div class="treel-avatar-wrap" style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+          <img src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/Screenshot_20250812-121957_Instagram.jpg?fit=958%2C1208&ssl=1" alt="Pinky Mittal" loading="lazy" style="width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0;">
+        </div>
+        <blockquote>Before meeting Gaurav Sir, I saw leadership as something big and far away. He showed me it's about small actions, staying grounded, and leading with kindness. Now I work with more clarity, confidence, and purpose. It's not just a course, it's a way of thinking that stays with you.</blockquote>
         <figcaption>
-          <span class="who-name">Name pending</span>
-          <span class="who-role">Young Leaders · YLP</span>
+          <span class="who-name">Pinky Mittal</span>
+          <span class="who-role">Content Creator & Mom</span>
         </figcaption>
       </figure>
-      <figure class="treel-card reveal">
+      <figure class="treel-card reveal" style="--d:400ms">
         <div class="tv-mark">"</div>
-        <blockquote>Placeholder — HR / L&amp;D leader feedback on Core Skills interventions. Awaiting actual content.</blockquote>
+        <div class="treel-avatar-wrap" style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+          <img src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/Screenshot_20250812-122214_Google.jpg?fit=958%2C955&ssl=1" alt="Dr. Samir Kapoor" loading="lazy" style="width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0;">
+        </div>
+        <blockquote>I've seen Gaurav with students and professionals — he connects instantly, listens deeply, and makes everyone feel heard. His calm, clear approach turns even complex situations into simple, actionable steps. That ability to guide without overwhelming is rare, and it leaves a lasting impact.</blockquote>
         <figcaption>
-          <span class="who-name">Name pending</span>
-          <span class="who-role">L&amp;D · BFSI</span>
+          <span class="who-name">Dr. Samir Kapoor</span>
+          <span class="who-role">Serial Entrepreneur, Mindset Coach & Author</span>
         </figcaption>
       </figure>
-      <figure class="treel-card reveal">
+      <figure class="treel-card reveal" style="--d:480ms">
         <div class="tv-mark">"</div>
-        <blockquote>Placeholder — student / placement-ready graduate feedback on the YLP Pro intensive. Awaiting actual content.</blockquote>
+        <div class="treel-avatar-wrap" style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+          <img src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/Screenshot_20250812-121757_LinkedIn.jpg?fit=1079%2C979&ssl=1" alt="Umang Maheshwari" loading="lazy" style="width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0;">
+        </div>
+        <blockquote>Gaurav Sir brought a fresh way of thinking — clear, practical, and deeply insightful. His sessions made me see challenges differently, communicate with more impact, and create solutions that work in the real world. It's rare to meet someone who can simplify complexity so effortlessly.</blockquote>
         <figcaption>
-          <span class="who-name">Name pending</span>
-          <span class="who-role">YLP Pro · Placement</span>
+          <span class="who-name">Umang Maheshwari</span>
+          <span class="who-role">Head, Consulting & Research Practice · Schbang</span>
+        </figcaption>
+      </figure>
+      <figure class="treel-card reveal" style="--d:560ms">
+        <div class="tv-mark">"</div>
+        <div class="treel-avatar-wrap" style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+          <img src="https://i0.wp.com/selfbygs.com/wp-content/uploads/2025/08/Screenshot_20250812-122301_Instagram.jpg?fit=741%2C832&ssl=1" alt="Yash Jain" loading="lazy" style="width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0;">
+        </div>
+        <blockquote>I converted IIM Shillong, and Gaurav Sir was a big part of my journey. The mock interviews, clear tips, and honest feedback made GDPI prep so much easier. By the final day, I wasn't nervous — I was ready.</blockquote>
+        <figcaption>
+          <span class="who-name">Yash Jain</span>
+          <span class="who-role">IIM Shillong convert</span>
         </figcaption>
       </figure>
     </div>

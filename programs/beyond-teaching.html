@@ -128,20 +128,69 @@
 
 <!-- ===== Framework ===== -->
 <section class="pd-fw">
+  <style>
+    .connect-list { list-style:none; padding:0; margin:0 auto; max-width:900px; }
+    .connect-row { display:grid; grid-template-columns:90px 240px 1fr; align-items:start; gap:0 28px; padding:28px 32px; border-top:1px solid rgba(11,11,11,0.1); cursor:default; transition:background 0.2s, padding 0.2s; }
+    .pd-dark .connect-row { border-top-color:rgba(232,228,218,0.12); }
+    .connect-row:last-child { border-bottom:1px solid rgba(11,11,11,0.1); }
+    .pd-dark .connect-row:last-child { border-bottom-color:rgba(232,228,218,0.12); }
+    .connect-row:hover { padding:28px 32px; background:var(--ivory-soft,#F5F0E8); }
+    .pd-dark .connect-row:hover { background:rgba(232,228,218,0.05); }
+    .connect-letter { font-family:var(--f-serif,'Playfair Display',serif); font-size:56px; font-weight:400; line-height:1; color:var(--gold-deep,#8C6A1A); }
+    .pd-dark .connect-letter { color:var(--gold,#C9A24D); }
+    .connect-title { font-size:18px; font-weight:600; letter-spacing:-0.01em; padding-top:10px; }
+    .connect-desc { font-size:15px; line-height:1.7; color:rgba(11,11,11,0.65); padding-top:10px; }
+    .pd-dark .connect-desc { color:var(--bone-mute,rgba(232,228,218,0.6)); }
+    @media(max-width:700px){
+      .connect-row { grid-template-columns:60px 1fr; gap:0 18px; padding:20px 0; }
+      .connect-row:hover { padding:20px 0; background:transparent; }
+      .connect-letter { font-size:40px; }
+      .connect-desc { grid-column:1/-1; margin-top:8px; padding-top:0; }
+    }
+  </style>
   <div class="pd-fw-head">
-    <div class="pd-section-eyebrow reveal"><span style="width:40px;height:1px;background:currentColor;"></span><span>The CONNECT Framework</span></div>
+    <div class="gold-rule center reveal" style="justify-content:center;display:flex;"><span class="line" style="background:var(--gold-deep)"></span><span class="bead" style="background:var(--gold-deep)"></span><span class="line" style="background:var(--gold-deep)"></span></div>
+    <div class="pd-section-eyebrow reveal" style="--d:80ms;color:var(--gold-deep);margin-top:18px"><span style="width:40px;height:1px;background:currentColor;"></span><span>The CONNECT Framework</span></div>
     <h2 class="reveal" style="--d:120ms">Seven habits of the <em>modern educator.</em></h2>
-    <p class="reveal" style="--d:240ms">Each letter is a working habit, designed to strengthen the educator–student bond and the classroom experience.</p>
+    <p class="reveal" style="--d:240ms">A framework built on how great educators actually create impact — by connecting before they instruct.</p>
   </div>
-  <div class="pd-fw-grid is-seven">
-    <div class="pd-fw-step reveal"><div class="letter">C</div><div><div class="title">Communicate with Clarity</div><div class="desc">Create stronger understanding and participation.</div></div></div>
-    <div class="pd-fw-step reveal" style="--d:100ms"><div class="letter">O</div><div><div class="title">Observe Deeply</div><div class="desc">Recognise behaviour, motivation, learning patterns.</div></div></div>
-    <div class="pd-fw-step reveal" style="--d:200ms"><div class="letter">N</div><div><div class="title">Navigate Modern Learning</div><div class="desc">Adapt to digital realities and changing classrooms.</div></div></div>
-    <div class="pd-fw-step reveal" style="--d:300ms"><div class="letter">N</div><div><div class="title">Nurture Trust</div><div class="desc">Mentor-like relationships improve outcomes.</div></div></div>
-    <div class="pd-fw-step reveal" style="--d:400ms"><div class="letter">E</div><div><div class="title">Enable Growth</div><div class="desc">Support students beyond academics alone.</div></div></div>
-    <div class="pd-fw-step reveal" style="--d:500ms"><div class="letter">C</div><div><div class="title">Create Presence</div><div class="desc">Strengthen classroom impact and engagement.</div></div></div>
-    <div class="pd-fw-step reveal" style="--d:600ms"><div class="letter">T</div><div><div class="title">Transform Continuously</div><div class="desc">Evolve as the world of education evolves.</div></div></div>
-  </div>
+  <ul class="connect-list">
+    <li class="connect-row reveal hoverable">
+      <div class="connect-letter">C</div>
+      <div class="connect-title">Communicate with Clarity</div>
+      <div class="connect-desc">Create stronger understanding and participation in every classroom interaction.</div>
+    </li>
+    <li class="connect-row reveal hoverable" style="--d:80ms">
+      <div class="connect-letter">O</div>
+      <div class="connect-title">Observe Deeply</div>
+      <div class="connect-desc">Recognise behaviour, motivation, and learning patterns — before intervening.</div>
+    </li>
+    <li class="connect-row reveal hoverable" style="--d:160ms">
+      <div class="connect-letter">N</div>
+      <div class="connect-title">Navigate Modern Learning</div>
+      <div class="connect-desc">Adapt to digital realities and the changing needs of today's classrooms.</div>
+    </li>
+    <li class="connect-row reveal hoverable" style="--d:240ms">
+      <div class="connect-letter">N</div>
+      <div class="connect-title">Nurture Trust</div>
+      <div class="connect-desc">Build mentor-like relationships that measurably improve student outcomes.</div>
+    </li>
+    <li class="connect-row reveal hoverable" style="--d:320ms">
+      <div class="connect-letter">E</div>
+      <div class="connect-title">Enable Growth</div>
+      <div class="connect-desc">Support students beyond academics — with presence, empathy, and clarity.</div>
+    </li>
+    <li class="connect-row reveal hoverable" style="--d:400ms">
+      <div class="connect-letter">C</div>
+      <div class="connect-title">Create Presence</div>
+      <div class="connect-desc">Strengthen classroom impact and deepen engagement through intentional energy.</div>
+    </li>
+    <li class="connect-row reveal hoverable" style="--d:480ms">
+      <div class="connect-letter">T</div>
+      <div class="connect-title">Transform Continuously</div>
+      <div class="connect-desc">Evolve as the world of education evolves — never stop becoming a better teacher.</div>
+    </li>
+  </ul>
 </section>
 
 <!-- ===== Inclusions ===== -->

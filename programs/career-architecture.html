@@ -130,19 +130,64 @@
 
 <!-- ===== Framework ===== -->
 <section class="pd-fw">
+  <style>
+    .decide-list { list-style:none; padding:0; margin:0 auto; max-width:900px; }
+    .decide-row { display:grid; grid-template-columns:90px 240px 1fr; align-items:start; gap:0 28px; padding:28px 32px; border-top:1px solid rgba(11,11,11,0.1); cursor:default; transition:background 0.2s, padding 0.2s; }
+    .pd-dark .decide-row { border-top-color:rgba(232,228,218,0.12); }
+    .decide-row:last-child { border-bottom:1px solid rgba(11,11,11,0.1); }
+    .pd-dark .decide-row:last-child { border-bottom-color:rgba(232,228,218,0.12); }
+    .decide-row:hover { padding:28px 32px; background:var(--ivory-soft,#F5F0E8); }
+    .pd-dark .decide-row:hover { background:rgba(232,228,218,0.05); }
+    .decide-letter { font-family:var(--f-serif,'Playfair Display',serif); font-size:56px; font-weight:400; line-height:1; color:var(--gold-deep,#8C6A1A); }
+    .pd-dark .decide-letter { color:var(--gold,#C9A24D); }
+    .decide-title { font-size:18px; font-weight:600; letter-spacing:-0.01em; padding-top:10px; }
+    .decide-desc { font-size:15px; line-height:1.7; color:rgba(11,11,11,0.65); padding-top:10px; }
+    .pd-dark .decide-desc { color:var(--bone-mute,rgba(232,228,218,0.6)); }
+    @media(max-width:700px){
+      .decide-row { grid-template-columns:60px 1fr; gap:0 18px; padding:20px 0; }
+      .decide-row:hover { padding:20px 0; background:transparent; }
+      .decide-letter { font-size:40px; }
+      .decide-desc { grid-column:1/-1; margin-top:8px; padding-top:0; }
+    }
+  </style>
   <div class="pd-fw-head">
-    <div class="pd-section-eyebrow reveal"><span style="width:40px;height:1px;background:currentColor;"></span><span>The SELF Decision Framework</span></div>
+    <div class="gold-rule center reveal" style="justify-content:center;display:flex;"><span class="line" style="background:var(--gold-deep)"></span><span class="bead" style="background:var(--gold-deep)"></span><span class="line" style="background:var(--gold-deep)"></span></div>
+    <div class="pd-section-eyebrow reveal" style="--d:80ms;color:var(--gold-deep);margin-top:18px"><span style="width:40px;height:1px;background:currentColor;"></span><span>The SELF Decision Framework</span></div>
     <h2 class="reveal" style="--d:120ms">Six stages. Used <em>deeply.</em></h2>
     <p class="reveal" style="--d:240ms">A simple structure used in depth — across multiple sessions, conversations, and reflections with the student and family.</p>
   </div>
-  <div class="pd-fw-grid">
-    <div class="pd-fw-step reveal"><div class="letter">D</div><div><div class="title">Discover Self</div><div class="desc">Go beyond marks, subjects, and labels. See yourself as you are — and as you could be.</div></div></div>
-    <div class="pd-fw-step reveal" style="--d:100ms"><div class="letter">E</div><div><div class="title">Explore Real Options</div><div class="desc">See careers, roles, and paths as they actually are — not as they are advertised.</div></div></div>
-    <div class="pd-fw-step reveal" style="--d:200ms"><div class="letter">C</div><div><div class="title">Create Decision Filters</div><div class="desc">Build your own criteria. Decide what fits, what doesn't, and why.</div></div></div>
-    <div class="pd-fw-step reveal" style="--d:300ms"><div class="letter">I</div><div><div class="title">Integrate Inputs</div><div class="desc">Align self, opportunity, and reality. Hold the whole picture at once.</div></div></div>
-    <div class="pd-fw-step reveal" style="--d:400ms"><div class="letter">D</div><div><div class="title">Decide with Clarity</div><div class="desc">Choose with ownership — not pressure, not noise, not guesswork.</div></div></div>
-    <div class="pd-fw-step reveal" style="--d:500ms"><div class="letter">E</div><div><div class="title">Evolve Continuously</div><div class="desc">Because one decision is not your whole life. Capability compounds.</div></div></div>
-  </div>
+  <ul class="decide-list">
+    <li class="decide-row reveal hoverable">
+      <div class="decide-letter">D</div>
+      <div class="decide-title">Discover Self</div>
+      <div class="decide-desc">Go beyond marks, subjects, and labels. See yourself as you are — and as you could be.</div>
+    </li>
+    <li class="decide-row reveal hoverable" style="--d:80ms">
+      <div class="decide-letter">E</div>
+      <div class="decide-title">Explore Real Options</div>
+      <div class="decide-desc">See careers, roles, and paths as they actually are — not as they are advertised.</div>
+    </li>
+    <li class="decide-row reveal hoverable" style="--d:160ms">
+      <div class="decide-letter">C</div>
+      <div class="decide-title">Create Decision Filters</div>
+      <div class="decide-desc">Build your own criteria. Decide what fits, what doesn't, and why.</div>
+    </li>
+    <li class="decide-row reveal hoverable" style="--d:240ms">
+      <div class="decide-letter">I</div>
+      <div class="decide-title">Integrate Inputs</div>
+      <div class="decide-desc">Align self, opportunity, and reality. Hold the whole picture at once.</div>
+    </li>
+    <li class="decide-row reveal hoverable" style="--d:320ms">
+      <div class="decide-letter">D</div>
+      <div class="decide-title">Decide with Clarity</div>
+      <div class="decide-desc">Choose with ownership — not pressure, not noise, not guesswork.</div>
+    </li>
+    <li class="decide-row reveal hoverable" style="--d:400ms">
+      <div class="decide-letter">E</div>
+      <div class="decide-title">Evolve Continuously</div>
+      <div class="decide-desc">Because one decision is not your whole life. Capability compounds.</div>
+    </li>
+  </ul>
 </section>
 
 <!-- ===== Inclusions ===== -->
