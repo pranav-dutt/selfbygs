@@ -111,6 +111,18 @@ button { font-family: inherit; cursor: pointer; }
   background: rgba(10, 10, 12, 0.6);
   border-bottom-color: rgba(201, 162, 77, 0.18);
 }
+/* Admin bar offset for fixed header */
+.admin-bar .site-header { top: 32px; }
+@media screen and (max-width: 782px) { .admin-bar .site-header { top: 46px; } }
+/* Always-visible header on pages without a hero */
+body:not(.has-hero) .site-header {
+  background: rgba(10, 10, 12, 0.92);
+  border-bottom-color: rgba(201, 162, 77, 0.15);
+}
+body.theme-light:not(.has-hero) .site-header {
+  background: rgba(246, 240, 228, 0.97);
+  border-bottom-color: rgba(11, 11, 11, 0.08);
+}
 
 .brand-mark {
   display: inline-flex;

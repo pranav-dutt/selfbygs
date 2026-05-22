@@ -179,7 +179,19 @@
   const submitBtn = modal.querySelector('[data-submit]');
   const successPane = modal.querySelector('.lead-success');
   const stepWrap = modal.querySelector('.lead-step-wrap');
+  const errBox = modal.querySelector('#lead-form-error');
   let idx = 0;
+  let currentFormType = 'main';
+
+  function applyFormType(type) {
+    currentFormType = type || 'main';
+    modal.dataset.formType = currentFormType;
+    modal.querySelectorAll('.chip[data-forms]').forEach((chip) => {
+      const allowed = (chip.dataset.forms || 'main').split(',');
+      chip.style.display = allowed.includes(currentFormType) ? '' : 'none';
+      chip.classList.remove('is-active');
+    });
+  }
 
   function show(i) {
     idx = i;
@@ -188,33 +200,39 @@
       p.classList.toggle('is-active', n === i);
       p.classList.toggle('is-done', n < i);
     });
+    if (errBox) errBox.style.display = 'none';
   }
+
   function open(ctx) {
     document.body.style.overflow = 'hidden';
+    const formType = ctx && ctx.form ? ctx.form : 'main';
+    applyFormType(formType);
     if (ctx) {
-      const aside = modal.querySelector('.lead-aside h3');
-      const eyebrow = modal.querySelector('.lead-aside .meta-row span:last-child');
+      const aside = modal.querySelector('.lead-modal-title');
+      const eyebrow = modal.querySelector('.lead-modal-label');
       if (ctx.title && aside) aside.textContent = ctx.title;
       if (ctx.label && eyebrow) eyebrow.textContent = ctx.label;
     }
+    // Reset all fields
+    modal.querySelectorAll('input, textarea').forEach((f) => (f.value = ''));
+    modal.querySelectorAll('select').forEach((s) => (s.selectedIndex = 0));
     modal.classList.add('is-open');
     show(0);
     successPane.style.display = 'none';
     stepWrap.style.display = 'block';
+    if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Request the Call '; const span = document.createElement('span'); span.className = 'arrow'; submitBtn.appendChild(span); }
   }
+
   function close() {
     modal.classList.remove('is-open');
     document.body.style.overflow = '';
   }
+
   openers.forEach((b) => b.addEventListener('click', (e) => {
     e.preventDefault();
-    const ctx = {
-      title: b.dataset.title,
-      label: b.dataset.label,
-    };
-    open(ctx);
+    open({ title: b.dataset.title, label: b.dataset.label, form: b.dataset.form || 'main' });
   }));
-  closeBtn.addEventListener('click', close);
+  if (closeBtn) closeBtn.addEventListener('click', close);
   overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
 
@@ -236,10 +254,68 @@
     });
   });
 
+  function collectFormData() {
+    const data = { form_id: currentFormType };
+    // Step 1 chips (who)
+    const whoChips = [];
+    steps[0] && steps[0].querySelectorAll('.chip.is-active').forEach((c) => whoChips.push(c.textContent.trim()));
+    data.who = whoChips[0] || '';
+    // Step 2 chips (programs)
+    const progChips = [];
+    steps[1] && steps[1].querySelectorAll('.chip.is-active').forEach((c) => progChips.push(c.textContent.trim()));
+    data.programs = progChips;
+    // Step 3 fields
+    const nameEl  = modal.querySelector('[name="lead_name"]');
+    const emailEl = modal.querySelector('[name="lead_email"]');
+    const phoneEl = modal.querySelector('[name="lead_phone"]');
+    const orgEl   = modal.querySelector('[name="lead_org"]');
+    data.lead_name  = nameEl  ? nameEl.value.trim()  : '';
+    data.lead_email = emailEl ? emailEl.value.trim() : '';
+    data.lead_phone = phoneEl ? phoneEl.value.trim() : '';
+    data.lead_org   = orgEl   ? orgEl.value.trim()   : '';
+    // Step 4 fields
+    const ctxEl  = modal.querySelector('[name="lead_context"]');
+    const timeEl = modal.querySelector('[name="lead_time"]');
+    data.lead_context = ctxEl  ? ctxEl.value.trim()  : '';
+    data.lead_time    = timeEl ? timeEl.value        : '';
+    data.source_page  = (typeof selfbygsData !== 'undefined') ? (selfbygsData.sourcePage || '') : '';
+    return data;
+  }
+
   if (submitBtn) {
     submitBtn.addEventListener('click', () => {
-      stepWrap.style.display = 'none';
-      successPane.style.display = 'block';
+      const payload = collectFormData();
+      // Validate email or phone
+      if (!payload.lead_email && !payload.lead_phone) {
+        if (errBox) { errBox.textContent = 'Please provide your email or phone number.'; errBox.style.display = 'block'; }
+        return;
+      }
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+      const restUrl = (typeof selfbygsData !== 'undefined') ? selfbygsData.restUrl : '/wp-json/selfbygs/v1/submit';
+      const nonce   = (typeof selfbygsData !== 'undefined') ? selfbygsData.nonce : '';
+      fetch(restUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-WP-Nonce': nonce },
+        body: JSON.stringify(payload),
+      })
+        .then((r) => r.json())
+        .then((res) => {
+          if (res.success) {
+            stepWrap.style.display = 'none';
+            successPane.style.display = 'block';
+          } else {
+            if (errBox) { errBox.textContent = res.message || 'Something went wrong. Please try again.'; errBox.style.display = 'block'; }
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Request the Call ';
+            const span = document.createElement('span'); span.className = 'arrow'; submitBtn.appendChild(span);
+          }
+        })
+        .catch(() => {
+          if (errBox) { errBox.textContent = 'Network error. Please check your connection and try again.'; errBox.style.display = 'block'; }
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Request the Call ';
+        });
     });
   }
 })();
