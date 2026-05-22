@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Corporate · SELF by GS</title>
+<meta name="description" content="Building effective organisations. Executive Effectiveness, Core Skills, and custom diagnostics by Gaurav Sharma & Associates." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Manrope:wght@300;400;500;600;700&family=Allison&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/shared.css" />
+
+<style>
+/* ============ CORPORATE — Dark luxury ============ */
+body {
+  background: var(--night);
+  color: var(--bone);
+}
+body.theme-dark { background: var(--night); }
+
+/* ============ HERO ============ */
+.cp-hero {
+  position: relative;
+  padding: 200px 36px 100px;
+  background:
+    radial-gradient(ellipse at 80% 10%, rgba(201,162,77,0.18) 0%, transparent 50%),
+    radial-gradient(ellipse at -10% 90%, rgba(201,162,77,0.08) 0%, transparent 50%),
+    linear-gradient(180deg, #0F0F12 0%, #060608 100%);
+  overflow: hidden;
+  isolation: isolate;
+}
+.cp-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(232,228,218,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232,228,218,0.025) 1px, transparent 1px);
+  background-size: 100px 100px;
+  mask-image: radial-gradient(ellipse at 30% 50%, black, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at 30% 50%, black, transparent 75%);
+  z-index: -1;
+}
+.cp-hero-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: 60px;
+  align-items: end;
+}
+.cp-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 11px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 28px;
+  font-weight: 500;
+}
+.cp-eyebrow .l { width: 40px; height: 1px; background: var(--gold); }
+.cp-hero h1 {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-size: clamp(48px, 7vw, 108px);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  margin: 0;
+  color: var(--bone);
+}
+.cp-hero h1 em { font-style: italic; color: var(--gold); }
+.cp-hero h1 .script {
+  font-family: var(--f-script);
+  font-weight: 400;
+  color: var(--gold);
+  font-size: 1.05em;
+  letter-spacing: 0;
+}
+.cp-hero .sub {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(18px, 1.4vw, 22px);
+  line-height: 1.6;
+  color: var(--bone-mute);
+  max-width: 540px;
+  margin: 32px 0 0;
+}
+.cp-hero-side .mini {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--bone-mute);
+  max-width: 360px;
+}
+.cp-hero-side .mini strong { color: var(--gold); font-weight: 600; }
+
+.cp-hero-actions {
+  display: flex; gap: 16px; margin-top: 44px; flex-wrap: wrap;
+}
+
+.cp-hero-meta {
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(201,162,77,0.18);
+  padding-top: 24px;
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+  max-width: 1400px;
+  margin-left: auto; margin-right: auto;
+}
+
+@media (max-width: 900px) {
+  .cp-hero-inner { grid-template-columns: 1fr; gap: 30px; }
+  .cp-hero-meta { flex-direction: column; gap: 12px; align-items: flex-start; }
+}
+
+/* ============ Belief / Diagnose-Develop-Transform ============ */
+.cp-belief {
+  padding: 160px 36px;
+  background: var(--night);
+  color: var(--bone);
+  position: relative;
+}
+.cp-belief .container { max-width: 1400px; margin: 0 auto; }
+.cp-belief .head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 100px;
+}
+.cp-belief h2 {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-size: clamp(36px, 4.4vw, 64px);
+  line-height: 1.05;
+  margin: 18px 0 0;
+  letter-spacing: -0.01em;
+}
+.cp-belief h2 em { font-style: italic; color: var(--gold); }
+.cp-belief .head p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--bone-mute);
+  max-width: 480px;
+  margin: 0;
+}
+
+.dx-flow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+  position: relative;
+}
+.dx-flow::before {
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 12%; right: 12%;
+  height: 1px;
+  background: repeating-linear-gradient(90deg, var(--gold) 0 4px, transparent 4px 10px);
+  opacity: 0.35;
+}
+.dx-step {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(201,162,77,0.08), transparent 60%),
+    var(--night-soft);
+  padding: 40px 32px;
+  border: 1px solid rgba(201,162,77,0.18);
+  position: relative;
+  transition: transform 0.5s var(--ease-out), border-color 0.5s, box-shadow 0.5s;
+}
+.dx-step:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.7);
+}
+.dx-step .stage-num {
+  font-family: var(--f-display);
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  color: var(--gold);
+  margin-bottom: 22px;
+  display: inline-block;
+  background: rgba(201,162,77,0.08);
+  padding: 8px 14px;
+  border-radius: 100px;
+  border: 1px solid rgba(201,162,77,0.4);
+  position: relative;
+  z-index: 1;
+}
+.dx-step h3 {
+  font-family: var(--f-serif);
+  font-weight: 500;
+  font-size: 36px;
+  margin: 0 0 14px;
+  letter-spacing: -0.01em;
+  color: var(--bone);
+}
+.dx-step h3 em { font-style: italic; color: var(--gold); }
+.dx-step p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--bone-mute);
+}
+
+@media (max-width: 900px) {
+  .cp-belief .head { grid-template-columns: 1fr; gap: 30px; margin-bottom: 60px; }
+  .dx-flow { grid-template-columns: 1fr; gap: 18px; }
+  .dx-flow::before { display: none; }
+}
+
+/* ============ ALIGN Framework ============ */
+.align-fw {
+  background: linear-gradient(180deg, #0A0A0C 0%, #050507 100%);
+  padding: 160px 36px;
+  position: relative;
+  overflow: hidden;
+}
+.align-fw::before {
+  content: 'ALIGN';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 38vw;
+  line-height: 1;
+  color: rgba(201,162,77,0.04);
+  letter-spacing: 0;
+  pointer-events: none;
+}
+.align-head {
+  text-align: center;
+  margin-bottom: 80px;
+  position: relative;
+}
+.align-head h2 {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-size: clamp(34px, 4vw, 56px);
+  margin: 20px 0 0;
+  letter-spacing: -0.01em;
+}
+.align-head h2 em { font-style: italic; color: var(--gold); }
+
+.align-list {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.align-row {
+  display: grid;
+  grid-template-columns: 90px 240px 1fr;
+  gap: 40px;
+  padding: 32px 0;
+  border-top: 1px solid rgba(201,162,77,0.12);
+  align-items: center;
+  transition: padding 0.4s var(--ease-out), background 0.4s;
+}
+.align-row:last-child { border-bottom: 1px solid rgba(201,162,77,0.12); }
+.align-row:hover { padding: 32px 32px; background: rgba(201,162,77,0.04); }
+.align-letter {
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 64px;
+  color: var(--gold);
+  letter-spacing: 0;
+  line-height: 1;
+}
+.align-title {
+  font-family: var(--f-serif);
+  font-weight: 400;
+  font-size: 24px;
+  letter-spacing: -0.01em;
+  color: var(--bone);
+}
+.align-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--bone-mute);
+}
+@media (max-width: 900px) {
+  .align-row { grid-template-columns: 60px 1fr; gap: 18px; padding: 20px 0; }
+  .align-letter { font-size: 40px; }
+  .align-row .align-desc { grid-column: 1 / -1; margin-top: 8px; }
+}
+
+/* ============ Program sections ============ */
+.cp-program {
+  padding: 160px 36px;
+  position: relative;
+}
+.cp-program.alt { background: #0E0E11; }
+.cp-program + .cp-program { border-top: 1px solid rgba(201,162,77,0.12); }
+.cp-program .container { max-width: 1400px; margin: 0 auto; }
+.cp-prog-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.cp-prog-grid .visual {
+  position: sticky;
+  top: 120px;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(201,162,77,0.18);
+}
+.cp-prog-grid .visual .ph {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(135deg, rgba(201,162,77,0.12) 0 8px, transparent 8px 18px),
+    linear-gradient(135deg, #1B1812 0%, #0A0907 100%);
+  display: grid;
+  place-items: end;
+  padding: 28px;
+}
+.cp-prog-grid .visual .ph-tag {
+  font-family: monospace;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(201,162,77,0.4);
+  padding: 6px 14px;
+  border-radius: 100px;
+  background: rgba(10,10,12,0.8);
+  backdrop-filter: blur(4px);
+}
+.cp-prog-grid .visual .ph-label {
+  position: absolute;
+  top: 28px; left: 28px;
+  font-family: monospace;
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(232,228,218,0.45);
+}
+.cp-prog-grid .visual .ph-num {
+  position: absolute;
+  bottom: 28px; left: 28px;
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 100px;
+  line-height: 1;
+  color: rgba(201,162,77,0.18);
+  letter-spacing: 0;
+}
+
+.cp-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 8px 16px;
+  border: 1px solid rgba(201,162,77,0.4);
+  border-radius: 100px;
+  background: rgba(201,162,77,0.06);
+}
+
+.cp-prog-grid h2 {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-size: clamp(40px, 5vw, 80px);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  margin: 24px 0 0;
+  color: var(--bone);
+}
+.cp-prog-grid h2 em { font-style: italic; color: var(--gold); }
+
+.cp-prog-grid .lede {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--bone);
+  margin: 28px 0 0;
+  padding-left: 24px;
+  border-left: 1px solid var(--gold);
+}
+
+.cp-prog-grid .body-blk {
+  margin-top: 36px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--bone-mute);
+}
+
+.cp-pill-list {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-top: 24px;
+}
+.cp-pill-list span {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border: 1px solid rgba(201,162,77,0.25);
+  color: var(--bone-mute);
+  border-radius: 100px;
+  background: rgba(201,162,77,0.04);
+  transition: border-color 0.3s, color 0.3s;
+}
+.cp-pill-list span:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* Sub-content */
+.cp-sub-block {
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(201,162,77,0.18);
+}
+.cp-sub-block h4 {
+  font-family: var(--f-display);
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 18px;
+  font-weight: 500;
+}
+.cp-sub-block ul {
+  list-style: none; padding: 0; margin: 0;
+  display: grid; gap: 12px;
+}
+.cp-sub-block ul li {
+  display: flex; gap: 14px; align-items: flex-start;
+  font-size: 16px; line-height: 1.55;
+  color: var(--bone-mute);
+}
+.cp-sub-block ul li::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--gold);
+  margin-top: 9px;
+  flex: 0 0 6px;
+  transform: rotate(45deg);
+}
+.cp-sub-block ul li strong { color: var(--bone); font-weight: 600; }
+
+/* LEAD framework inline */
+.cp-fw-inline {
+  margin-top: 40px;
+  border-top: 1px solid rgba(201,162,77,0.18);
+  padding-top: 28px;
+}
+.cp-fw-inline h4 {
+  font-family: var(--f-display);
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 22px;
+  font-weight: 500;
+}
+.cp-fw-row {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 24px;
+  padding: 18px 0;
+  border-top: 1px solid rgba(201,162,77,0.1);
+  align-items: baseline;
+}
+.cp-fw-row:first-of-type { border-top: none; padding-top: 8px; }
+.cp-fw-row .letter {
+  font-family: var(--f-display);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 1;
+}
+.cp-fw-row .title {
+  font-family: var(--f-serif);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--bone);
+}
+.cp-fw-row .desc {
+  font-size: 14px;
+  color: var(--bone-mute);
+  margin-top: 4px;
+  line-height: 1.55;
+}
+
+.cp-prog-actions {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  margin-top: 44px;
+}
+
+@media (max-width: 900px) {
+  .cp-prog-grid { grid-template-columns: 1fr; gap: 40px; }
+  .cp-prog-grid .visual { position: static; aspect-ratio: 4/3; }
+}
+
+/* ============ Core skills GRID ============ */
+.skills-grid {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(201,162,77,0.18);
+  border: 1px solid rgba(201,162,77,0.18);
+}
+.skill-cell {
+  background: var(--night-soft);
+  padding: 32px 28px;
+  transition: background 0.4s, transform 0.4s var(--ease-out);
+  position: relative;
+}
+.skill-cell:hover {
+  background: #1A1812;
+  transform: translateY(-2px);
+}
+.skill-cell .ic {
+  font-family: var(--f-display);
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.skill-cell h4 {
+  font-family: var(--f-serif);
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0 0 8px;
+  color: var(--bone);
+  letter-spacing: -0.005em;
+}
+.skill-cell p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--bone-mute);
+}
+.skill-cell .enrol {
+  margin-top: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 4px;
+  transition: padding 0.3s;
+}
+.skill-cell:hover .enrol { padding-right: 4px; }
+@media (max-width: 900px) {
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* APPLY framework strip */
+.apply-strip {
+  margin-top: 80px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: rgba(201,162,77,0.18);
+  border: 1px solid rgba(201,162,77,0.18);
+}
+.apply-cell {
+  background: #0F0F12;
+  padding: 28px 22px;
+  transition: background 0.4s;
+}
+.apply-cell:hover { background: #18180F; }
+.apply-cell .letter {
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 42px;
+  color: var(--gold);
+  letter-spacing: 0;
+  line-height: 1;
+}
+.apply-cell h4 {
+  font-family: var(--f-serif);
+  font-size: 18px;
+  font-weight: 500;
+  margin: 16px 0 8px;
+  color: var(--bone);
+}
+.apply-cell p {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--bone-mute);
+}
+@media (max-width: 900px) {
+  .apply-strip { grid-template-columns: 1fr 1fr; }
+}
+
+/* ============ CLEAR Framework section ============ */
+.clear-fw {
+  background: linear-gradient(180deg, var(--night) 0%, var(--night-soft) 100%);
+  color: var(--bone);
+  padding: 140px 36px;
+  border-top: 1px solid rgba(201,162,77,0.18);
+}
+.clear-head {
+  max-width: 1100px;
+  margin: 0 auto 80px;
+  text-align: center;
+}
+.clear-head h2 {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-size: clamp(36px, 4.4vw, 64px);
+  line-height: 1.06;
+  margin: 22px auto 0;
+  letter-spacing: -0.01em;
+  max-width: 900px;
+}
+.clear-head h2 em { color: var(--gold); font-style: italic; }
+.clear-head p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--bone-mute);
+  max-width: 760px;
+  margin: 28px auto 0;
+}
+.clear-grid {
+  max-width: 1400px;
+  margin: 0 auto 100px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: rgba(201,162,77,0.18);
+  border: 1px solid rgba(201,162,77,0.18);
+}
+@media (max-width: 900px) { .clear-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .clear-grid { grid-template-columns: 1fr; } }
+.clear-cell {
+  background: var(--night);
+  padding: 36px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: background 0.4s;
+}
+.clear-cell:hover { background: #1B1A14; }
+.clear-cell .letter {
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 56px;
+  line-height: 1;
+  color: var(--gold);
+}
+.clear-cell h4 {
+  font-family: var(--f-serif);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.2;
+  margin: 0;
+}
+.clear-cell p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--bone-mute);
+  margin: 0;
+}
+
+.clear-how {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.clear-how-head {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.clear-how-head h3 {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-size: clamp(28px, 3.2vw, 44px);
+  line-height: 1.1;
+  margin: 14px 0 0;
+  letter-spacing: -0.01em;
+}
+.clear-stages {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 80px;
+}
+@media (max-width: 900px) { .clear-stages { grid-template-columns: 1fr; } }
+.clear-stage {
+  background: rgba(201,162,77,0.04);
+  border: 1px solid rgba(201,162,77,0.22);
+  padding: 36px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.clear-stage .stg-num {
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.36em;
+  color: var(--gold);
+}
+.clear-stage h4 {
+  font-family: var(--f-serif);
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1.2;
+  margin: 0;
+}
+.clear-stage p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--bone-mute);
+  margin: 0;
+}
+
+.clear-foot {
+  text-align: center;
+  border-top: 1px solid rgba(201,162,77,0.18);
+  padding-top: 60px;
+  margin-top: 20px;
+}
+.clear-foot .quote {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-size: clamp(26px, 3vw, 40px);
+  line-height: 1.25;
+  margin: 0;
+  color: var(--bone);
+  letter-spacing: -0.01em;
+}
+.clear-foot .quote em { color: var(--gold); font-style: italic; }
+.clear-foot .sub {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--bone-mute);
+  max-width: 640px;
+  margin: 28px auto 0;
+}
+
+/* ============ Custom solutions split ============ */
+.custom-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 80vh;
+  background: var(--night);
+}
+.custom-left {
+  background: linear-gradient(135deg, #14130E 0%, #060604 100%);
+  padding: 100px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.custom-left::after {
+  content: 'CUSTOM';
+  position: absolute;
+  bottom: -50px; right: -20px;
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 14vw;
+  color: rgba(201,162,77,0.05);
+  letter-spacing: 0;
+}
+.custom-left h2 {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-size: clamp(40px, 5vw, 72px);
+  line-height: 1.04;
+  margin: 18px 0 0;
+  letter-spacing: -0.01em;
+}
+.custom-left h2 em { font-style: italic; color: var(--gold); }
+.custom-left p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--bone-mute);
+  margin: 26px 0 0;
+  max-width: 480px;
+}
+.custom-right {
+  background: #0A0A0C;
+  padding: 100px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.custom-right h3 {
+  font-family: var(--f-display);
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+  margin: 0 0 30px;
+}
+.custom-right ul {
+  list-style: none; padding: 0; margin: 0;
+}
+.custom-right li {
+  padding: 22px 0;
+  border-top: 1px solid rgba(201,162,77,0.18);
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  font-family: var(--f-serif);
+  font-size: 24px;
+  letter-spacing: -0.005em;
+  color: var(--bone);
+  transition: padding 0.4s var(--ease-out), color 0.4s;
+}
+.custom-right li:last-child { border-bottom: 1px solid rgba(201,162,77,0.18); }
+.custom-right li:hover { color: var(--gold); padding-left: 12px; }
+.custom-right li .num {
+  font-family: var(--f-display);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  width: 40px;
+}
+@media (max-width: 900px) {
+  .custom-split { grid-template-columns: 1fr; }
+  .custom-left, .custom-right { padding: 60px 32px; }
+}
+
+/* ============ CTA ============ */
+.cp-cta {
+  padding: 160px 36px;
+  text-align: center;
+  background: var(--night);
+  color: var(--bone);
+  position: relative;
+  overflow: hidden;
+}
+.cp-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(201,162,77,0.16), transparent 70%);
+}
+.cp-cta-inner { position: relative; }
+.cp-cta h2 {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-size: clamp(40px, 5vw, 72px);
+  line-height: 1.04;
+  margin: 24px 0 0;
+  letter-spacing: -0.015em;
+}
+.cp-cta h2 em { font-style: italic; color: var(--gold); }
+.cp-cta p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--bone-mute);
+  max-width: 620px;
+  margin: 28px auto 0;
+}
+.cp-cta .btn-row {
+  display: flex; justify-content: center; gap: 18px; margin-top: 50px; flex-wrap: wrap;
+}
+</style>
+</head>
+
+<body class="theme-dark">
+<div class="grain"></div>
+
+<!-- ===== Header ===== -->
+<header class="site-header">
+  <a href="index.html" class="brand-mark" style="color:var(--bone)">
+    <span class="dot"></span>
+    <span>SELF</span>
+  </a>
+  <nav class="nav" style="color:var(--bone)">
+    <a href="index.html">Home</a>
+    <div class="has-menu">
+      <a href="corporate.html" style="color:var(--gold)">Corporate</a>
+      <div class="nav-dropdown">
+        <div class="dd-head">Corporate · Programs</div>
+        <a class="dd-item" href="programs/executive-effectiveness.html"><span class="num">01</span><span>Executive Effectiveness</span><span class="arrow"></span></a>
+        <a class="dd-item" href="programs/core-skills.html"><span class="num">02</span><span>Core Skills Interventions</span><span class="arrow"></span></a>
+        <a class="dd-item" href="programs/diagnostic-audit.html"><span class="num">03</span><span>Diagnostic Audit &amp; Custom</span><span class="arrow"></span></a>
+      </div>
+    </div>
+    <div class="has-menu">
+      <a href="academia.html">Academia</a>
+      <div class="nav-dropdown">
+        <div class="dd-head">Academia · Programs</div>
+        <a class="dd-item" href="programs/career-architecture.html"><span class="num">01</span><span>Career Architecture Lab</span><span class="arrow"></span></a>
+        <a class="dd-item" href="programs/young-leaders.html"><span class="num">02</span><span>Young Leaders Program</span><span class="arrow"></span></a>
+        <a class="dd-item" href="programs/beyond-teaching.html"><span class="num">03</span><span>Beyond Teaching · FDP</span><span class="arrow"></span></a>
+      </div>
+    </div>
+    <a href="team.html">Team</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <button class="nav-cta" data-open-lead data-title="Corporate · Clarity Call" data-label="Corporate · Clarity Call">Book a Clarity Call</button>
+  <button class="mobile-toggle" aria-label="Open menu" style="color:var(--bone)"><span></span><span></span><span></span></button>
+</header>
+
+<!-- ===== Mobile drawer ===== -->
+<div class="mobile-drawer" id="mobile-drawer">
+  <nav class="md-nav">
+    <a href="index.html">Home</a>
+    <details open>
+      <summary>Corporate</summary>
+      <div class="md-sub">
+        <a href="corporate.html">Corporate · Overview</a>
+        <a href="programs/executive-effectiveness.html">Executive Effectiveness</a>
+        <a href="programs/core-skills.html">Core Skills</a>
+        <a href="programs/diagnostic-audit.html">Diagnostic Audit</a>
+      </div>
+    </details>
+    <details>
+      <summary>Academia</summary>
+      <div class="md-sub">
+        <a href="academia.html">Academia · Overview</a>
+        <a href="programs/career-architecture.html">Career Architecture</a>
+        <a href="programs/young-leaders.html">Young Leaders Program</a>
+        <a href="programs/beyond-teaching.html">Beyond Teaching · FDP</a>
+      </div>
+    </details>
+    <a href="team.html">Team</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="md-foot">
+    <button class="btn btn--solid hoverable" data-open-lead data-title="Corporate · Clarity Call" data-label="Corporate · Clarity Call">Book a Clarity Call <span class="arrow"></span></button>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="cp-hero" data-screen-label="01 Corporate Hero">
+  <div class="cp-hero-inner">
+    <div>
+      <div class="cp-eyebrow reveal"><span class="l"></span><span>Side II · Corporate · Overview</span></div>
+
+      <h1>
+        <span class="reveal-mask"><span>Building</span></span><br />
+        <span class="reveal-mask" style="--d:120ms"><span><em>effective</em></span></span><br />
+        <span class="reveal-mask" style="--d:240ms"><span><em>organisations.</em></span></span>
+      </h1>
+
+      <p class="sub reveal" style="--d:480ms">
+        <span style="color: var(--gold); font-style: normal;">Organisations</span> grow when people grow with them. Behind every business challenge, there is usually a people challenge. Leadership, communication, ownership, alignment, team effectiveness — and more.
+      </p>
+
+      <div class="cp-hero-actions reveal" style="--d:640ms">
+        <button class="btn btn--solid hoverable" data-open-lead data-title="Corporate · Clarity Call" data-label="Corporate · Clarity Call">
+          Book a Clarity Call <span class="arrow"></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="cp-hero-side reveal" style="--d:800ms">
+      <div class="gold-rule" style="margin-bottom:18px"><span class="line"></span><span class="bead"></span><span class="line"></span></div>
+      <p class="mini">
+        The corporate interventions by <strong>Gaurav Sharma &amp; Associates</strong> are designed to strengthen the human side of organisational performance. Behavioural, experiential, execution-focused.
+      </p>
+      <p class="mini" style="margin-top:22px; max-width: 360px;">
+        <span class="ladder-line">Diagnose <span class="arr"></span> Develop <span class="arr"></span> Transform</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="cp-hero-meta">
+    <span>For · Leadership · Managers · Cross-functional teams</span>
+    <span>25+ Years · Based in Jaipur · India · Remote</span>
+  </div>
+</section>
+
+<!-- ===== Belief / DDT ===== -->
+<section class="cp-belief">
+  <div class="container">
+    <div class="head">
+      <div>
+        <div class="eyebrow reveal" style="color:var(--gold)">What We Believe</div>
+        <h2 class="reveal" style="--d:120ms">Organisational growth and employee growth are <em>not separate</em> journeys.</h2>
+      </div>
+      <p class="reveal" style="--d:240ms">
+        When people feel connected, capable, aligned, and valued — teams perform better, and businesses grow better. Effectiveness is rarely built by accident. We design for it.
+      </p>
+    </div>
+
+    <div class="dx-flow">
+      <div class="dx-step reveal" data-tilt="3">
+        <span class="stage-num">Stage 01</span>
+        <h3><em>Diagnose</em></h3>
+        <p>Understand the real challenge before designing interventions. Most off-the-shelf programs solve the wrong problem.</p>
+      </div>
+      <div class="dx-step reveal" style="--d:160ms" data-tilt="3">
+        <span class="stage-num">Stage 02</span>
+        <h3><em>Develop</em></h3>
+        <p>Build stronger leadership, communication, management, and team capability — behaviour-first, execution-focused.</p>
+      </div>
+      <div class="dx-step reveal" style="--d:320ms" data-tilt="3">
+        <span class="stage-num">Stage 03</span>
+        <h3><em>Transform</em></h3>
+        <p>Create more aligned, effective, and growth-oriented organisations. Capability that compounds inside the business.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ALIGN framework ===== -->
+<section class="align-fw">
+  <div class="align-head">
+    <div class="gold-rule center reveal" style="justify-content:center; display:flex;"><span class="line"></span><span class="bead"></span><span class="line"></span></div>
+    <div class="eyebrow reveal" style="--d:80ms; margin-top:18px">Let's ALIGN</div>
+    <h2 class="reveal" style="--d:160ms">A simple but <em>powerful</em> alignment model.</h2>
+  </div>
+
+  <div class="align-list">
+    <div class="align-row reveal hoverable">
+      <div class="align-letter">A</div>
+      <div class="align-title">Align Vision</div>
+      <div class="align-desc">Connect organisational and team growth. The two cannot run on different rails.</div>
+    </div>
+    <div class="align-row reveal hoverable" style="--d:80ms">
+      <div class="align-letter">L</div>
+      <div class="align-title">Lead Effectively</div>
+      <div class="align-desc">Strengthen leadership and ownership across the layers that actually deliver.</div>
+    </div>
+    <div class="align-row reveal hoverable" style="--d:160ms">
+      <div class="align-letter">I</div>
+      <div class="align-title">Improve Capability</div>
+      <div class="align-desc">Build practical execution skills — communication, collaboration, decision-making.</div>
+    </div>
+    <div class="align-row reveal hoverable" style="--d:240ms">
+      <div class="align-letter">G</div>
+      <div class="align-title">Grow Together</div>
+      <div class="align-desc">Create interdependence between people and performance, not pressure.</div>
+    </div>
+    <div class="align-row reveal hoverable" style="--d:320ms">
+      <div class="align-letter">N</div>
+      <div class="align-title">Nurture Culture</div>
+      <div class="align-desc">Build trust, accountability, and collaboration. The compounding asset.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Programs Grid (3 cards in a single row) ===== -->
+<section class="programs-strip programs-strip--dark" id="programs">
+  <div class="head">
+    <div>
+      <div class="eyebrow reveal" style="color: var(--gold);">Corporate Programs</div>
+      <h2 class="reveal" style="--d:120ms">Three practices.<br/><em>All custom-built.</em></h2>
+    </div>
+    <p class="reveal" style="--d:240ms">Every engagement is shaped to your organisation's reality — not pulled from a deck. Click any program to see its detailed design, framework, and outcomes.</p>
+  </div>
+
+  <div class="prog-side">
+    <div class="prog-grid" style="grid-template-columns: repeat(3, 1fr);">
+      <a class="prog-card dark reveal" href="programs/executive-effectiveness.html" data-tilt="3">
+        <div class="pc-badge">B2B</div>
+        <div class="side-tag"><span class="l"></span>Leadership · Managers</div>
+        <h4>Executive Effectiveness<br />Programs</h4>
+        <ul>
+          <li>Behaviour, ownership &amp; alignment</li>
+          <li>Communication &amp; team effectiveness</li>
+          <li>Real workplace realities — not lectures</li>
+          <li>LEAD framework · execution-focused</li>
+        </ul>
+        <div class="pc-foot">
+          <span>View program →</span>
+          <div class="go">→</div>
+        </div>
+      </a>
+
+      <a class="prog-card dark reveal" style="--d:120ms" href="programs/core-skills.html" data-tilt="3">
+        <div class="pc-badge">Custom</div>
+        <div class="side-tag"><span class="l"></span>Capability · Workshops</div>
+        <h4>Core Skills<br />Interventions</h4>
+        <ul>
+          <li>Communication, presentation &amp; sales</li>
+          <li>Negotiation, collaboration, ownership</li>
+          <li>AI productivity for working professionals</li>
+          <li>Experiential &amp; custom-built for your team</li>
+        </ul>
+        <div class="pc-foot">
+          <span>View program →</span>
+          <div class="go">→</div>
+        </div>
+      </a>
+
+      <a class="prog-card dark reveal" style="--d:240ms" href="programs/diagnostic-audit.html" data-tilt="3">
+        <div class="pc-badge">Custom</div>
+        <div class="side-tag"><span class="l"></span>Diagnostics · Bespoke</div>
+        <h4>Diagnostic Audit<br />&amp; Custom Solutions</h4>
+        <ul>
+          <li>Capture reality &amp; locate gaps (CLEAR)</li>
+          <li>Move beyond symptoms to root causes</li>
+          <li>Designed around your organisational reality</li>
+          <li>Built on radical candor &amp; real growth</li>
+        </ul>
+        <div class="pc-foot">
+          <span>View program →</span>
+          <div class="go">→</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cp-cta" id="contact">
+  <div class="cp-cta-inner">
+    <div class="gold-rule center reveal" style="justify-content:center; display:flex;"><span class="line"></span><span class="bead"></span><span class="line"></span></div>
+    <div class="eyebrow reveal" style="--d:80ms; margin-top:18px">Begin</div>
+    <h2 class="reveal" style="--d:160ms">Not every challenge needs <em>more pressure.</em><br/>Sometimes it needs better alignment.</h2>
+    <p class="reveal" style="--d:240ms">Book a 30-minute clarity call. We listen, we ask the right questions, and we tell you honestly whether SELF is a fit — or what is.</p>
+    <div class="btn-row reveal" style="--d:360ms">
+      <button class="btn btn--solid hoverable" data-open-lead data-title="Corporate · Clarity Call" data-label="Corporate · Clarity Call">Book a Clarity Call <span class="arrow"></span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="site-footer theme-dark">
+  <div class="footer-grid">
+    <div>
+      <div class="foot-logo">SELF</div>
+      <div class="foot-by">Self Engineering for Leaders' Fortune</div>
+      <p class="foot-blurb">The development arm of <strong style="color:var(--gold); font-family:var(--f-display); font-weight:500; letter-spacing:0.06em;">Gaurav Sharma &amp; Associates</strong>. Self Development Programs — built quietly, deliberately, and at depth.</p>
+      <div class="foot-social">
+        <a href="https://www.linkedin.com/in/voiceitgaurav/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zM8 19H5V8h3v11zM6.5 6.73C5.53 6.73 4.75 5.95 4.75 5s.78-1.73 1.75-1.73 1.75.78 1.75 1.73-.78 1.73-1.75 1.73zM20 19h-3v-5.6c0-1.1-.9-2-2-2s-2 .9-2 2V19h-3V8h3v1.4c.7-1 1.7-1.6 3-1.6 2.21 0 4 1.79 4 4V19z"/></svg></a>
+        <a href="https://www.instagram.com/voiceitgaurav/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153.555.556.9 1.111 1.153 1.772.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.25a1.25 1.25 0 1 0-2.5 0 1.25 1.25 0 0 0 2.5 0zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg></a>
+        <a href="https://www.youtube.com/@voiceitgaurav" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        <a href="https://www.facebook.com/profile.php?id=100002611554241" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h5>Explore</h5>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="corporate.html">Corporate</a></li>
+        <li><a href="academia.html">Academia</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Corporate</h5>
+      <ul>
+        <li><a href="programs/executive-effectiveness.html">Executive Effectiveness</a></li>
+        <li><a href="programs/core-skills.html">Core Skills</a></li>
+        <li><a href="programs/diagnostic-audit.html">Diagnostic Audit &amp; Custom</a></li>
+        <li><a href="academia.html">Academia side</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Engage</h5>
+      <ul>
+        <li><a href="#" data-open-lead data-title="Corporate · Clarity Call" data-label="Corporate · Clarity Call">Book a Clarity Call</a></li>
+        <li><a href="mailto:namaste@selfbygs.com">namaste@selfbygs.com</a></li>
+        <li><a href="https://wa.me/+917891122201" target="_blank" rel="noopener">WhatsApp · +91 78911 22201</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© SELF · 2026 · Gaurav Sharma &amp; Associates</span>
+    <span>Jaipur · Rajasthan · India</span>
+  </div>
+  <div class="footer-legal">
+    <div class="footer-legal-links">
+      <a href="contact.html">Contact</a>
+      <a href="#privacy">Privacy Policy</a>
+      <a href="#terms">Terms</a>
+      <a href="#refund">Refund &amp; Cancellation</a>
+    </div>
+    <span class="loc">Jaipur · India · Remote</span>
+  </div>
+</footer>
+
+<!-- ===== Lead modal ===== -->
+<div class="lead-modal" id="lead-modal" role="dialog" aria-modal="true">
+  <div class="lead-card">
+    <aside class="lead-aside">
+      <div>
+        <div class="meta-row"><span class="dot"></span><span>Clarity Call · Free 30 min</span></div>
+        <h3>Begin Your Clarity Call</h3>
+        <p>A short, honest conversation. We listen first, then we tell you whether SELF is a fit — or what is.</p>
+      </div>
+      <div class="quote">Not more pressure.<br/>Better alignment.</div>
+    </aside>
+
+    <div class="lead-body">
+      <button class="lead-close" aria-label="Close">✕</button>
+      <div class="lead-steps">
+        <span class="lead-step-pill is-active"></span>
+        <span class="lead-step-pill"></span>
+        <span class="lead-step-pill"></span>
+        <span class="lead-step-pill"></span>
+      </div>
+      <div class="lead-step-wrap">
+        <div class="lead-step is-active">
+          <div class="step-eyebrow">Step 01 / 04</div>
+          <h4>Who is this for?</h4>
+          <div class="step-sub">Choose one — we'll tailor the rest of the conversation.</div>
+          <div class="chip-row">
+            <button class="chip is-active">L&amp;D · For my team</button>
+            <button class="chip">Founder / Leadership</button>
+            <button class="chip">HR Business Partner</button>
+            <button class="chip">Manager · Individual</button>
+            <button class="chip">Other</button>
+          </div>
+          <div class="step-actions">
+            <button class="step-back" data-back disabled>← Back</button>
+            <button class="btn btn--solid hoverable" data-next>Continue <span class="arrow"></span></button>
+          </div>
+        </div>
+        <div class="lead-step">
+          <div class="step-eyebrow">Step 02 / 04</div>
+          <h4>Which intervention?</h4>
+          <div class="step-sub">Pick all that interest you.</div>
+          <div class="chip-row" data-multi="true">
+            <button class="chip">Executive Effectiveness</button>
+            <button class="chip">Core Skills · Communication</button>
+            <button class="chip">Core Skills · Sales / Negotiation</button>
+            <button class="chip">Core Skills · AI Productivity</button>
+            <button class="chip">Custom Solution / Diagnostic</button>
+            <button class="chip">Train the Trainer</button>
+          </div>
+          <div class="step-actions">
+            <button class="step-back" data-back>← Back</button>
+            <button class="btn btn--solid hoverable" data-next>Continue <span class="arrow"></span></button>
+          </div>
+        </div>
+        <div class="lead-step">
+          <div class="step-eyebrow">Step 03 / 04</div>
+          <h4>How should we reach you?</h4>
+          <div class="step-sub">We respond within 1 business day.</div>
+          <div class="field"><label>Full name</label><input type="text" placeholder="Your name" /></div>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="field"><label>Work email</label><input type="email" placeholder="you@company.com" /></div>
+            <div class="field"><label>Mobile</label><input type="tel" placeholder="+91 98xx xx xx xx" /></div>
+          </div>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="field"><label>Organisation</label><input type="text" placeholder="Company name" /></div>
+            <div class="field"><label>Team size</label>
+              <select>
+                <option>Under 25</option>
+                <option>25–100</option>
+                <option>100–500</option>
+                <option>500+</option>
+              </select>
+            </div>
+          </div>
+          <div class="step-actions">
+            <button class="step-back" data-back>← Back</button>
+            <button class="btn btn--solid hoverable" data-next>Continue <span class="arrow"></span></button>
+          </div>
+        </div>
+        <div class="lead-step">
+          <div class="step-eyebrow">Step 04 / 04</div>
+          <h4>One last thing.</h4>
+          <div class="step-sub">In a line or two — what's the real challenge you're trying to solve?</div>
+          <div class="field"><label>Context</label><textarea rows="4" placeholder="The real reason we're looking for this is…"></textarea></div>
+          <div class="field"><label>Preferred time</label>
+            <select>
+              <option>Weekday · Morning (10am–12pm IST)</option>
+              <option>Weekday · Afternoon (1pm–4pm IST)</option>
+              <option>Weekday · Evening (5pm–8pm IST)</option>
+              <option>Weekend</option>
+            </select>
+          </div>
+          <div class="step-actions">
+            <button class="step-back" data-back>← Back</button>
+            <button class="btn btn--solid hoverable" data-submit>Request the Call <span class="arrow"></span></button>
+          </div>
+        </div>
+      </div>
+      <div class="lead-success" style="display:none">
+        <div class="check">✓</div>
+        <h4 style="font-family: var(--f-serif); font-size: 32px; margin:0 0 10px; color: var(--bone);">Thank you — we'll be in touch.</h4>
+        <p style="color: var(--bone-mute); font-size: 15px;">Look out for a personal note within one business day.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/shared.js"></script>
+</body>
+</html>

@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Team · SELF by GS</title>
+<meta name="description" content="The architects behind SELF — Gaurav Sharma, Dr. Tanya Soin Gaurav, and an extended expert network." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Manrope:wght@300;400;500;600;700&family=Allison&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/shared.css" />
+
+<style>
+body {
+  background: var(--ivory-soft);
+  color: var(--ink);
+}
+body.theme-light .site-header { color: var(--ink); }
+
+/* ============ HERO ============ */
+.tm-hero {
+  position: relative;
+  padding: 200px 36px 100px;
+  background:
+    radial-gradient(ellipse at 80% -20%, rgba(201,162,77,0.22) 0%, transparent 55%),
+    radial-gradient(ellipse at 0% 100%, rgba(201,162,77,0.10) 0%, transparent 55%),
+    linear-gradient(180deg, var(--ivory) 0%, var(--ivory-soft) 100%);
+  overflow: hidden;
+  isolation: isolate;
+}
+.tm-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(11,11,11,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11,11,11,0.025) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at 30% 50%, black, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at 30% 50%, black, transparent 75%);
+  z-index: -1;
+}
+.tm-hero-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 60px;
+  align-items: end;
+}
+.tm-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 11px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 28px;
+  font-weight: 500;
+}
+.tm-eyebrow .l { width: 40px; height: 1px; background: var(--gold-deep); }
+.tm-hero h1 {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-size: clamp(48px, 7vw, 108px);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  margin: 0;
+  color: var(--ink);
+}
+.tm-hero h1 em { font-style: italic; color: var(--gold-deep); }
+.tm-hero .sub {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(18px, 1.4vw, 22px);
+  line-height: 1.6;
+  color: rgba(11,11,11,0.7);
+  max-width: 540px;
+  margin: 32px 0 0;
+}
+.tm-hero-side .mini {
+  font-size: 14px;
+  line-height: 1.75;
+  color: rgba(11,11,11,0.7);
+  max-width: 360px;
+}
+.tm-hero-side .mini strong { color: var(--gold-deep); font-weight: 600; }
+
+.tm-hero-meta {
+  max-width: 1400px;
+  margin: 60px auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(11,11,11,0.55);
+  padding-top: 22px;
+  border-top: 1px solid rgba(11,11,11,0.12);
+}
+@media (max-width: 900px) {
+  .tm-hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .tm-hero { padding: 140px 22px 70px; }
+  .tm-hero-meta { flex-direction: column; gap: 14px; align-items: flex-start; }
+}
+
+/* ============ Founder profile (large) ============ */
+.tm-founder {
+  padding: 120px 36px;
+  background: var(--ivory);
+  border-top: 1px solid rgba(201,162,77,0.25);
+}
+.tm-founder.dark {
+  background: #0D0D10;
+  color: var(--bone);
+  border-top-color: rgba(201,162,77,0.18);
+}
+.tm-founder-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 70px;
+  align-items: start;
+}
+.tm-founder.dark .tm-founder-inner { color: var(--bone); }
+
+.tm-portrait {
+  position: sticky;
+  top: 100px;
+  aspect-ratio: 3 / 4;
+  background:
+    repeating-linear-gradient(135deg, rgba(11,11,11,0.06) 0 6px, transparent 6px 14px),
+    linear-gradient(135deg, #E8D9B6 0%, #C9A24D 100%);
+  border: 1px solid rgba(201,162,77,0.4);
+  position: relative;
+  display: grid;
+  place-items: end;
+  padding: 20px;
+  font-family: monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(11,11,11,0.5);
+}
+.tm-portrait::before {
+  content: 'PORTRAIT · REPLACE';
+  position: absolute;
+  top: 20px; left: 20px;
+  font-family: monospace;
+  font-size: 9px;
+  letter-spacing: 0.32em;
+  color: rgba(11,11,11,0.45);
+}
+.tm-founder.dark .tm-portrait {
+  background:
+    repeating-linear-gradient(135deg, rgba(255,255,255,0.06) 0 6px, transparent 6px 14px),
+    linear-gradient(135deg, #2A2418 0%, #6D5523 100%);
+  border-color: rgba(201,162,77,0.4);
+  color: rgba(232,228,218,0.55);
+}
+.tm-founder.dark .tm-portrait::before { color: rgba(232,228,218,0.55); }
+
+.tm-name {
+  font-family: var(--f-serif);
+  font-weight: 400;
+  font-size: clamp(40px, 4.4vw, 64px);
+  line-height: 1.05;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.tm-name em { color: var(--gold-deep); font-style: italic; }
+.tm-founder.dark .tm-name em { color: var(--gold); }
+.tm-role {
+  font-family: var(--f-display);
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin: 18px 0 0;
+  font-weight: 500;
+}
+.tm-founder.dark .tm-role { color: var(--gold); }
+.tm-tag {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.5;
+  margin: 16px 0 0;
+  color: rgba(11,11,11,0.65);
+  max-width: 620px;
+}
+.tm-founder.dark .tm-tag { color: var(--bone-mute); }
+
+.tm-lead {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 1.5;
+  margin: 36px 0 0;
+  max-width: 620px;
+  color: var(--ink);
+}
+.tm-founder.dark .tm-lead { color: var(--bone); }
+
+.tm-block { margin-top: 50px; }
+.tm-block-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 11px;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 22px;
+  font-weight: 500;
+}
+.tm-founder.dark .tm-block-head { color: var(--gold); }
+.tm-block-head .l { width: 40px; height: 1px; background: currentColor; }
+
+.tm-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 14px;
+}
+.tm-list li {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  font-size: 16px;
+  line-height: 1.55;
+  color: rgba(11,11,11,0.75);
+  padding-left: 0;
+}
+.tm-founder.dark .tm-list li { color: var(--bone-mute); }
+.tm-list li .dot {
+  flex-shrink: 0;
+  width: 6px; height: 6px;
+  background: var(--gold-deep);
+  border-radius: 50%;
+  transform: translateY(-2px);
+}
+.tm-founder.dark .tm-list li .dot { background: var(--gold); }
+.tm-list li strong { color: var(--ink); font-weight: 600; }
+.tm-founder.dark .tm-list li strong { color: var(--bone); }
+
+.tm-impact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 22px;
+}
+@media (max-width: 700px) { .tm-impact-grid { grid-template-columns: 1fr 1fr; } }
+.tm-impact {
+  border-top: 1px solid rgba(11,11,11,0.18);
+  padding-top: 18px;
+}
+.tm-founder.dark .tm-impact { border-top-color: rgba(201,162,77,0.25); }
+.tm-impact .num {
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 38px;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1.1;
+}
+.tm-founder.dark .tm-impact .num { color: var(--bone); }
+.tm-impact .num .gold { color: var(--gold-deep); font-size: 0.55em; letter-spacing: 0.04em; margin-left: 4px; }
+.tm-founder.dark .tm-impact .num .gold { color: var(--gold); }
+.tm-impact .lbl {
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(11,11,11,0.6);
+  margin-top: 8px;
+}
+.tm-founder.dark .tm-impact .lbl { color: var(--bone-mute); }
+
+.tm-pillgroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.tm-pill {
+  padding: 8px 16px;
+  border: 1px solid rgba(201,162,77,0.4);
+  border-radius: 100px;
+  font-size: 13px;
+  color: var(--ink);
+  background: rgba(201,162,77,0.05);
+}
+.tm-founder.dark .tm-pill {
+  color: var(--bone);
+  border-color: rgba(201,162,77,0.35);
+  background: rgba(201,162,77,0.08);
+}
+
+.tm-approach {
+  background: rgba(201,162,77,0.07);
+  border-left: 2px solid var(--gold-deep);
+  padding: 26px 28px;
+  margin-top: 22px;
+}
+.tm-founder.dark .tm-approach {
+  background: rgba(201,162,77,0.06);
+  border-left-color: var(--gold);
+}
+.tm-approach p {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.55;
+  margin: 0;
+  color: var(--ink);
+}
+.tm-founder.dark .tm-approach p { color: var(--bone); }
+
+@media (max-width: 900px) {
+  .tm-founder-inner { grid-template-columns: 1fr; gap: 40px; }
+  .tm-portrait { position: relative; top: 0; max-width: 320px; }
+  .tm-founder { padding: 80px 22px; }
+}
+
+/* ============ Extended Network ============ */
+.tm-network {
+  background: var(--ivory-soft);
+  padding: 140px 36px;
+  border-top: 1px solid rgba(201,162,77,0.22);
+}
+.tm-network-head {
+  max-width: 1100px;
+  margin: 0 auto 70px;
+  text-align: center;
+}
+.tm-network-head h2 {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-size: clamp(36px, 4.4vw, 64px);
+  line-height: 1.06;
+  margin: 22px auto 0;
+  letter-spacing: -0.01em;
+  max-width: 900px;
+}
+.tm-network-head h2 em { color: var(--gold-deep); font-style: italic; }
+.tm-network-head p {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.55;
+  color: rgba(11,11,11,0.65);
+  max-width: 720px;
+  margin: 28px auto 0;
+}
+
+.tm-net-grid {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+@media (max-width: 900px) { .tm-net-grid { grid-template-columns: 1fr; } }
+.tm-net-card {
+  background: var(--ivory);
+  border: 1px solid rgba(201,162,77,0.25);
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.tm-net-card .lbl {
+  font-family: var(--f-display);
+  font-size: 11px;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.tm-net-card .lbl .l { width: 22px; height: 1px; background: var(--gold-deep); }
+.tm-net-card h4 {
+  font-family: var(--f-serif);
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1.2;
+  margin: 0;
+}
+.tm-net-card p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(11,11,11,0.65);
+  margin: 0;
+}
+.tm-net-card .roster {
+  list-style: none;
+  padding: 18px 0 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+  border-top: 1px solid rgba(11,11,11,0.1);
+}
+.tm-net-card .roster li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: rgba(11,11,11,0.7);
+}
+.tm-net-card .roster li::before {
+  content: '·';
+  color: var(--gold-deep);
+  font-weight: 600;
+}
+
+/* ============ MATCH Framework ============ */
+.tm-match {
+  background: var(--ink);
+  color: var(--bone);
+  padding: 160px 36px;
+  position: relative;
+  overflow: hidden;
+}
+.tm-match::before {
+  content: 'MATCH';
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 380px;
+  letter-spacing: 0.04em;
+  color: rgba(201,162,77,0.05);
+  line-height: 1;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.tm-match-head {
+  text-align: center;
+  margin-bottom: 80px;
+  position: relative;
+  z-index: 1;
+}
+.tm-match-head h2 {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-size: clamp(36px, 4.4vw, 64px);
+  line-height: 1.06;
+  margin: 22px auto 0;
+  letter-spacing: -0.01em;
+  max-width: 900px;
+}
+.tm-match-head h2 em { color: var(--gold); font-style: italic; }
+.tm-match-head p {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--bone-mute);
+  max-width: 720px;
+  margin: 28px auto 0;
+}
+
+.tm-match-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: rgba(201,162,77,0.18);
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 900px) { .tm-match-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .tm-match-grid { grid-template-columns: 1fr; } }
+.tm-mstep {
+  background: var(--ink);
+  padding: 40px 28px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: background 0.4s;
+}
+.tm-mstep:hover { background: #1B1A14; }
+.tm-mstep .letter {
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 1;
+  color: var(--gold);
+  letter-spacing: 0;
+}
+.tm-mstep h4 {
+  font-family: var(--f-serif);
+  font-weight: 400;
+  font-size: 22px;
+  margin: 0;
+  line-height: 1.2;
+}
+.tm-mstep p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--bone-mute);
+  margin: 0;
+}
+
+.tm-match-foot {
+  max-width: 1100px;
+  margin: 90px auto 0;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.tm-match-foot .quote {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(22px, 2.6vw, 32px);
+  line-height: 1.4;
+  color: var(--bone);
+  margin: 0;
+}
+.tm-match-foot .quote .gold { color: var(--gold); font-style: italic; }
+
+/* ============ Closing CTA ============ */
+.tm-cta {
+  background: linear-gradient(180deg, #0B0B0E 0%, #050507 100%);
+  color: var(--bone);
+  padding: 160px 36px 140px;
+  position: relative;
+  overflow: hidden;
+}
+.tm-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(201,162,77,0.18), transparent 60%),
+    radial-gradient(ellipse at 10% 80%, rgba(201,162,77,0.08), transparent 60%);
+}
+.tm-cta-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+}
+.tm-cta h2 {
+  font-family: var(--f-serif);
+  font-weight: 300;
+  font-size: clamp(40px, 5vw, 80px);
+  line-height: 1.04;
+  margin: 22px 0 0;
+  letter-spacing: -0.02em;
+}
+.tm-cta h2 em { font-style: italic; color: var(--gold); }
+.tm-cta p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--bone-mute);
+  max-width: 620px;
+  margin: 28px auto 0;
+}
+.tm-cta .btn-row {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+
+/* Footer styling override */
+.site-footer.theme-dark {
+  background: #050507;
+  color: var(--bone);
+  border-top: 1px solid rgba(201,162,77,0.2);
+}
+.theme-dark .footer-grid h5 { color: var(--gold); opacity: 1; }
+.theme-dark .footer-grid li a { color: var(--bone); }
+.theme-dark .footer-bottom { color: var(--bone-mute); border-color: rgba(201,162,77,0.18); }
+
+.foot-logo {
+  font-family: var(--f-display);
+  font-size: 28px;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.foot-by {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--bone);
+  letter-spacing: 0;
+  font-weight: 300;
+}
+.foot-blurb {
+  margin-top: 18px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--bone-mute);
+  max-width: 320px;
+}
+</style>
+</head>
+
+<body class="theme-light">
+<div class="grain"></div>
+
+<!-- ===== Header ===== -->
+<header class="site-header">
+  <a href="index.html" class="brand-mark">
+    <span class="dot"></span>
+    <span>SELF</span>
+  </a>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <div class="has-menu">
+      <a href="corporate.html">Corporate</a>
+      <div class="nav-dropdown">
+        <div class="dd-head">Corporate · Programs</div>
+        <a class="dd-item" href="programs/executive-effectiveness.html"><span class="num">01</span><span>Executive Effectiveness</span><span class="arrow"></span></a>
+        <a class="dd-item" href="programs/core-skills.html"><span class="num">02</span><span>Core Skills Interventions</span><span class="arrow"></span></a>
+        <a class="dd-item" href="programs/diagnostic-audit.html"><span class="num">03</span><span>Diagnostic Audit &amp; Custom</span><span class="arrow"></span></a>
+      </div>
+    </div>
+    <div class="has-menu">
+      <a href="academia.html">Academia</a>
+      <div class="nav-dropdown">
+        <div class="dd-head">Academia · Programs</div>
+        <a class="dd-item" href="programs/career-architecture.html"><span class="num">01</span><span>Career Architecture Lab</span><span class="arrow"></span></a>
+        <a class="dd-item" href="programs/young-leaders.html"><span class="num">02</span><span>Young Leaders Program</span><span class="arrow"></span></a>
+        <a class="dd-item" href="programs/beyond-teaching.html"><span class="num">03</span><span>Beyond Teaching · FDP</span><span class="arrow"></span></a>
+      </div>
+    </div>
+    <a href="team.html" style="color:var(--gold-deep)">Team</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <button class="nav-cta" data-open-lead data-title="Begin Your Clarity Call" data-label="Clarity Call · Free 30 min">Book a Clarity Call</button>
+  <button class="mobile-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+</header>
+
+<!-- ===== Mobile drawer ===== -->
+<div class="mobile-drawer" id="mobile-drawer">
+  <nav class="md-nav">
+    <a href="index.html">Home</a>
+    <details>
+      <summary>Corporate</summary>
+      <div class="md-sub">
+        <a href="corporate.html">Corporate · Overview</a>
+        <a href="programs/executive-effectiveness.html">Executive Effectiveness</a>
+        <a href="programs/core-skills.html">Core Skills</a>
+        <a href="programs/diagnostic-audit.html">Diagnostic Audit</a>
+      </div>
+    </details>
+    <details>
+      <summary>Academia</summary>
+      <div class="md-sub">
+        <a href="academia.html">Academia · Overview</a>
+        <a href="programs/career-architecture.html">Career Architecture</a>
+        <a href="programs/young-leaders.html">Young Leaders Program</a>
+        <a href="programs/beyond-teaching.html">Beyond Teaching · FDP</a>
+      </div>
+    </details>
+    <a href="team.html">Team</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="md-foot">
+    <button class="btn btn--solid hoverable" data-open-lead data-title="Begin Your Clarity Call" data-label="Clarity Call · Free 30 min">Book a Clarity Call <span class="arrow"></span></button>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="tm-hero" data-screen-label="01 Team Hero">
+  <div class="tm-hero-inner">
+    <div>
+      <div class="tm-eyebrow reveal"><span class="l"></span><span>The Team · Gaurav Sharma &amp; Associates</span></div>
+      <h1>
+        <span class="reveal-mask"><span>The <em>people</em></span></span><br />
+        <span class="reveal-mask" style="--d:160ms"><span>behind <em>SELF.</em></span></span>
+      </h1>
+      <p class="sub reveal" style="--d:400ms">
+        A practice built over 25+ years of entrepreneurial and academic experience — anchored by two architects, supported by a thoughtful network of specialists.
+      </p>
+    </div>
+    <div class="tm-hero-side reveal" style="--d:600ms">
+      <div class="gold-rule"><span class="line"></span><span class="bead"></span><span class="line"></span></div>
+      <p class="mini" style="margin-top:24px;">
+        SELF is the development arm of <strong>Gaurav Sharma &amp; Associates</strong> — designed at the intersection of business reality and human capability. Behaviour, execution, depth — not lecture-led training.
+      </p>
+    </div>
+  </div>
+
+  <div class="tm-hero-meta">
+    <span>02 · Core Architects</span>
+    <span>+ Extended Expert Network</span>
+    <span>MATCH · Collaborative Framework</span>
+  </div>
+</section>
+
+<!-- ===== GS — Founder ===== -->
+<section class="tm-founder" id="gs" data-screen-label="02 Gaurav Sharma">
+  <div class="tm-founder-inner">
+    <div class="tm-portrait" style="padding:0;overflow:hidden;"><img src="https://course.selfbygs.com/wp-content/uploads/2025/10/IMG_8369-min-scaled.jpg" alt="Gaurav Sharma" style="width:100%;height:100%;object-fit:cover;object-position:top;"></div>
+
+    <div>
+      <div class="tm-eyebrow reveal"><span class="l" style="background:var(--gold-deep)"></span><span>Core Architect · 01</span></div>
+      <h2 class="tm-name reveal" style="--d:80ms">
+        Gaurav Sharma, <em>fondly known as GS</em>
+      </h2>
+      <div class="tm-role reveal" style="--d:160ms">Founder &amp; Chief Mentor · SELF</div>
+      <p class="tm-tag reveal" style="--d:200ms">
+        Intelligent Leadership Executive Coach &amp; Mentor · Human &amp; Organisational Development Strategist
+      </p>
+
+      <p class="tm-lead reveal" style="--d:280ms">
+        Over <strong style="color:var(--gold-deep)">16 years of experience</strong> across leadership development, behavioural interventions, organisational capability building, entrepreneurship, and education.
+      </p>
+
+      <div class="tm-block reveal" style="--d:320ms">
+        <div class="tm-block-head"><span class="l"></span><span>Credentials &amp; Background</span></div>
+        <ul class="tm-list">
+          <li><span class="dot"></span><span><strong>Alumnus of IIM Calcutta</strong></span></li>
+          <li><span class="dot"></span><span><strong>Master Certified Intelligent Leadership Executive Coach</strong> through John Mattone Global — globally recognised as the former leadership coach to Steve Jobs</span></li>
+          <li><span class="dot"></span><span>International Coaching Federation (ICF) aligned coaching pathways currently in progress</span></li>
+          <li><span class="dot"></span><span><strong>Published Author</strong> in India and the USA</span></li>
+        </ul>
+      </div>
+
+      <div class="tm-block reveal" style="--d:360ms">
+        <div class="tm-block-head"><span class="l"></span><span>Experience &amp; Impact</span></div>
+        <div class="tm-impact-grid">
+          <div class="tm-impact">
+            <div class="num">1000<span class="gold">+</span></div>
+            <div class="lbl">Leadership &amp; behavioural interventions delivered</div>
+          </div>
+          <div class="tm-impact">
+            <div class="num">50,000<span class="gold">+</span></div>
+            <div class="lbl">Learners, professionals &amp; leaders impacted</div>
+          </div>
+          <div class="tm-impact">
+            <div class="num">16<span class="gold">YRS</span></div>
+            <div class="lbl">Across leadership, communication, employability &amp; capability</div>
+          </div>
+        </div>
+        <p style="font-size: 15px; line-height: 1.65; color: rgba(11,11,11,0.65); margin: 22px 0 0; max-width: 620px;">
+          Worked with organisations, institutions, startups, and leadership teams across industries.
+        </p>
+      </div>
+
+      <div class="tm-block reveal" style="--d:400ms">
+        <div class="tm-block-head"><span class="l"></span><span>Areas of Work</span></div>
+        <div class="tm-pillgroup">
+          <span class="tm-pill">Leadership &amp; Executive Effectiveness</span>
+          <span class="tm-pill">Human Behaviour &amp; Personal Effectiveness</span>
+          <span class="tm-pill">Organisational Capability Development</span>
+          <span class="tm-pill">Communication &amp; Executive Presence</span>
+          <span class="tm-pill">Team Alignment &amp; Ownership</span>
+          <span class="tm-pill">Transformational Learning &amp; Coaching</span>
+          <span class="tm-pill">Public Speaking &amp; Storytelling</span>
+        </div>
+      </div>
+
+      <div class="tm-block reveal" style="--d:440ms">
+        <div class="tm-block-head"><span class="l"></span><span>What Defines His Approach</span></div>
+        <p style="font-size: 16px; line-height: 1.65; color: rgba(11,11,11,0.75); margin: 0 0 18px; max-width: 620px;">
+          GS combines <strong>behavioural insight · entrepreneurial thinking · leadership science · reflective learning · practical execution</strong> to create interventions that are:
+        </p>
+        <div class="tm-pillgroup">
+          <span class="tm-pill">Experiential</span>
+          <span class="tm-pill">Deeply engaging</span>
+          <span class="tm-pill">Execution-focused</span>
+          <span class="tm-pill">Human-centred</span>
+          <span class="tm-pill">Transformational</span>
+        </div>
+        <div class="tm-approach">
+          <p>Known for blending warmth with depth — his sessions are often described as experiences that create not only inspiration, but <strong style="color: var(--gold-deep); font-style: normal;">greater awareness, clarity, ownership, and action</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Dr. TSG — Chief Architect ===== -->
+<section class="tm-founder dark" id="tsg" data-screen-label="03 Dr. TSG">
+  <div class="tm-founder-inner">
+    <div class="tm-portrait">replace · Dr. TSG</div>
+
+    <div>
+      <div class="tm-eyebrow reveal" style="color: var(--gold);"><span class="l" style="background:var(--gold)"></span><span>Core Architect · 02</span></div>
+      <h2 class="tm-name reveal" style="--d:80ms">
+        Dr. Tanya <em>Soin Gaurav</em>
+      </h2>
+      <div class="tm-role reveal" style="--d:160ms">Chief Architect · Learning &amp; Development</div>
+      <p class="tm-tag reveal" style="--d:200ms">
+        Human Resource Specialist · Organisational &amp; Behavioural Development Strategist &amp; Facilitator · Training &amp; Development Professional
+      </p>
+
+      <p class="tm-lead reveal" style="--d:280ms">
+        Over <strong style="color:var(--gold)">13 years of experience</strong> across academia, training, mentoring, behavioural development, and organisational capability building.
+      </p>
+
+      <div class="tm-block reveal" style="--d:320ms">
+        <div class="tm-block-head"><span class="l"></span><span>Credentials &amp; Background</span></div>
+        <ul class="tm-list">
+          <li><span class="dot"></span><span><strong>Ph.D. in Human Resource Management</strong> (Training and Development)</span></li>
+          <li><span class="dot"></span><span><strong>Certified from IIM Rohtak</strong> — HR Analytics</span></li>
+          <li><span class="dot"></span><span><strong>NET-JRF Qualified</strong> in HR &amp; Labour Welfare</span></li>
+          <li><span class="dot"></span><span>Strong academic and research background in Human Behaviour, Employability, and Organisational Development</span></li>
+        </ul>
+      </div>
+
+      <div class="tm-block reveal" style="--d:360ms">
+        <div class="tm-block-head"><span class="l"></span><span>Experience &amp; Impact</span></div>
+        <ul class="tm-list">
+          <li><span class="dot"></span><span>Extensive experience across <strong>academic institutions, leadership development, and organisational interventions</strong></span></li>
+          <li><span class="dot"></span><span>Conducted <strong>Faculty Development Programs (FDPs)</strong> and <strong>Management Development Programs (MDPs)</strong></span></li>
+          <li><span class="dot"></span><span>Worked across student development, educator effectiveness, behavioural capability, and professional readiness initiatives</span></li>
+          <li><span class="dot"></span><span>Contributed to organisational consulting, HR practices, communication interventions, and capability-building ecosystems</span></li>
+        </ul>
+      </div>
+
+      <div class="tm-block reveal" style="--d:400ms">
+        <div class="tm-block-head"><span class="l"></span><span>Areas of Work</span></div>
+        <div class="tm-pillgroup">
+          <span class="tm-pill">Training &amp; Development</span>
+          <span class="tm-pill">Human Behaviour &amp; Communication</span>
+          <span class="tm-pill">Employability &amp; Professional Readiness</span>
+          <span class="tm-pill">Faculty &amp; Educator Development</span>
+          <span class="tm-pill">Organisational Capability Development</span>
+          <span class="tm-pill">Behavioural &amp; Leadership Interventions</span>
+        </div>
+      </div>
+
+      <div class="tm-block reveal" style="--d:440ms">
+        <div class="tm-block-head"><span class="l"></span><span>What Defines Her Approach</span></div>
+        <p style="font-size: 16px; line-height: 1.65; color: var(--bone-mute); margin: 0 0 18px; max-width: 620px;">
+          Tanya combines <strong style="color: var(--bone);">academic depth · behavioural understanding · mentoring sensitivity · practical developmental insight · structured capability-building</strong> to create interventions that are:
+        </p>
+        <div class="tm-pillgroup">
+          <span class="tm-pill">Thoughtful</span>
+          <span class="tm-pill">Human-centred</span>
+          <span class="tm-pill">Practical</span>
+          <span class="tm-pill">Engaging</span>
+          <span class="tm-pill">Development-focused</span>
+        </div>
+        <div class="tm-approach">
+          <p>Her work is rooted in the belief that meaningful growth happens when people are not only educated — but <strong style="color: var(--gold); font-style: normal;">guided, understood, and developed with clarity and care</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Extended Network ===== -->
+<section class="tm-network" data-screen-label="04 Extended Network">
+  <div class="tm-network-head">
+    <div class="gold-rule center reveal"><span class="line"></span><span class="bead"></span><span class="line"></span></div>
+    <div class="eyebrow reveal" style="margin-top:18px">Extended Expert Network</div>
+    <h2 class="reveal" style="--d:140ms">Beyond the core — a <em>curated network</em> of specialists.</h2>
+    <p class="reveal" style="--d:240ms">
+      Alongside the core team led by Gaurav Sharma &amp; Associates, select interventions may also involve experienced industry, academic, and behavioural professionals — thoughtfully brought in based on your context.
+    </p>
+  </div>
+
+  <div class="tm-net-grid">
+    <article class="tm-net-card reveal">
+      <div class="lbl"><span class="l"></span>Specialist Profiles</div>
+      <h4>Who joins our interventions</h4>
+      <p>Brought in selectively — not by roster, but by relevance — to extend the depth and contextual fit of each engagement.</p>
+      <ul class="roster">
+        <li>Industry professionals</li>
+        <li>Academic experts</li>
+        <li>Leadership practitioners</li>
+        <li>Behavioural facilitators</li>
+        <li>Domain specialists</li>
+      </ul>
+    </article>
+
+    <article class="tm-net-card reveal" style="--d:160ms">
+      <div class="lbl"><span class="l"></span>How We Select</div>
+      <h4>The basis of every match</h4>
+      <p>Associates are thoughtfully brought in based on the realities of your context — never a generic add-on.</p>
+      <ul class="roster">
+        <li>Organisational context</li>
+        <li>Developmental objectives</li>
+        <li>Participant profiles</li>
+        <li>Specific capability requirements</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<!-- ===== MATCH Framework ===== -->
+<section class="tm-match" id="match" data-screen-label="05 MATCH Framework">
+  <div class="tm-match-head">
+    <div class="gold-rule center reveal"><span class="line"></span><span class="bead"></span><span class="line"></span></div>
+    <div class="eyebrow reveal" style="margin-top:18px">The MATCH Framework</div>
+    <h2 class="reveal" style="--d:140ms">How we bring the <em>right people</em> to the right work.</h2>
+    <p class="reveal" style="--d:240ms">
+      A collaborative model that lets us design interventions that are more contextual, more flexible, more relevant, and more impactful.
+    </p>
+  </div>
+
+  <div class="tm-match-grid">
+    <div class="tm-mstep reveal">
+      <div class="letter">M</div>
+      <h4>Map the Requirement</h4>
+      <p>Understand the real developmental need.</p>
+    </div>
+    <div class="tm-mstep reveal" style="--d:100ms">
+      <div class="letter">A</div>
+      <h4>Align the Expertise</h4>
+      <p>Bring in specialists relevant to the context.</p>
+    </div>
+    <div class="tm-mstep reveal" style="--d:200ms">
+      <div class="letter">T</div>
+      <h4>Tailor the Intervention</h4>
+      <p>Design learning experiences around actual realities.</p>
+    </div>
+    <div class="tm-mstep reveal" style="--d:300ms">
+      <div class="letter">C</div>
+      <h4>Create Impact</h4>
+      <p>Deliver more relevant and effective outcomes.</p>
+    </div>
+    <div class="tm-mstep reveal" style="--d:400ms">
+      <div class="letter">H</div>
+      <h4>Hold the Philosophy</h4>
+      <p>Every intervention stays aligned with the SELF approach.</p>
+    </div>
+  </div>
+
+  <div class="tm-match-foot reveal" style="--d:500ms">
+    <p class="quote">
+      Because meaningful development often requires <span class="gold">not just one perspective,</span><br/>
+      but the right combination of experience, insight, and human understanding.
+    </p>
+  </div>
+</section>
+
+<!-- ===== Closing CTA ===== -->
+<section class="tm-cta" id="contact">
+  <div class="tm-cta-inner">
+    <div class="gold-rule center reveal"><span class="line"></span><span class="bead"></span><span class="line"></span></div>
+    <div class="eyebrow reveal" style="margin-top:22px">Begin a Conversation</div>
+    <h2 class="reveal" style="--d:120ms">Book a <em>clarity call</em>.<br/>Meet the people. Decide nothing.</h2>
+    <p class="reveal" style="--d:240ms">A 30-minute conversation. No pitch. We listen, we ask the right questions, and we tell you honestly whether SELF is a fit — or what is.</p>
+    <div class="btn-row reveal" style="--d:360ms">
+      <button class="btn btn--solid hoverable" data-open-lead data-title="Begin Your Clarity Call" data-label="Clarity Call · Free 30 min">
+        Book a Clarity Call <span class="arrow"></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="site-footer theme-light">
+  <div class="footer-grid">
+    <div>
+      <div class="foot-logo">SELF</div>
+      <div class="foot-by">Self Engineering for Leaders' Fortune</div>
+      <p class="foot-blurb">The development arm of <strong style="color:var(--gold); font-family:var(--f-display); font-weight:500; letter-spacing:0.06em;">Gaurav Sharma &amp; Associates</strong>. Self Development Programs — built quietly, deliberately, and at depth.</p>
+      <div class="foot-social">
+        <a href="https://www.linkedin.com/in/voiceitgaurav/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zM8 19H5V8h3v11zM6.5 6.73C5.53 6.73 4.75 5.95 4.75 5s.78-1.73 1.75-1.73 1.75.78 1.75 1.73-.78 1.73-1.75 1.73zM20 19h-3v-5.6c0-1.1-.9-2-2-2s-2 .9-2 2V19h-3V8h3v1.4c.7-1 1.7-1.6 3-1.6 2.21 0 4 1.79 4 4V19z"/></svg></a>
+        <a href="https://www.instagram.com/voiceitgaurav/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153.555.556.9 1.111 1.153 1.772.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.25a1.25 1.25 0 1 0-2.5 0 1.25 1.25 0 0 0 2.5 0zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg></a>
+        <a href="https://www.youtube.com/@voiceitgaurav" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        <a href="https://www.facebook.com/profile.php?id=100002611554241" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h5>Explore</h5>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="corporate.html">Corporate</a></li>
+        <li><a href="academia.html">Academia</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Programs</h5>
+      <ul>
+        <li><a href="programs/executive-effectiveness.html">Executive Effectiveness</a></li>
+        <li><a href="programs/core-skills.html">Core Skills</a></li>
+        <li><a href="programs/diagnostic-audit.html">Diagnostic Audit</a></li>
+        <li><a href="programs/career-architecture.html">Career Architecture</a></li>
+        <li><a href="programs/young-leaders.html">Young Leaders · YLP</a></li>
+        <li><a href="programs/beyond-teaching.html">Beyond Teaching · FDP</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Engage</h5>
+      <ul>
+        <li><a href="#" data-open-lead data-title="Book a Clarity Call" data-label="Clarity Call · Free 30 min">Book a Clarity Call</a></li>
+        <li><a href="mailto:namaste@selfbygs.com">namaste@selfbygs.com</a></li>
+        <li><a href="https://wa.me/+917891122201" target="_blank" rel="noopener">WhatsApp · +91 78911 22201</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© SELF · 2026 · Gaurav Sharma &amp; Associates</span>
+    <span>Jaipur · Rajasthan · India</span>
+  </div>
+  <div class="footer-legal">
+    <div class="footer-legal-links">
+      <a href="contact.html">Contact</a>
+      <a href="#privacy">Privacy Policy</a>
+      <a href="#terms">Terms</a>
+      <a href="#refund">Refund &amp; Cancellation</a>
+    </div>
+    <span class="loc">Jaipur · India · Remote</span>
+  </div>
+</footer>
+
+<!-- ===== Lead modal (same as index) ===== -->
+<div class="lead-modal" id="lead-modal" role="dialog" aria-modal="true" aria-labelledby="lead-title">
+  <div class="lead-card">
+    <aside class="lead-aside">
+      <div>
+        <div class="meta-row"><span class="dot"></span><span>Clarity Call · Free 30 min</span></div>
+        <h3 id="lead-title">Begin Your Clarity Call</h3>
+        <p>A short, honest conversation. We listen first, then we tell you whether SELF is a fit — or what is.</p>
+      </div>
+      <div class="quote">Don't choose a path.<br/>Learn how to design one.</div>
+    </aside>
+
+    <div class="lead-body">
+      <button class="lead-close" aria-label="Close">✕</button>
+
+      <div class="lead-steps">
+        <span class="lead-step-pill is-active"></span>
+        <span class="lead-step-pill"></span>
+        <span class="lead-step-pill"></span>
+        <span class="lead-step-pill"></span>
+      </div>
+
+      <div class="lead-step-wrap">
+
+        <div class="lead-step is-active">
+          <div class="step-eyebrow">Step 01 / 04</div>
+          <h4>Who is this for?</h4>
+          <div class="step-sub">Choose one — we'll tailor the rest of the conversation.</div>
+          <div class="chip-row">
+            <button class="chip">Student · Career clarity</button>
+            <button class="chip">Student · YLP / Placement readiness</button>
+            <button class="chip">Parent · For my child</button>
+            <button class="chip">Educator · School / College</button>
+            <button class="chip">Institution · Bulk programs</button>
+            <button class="chip">L&amp;D · For my team</button>
+            <button class="chip">Founder / Leadership</button>
+          </div>
+          <div class="step-actions">
+            <button class="step-back" data-back disabled>← Back</button>
+            <button class="btn btn--solid hoverable" data-next>Continue <span class="arrow"></span></button>
+          </div>
+        </div>
+
+        <div class="lead-step">
+          <div class="step-eyebrow">Step 02 / 04</div>
+          <h4>Which intervention?</h4>
+          <div class="step-sub">Pick all that interest you. We'll bring the right person to the call.</div>
+          <div class="chip-row" data-multi="true">
+            <button class="chip">Career Architecture · Decision Lab</button>
+            <button class="chip">Young Leaders Program (YLP)</button>
+            <button class="chip">YLP Pro · Placement</button>
+            <button class="chip">Beyond Teaching · FDP</button>
+            <button class="chip">Executive Effectiveness</button>
+            <button class="chip">Core Skills (Communication, Sales, AI…)</button>
+            <button class="chip">Custom Solution</button>
+            <button class="chip">Not sure yet</button>
+          </div>
+          <div class="step-actions">
+            <button class="step-back" data-back>← Back</button>
+            <button class="btn btn--solid hoverable" data-next>Continue <span class="arrow"></span></button>
+          </div>
+        </div>
+
+        <div class="lead-step">
+          <div class="step-eyebrow">Step 03 / 04</div>
+          <h4>How should we reach you?</h4>
+          <div class="step-sub">We respond within 1 business day. Always honest, never pushy.</div>
+          <div class="field">
+            <label>Full name</label>
+            <input type="text" placeholder="Your name" />
+          </div>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="field">
+              <label>Email</label>
+              <input type="email" placeholder="you@example.com" />
+            </div>
+            <div class="field">
+              <label>Mobile (with code)</label>
+              <input type="tel" placeholder="+91 98xx xx xx xx" />
+            </div>
+          </div>
+          <div class="field">
+            <label>Organisation / Institution (optional)</label>
+            <input type="text" placeholder="Where you study or work" />
+          </div>
+          <div class="step-actions">
+            <button class="step-back" data-back>← Back</button>
+            <button class="btn btn--solid hoverable" data-next>Continue <span class="arrow"></span></button>
+          </div>
+        </div>
+
+        <div class="lead-step">
+          <div class="step-eyebrow">Step 04 / 04</div>
+          <h4>One last thing.</h4>
+          <div class="step-sub">In a line or two — what's the real reason you're here?</div>
+          <div class="field">
+            <label>Context</label>
+            <textarea rows="4" placeholder="I'm trying to figure out…"></textarea>
+          </div>
+          <div class="field">
+            <label>Preferred time</label>
+            <select>
+              <option>Weekday · Morning (10am–12pm IST)</option>
+              <option>Weekday · Afternoon (1pm–4pm IST)</option>
+              <option>Weekday · Evening (5pm–8pm IST)</option>
+              <option>Weekend · I'll pick a slot</option>
+            </select>
+          </div>
+          <div class="step-actions">
+            <button class="step-back" data-back>← Back</button>
+            <button class="btn btn--solid hoverable" data-submit>Request the Call <span class="arrow"></span></button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="lead-success" style="display:none">
+        <div class="check">✓</div>
+        <h4 style="font-family: var(--f-serif); font-size: 32px; margin:0 0 10px;">Thank you — we'll be in touch.</h4>
+        <p style="color: var(--bone-mute); font-size: 15px;">Look out for a personal note from the SELF team within one business day.</p>
+        <div class="gold-rule center" style="margin: 30px 0; justify-content:center; display:flex;"><span class="line"></span><span class="bead"></span><span class="line"></span></div>
+        <p style="color: var(--bone-mute); font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;">In the meantime · explore the journeys</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/shared.js"></script>
+</body>
+</html>

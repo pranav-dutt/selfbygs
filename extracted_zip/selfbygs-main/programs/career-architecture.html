@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Career Architecture · Decision Design Lab · SELF by GS</title>
+<meta name="description" content="A structured, thinking-first career lab for students who want to choose with clarity, not confusion. Grade 9 onwards." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Manrope:wght@300;400;500;600;700&family=Allison&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../css/shared.css" />
+<link rel="stylesheet" href="../css/program-detail.css" />
+</head>
+
+<body class="pd-light theme-light">
+<div class="grain"></div>
+
+<!-- ===== Header ===== -->
+<header class="site-header">
+  <a href="../index.html" class="brand-mark">
+    <span class="dot"></span>
+    <span>SELF</span>
+  </a>
+  <nav class="nav">
+    <a href="../index.html">Home</a>
+    <div class="has-menu">
+      <a href="../corporate.html">Corporate</a>
+      <div class="nav-dropdown">
+        <div class="dd-head">Corporate · Programs</div>
+        <a class="dd-item" href="executive-effectiveness.html"><span class="num">01</span><span>Executive Effectiveness</span><span class="arrow"></span></a>
+        <a class="dd-item" href="core-skills.html"><span class="num">02</span><span>Core Skills Interventions</span><span class="arrow"></span></a>
+        <a class="dd-item" href="diagnostic-audit.html"><span class="num">03</span><span>Diagnostic Audit &amp; Custom</span><span class="arrow"></span></a>
+      </div>
+    </div>
+    <div class="has-menu">
+      <a href="../academia.html" style="color:var(--gold-deep)">Academia</a>
+      <div class="nav-dropdown">
+        <div class="dd-head">Academia · Programs</div>
+        <a class="dd-item" href="career-architecture.html"><span class="num">01</span><span>Career Architecture Lab</span><span class="arrow"></span></a>
+        <a class="dd-item" href="young-leaders.html"><span class="num">02</span><span>Young Leaders Program</span><span class="arrow"></span></a>
+        <a class="dd-item" href="beyond-teaching.html"><span class="num">03</span><span>Beyond Teaching · FDP</span><span class="arrow"></span></a>
+      </div>
+    </div>
+    <a href="../team.html">Team</a>
+    <a href="../contact.html">Contact</a>
+  </nav>
+  <button class="nav-cta" data-open-lead data-title="Book a Clarity Call" data-label="Clarity Call · Free 30 min" style="color:var(--gold-deep); border-color:var(--gold-deep);">Book a Clarity Call</button>
+  <button class="mobile-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+</header>
+
+<!-- ===== Mobile drawer ===== -->
+<div class="mobile-drawer" id="mobile-drawer">
+  <nav class="md-nav">
+    <a href="../index.html">Home</a>
+    <details>
+      <summary>Corporate</summary>
+      <div class="md-sub">
+        <a href="../corporate.html">Corporate · Overview</a>
+        <a href="executive-effectiveness.html">Executive Effectiveness</a>
+        <a href="core-skills.html">Core Skills</a>
+        <a href="diagnostic-audit.html">Diagnostic Audit</a>
+      </div>
+    </details>
+    <details open>
+      <summary>Academia</summary>
+      <div class="md-sub">
+        <a href="../academia.html">Academia · Overview</a>
+        <a href="career-architecture.html">Career Architecture</a>
+        <a href="young-leaders.html">Young Leaders Program</a>
+        <a href="beyond-teaching.html">Beyond Teaching · FDP</a>
+      </div>
+    </details>
+    <a href="../team.html">Team</a>
+    <a href="../contact.html">Contact</a>
+  </nav>
+  <div class="md-foot">
+    <button class="btn btn--solid hoverable" data-open-lead data-title="Book a Clarity Call" data-label="Clarity Call · Free 30 min">Book a Clarity Call <span class="arrow"></span></button>
+  </div>
+</div>
+
+<!-- ===== Breadcrumb ===== -->
+<div class="pd-crumb">
+  <div class="pd-crumb-row">
+    <nav class="pd-trail" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a><span class="sep"></span>
+      <a href="../academia.html">Academia</a><span class="sep"></span>
+      <span class="current">Career Architecture</span>
+    </nav>
+    <a href="../academia.html" class="pd-back hoverable"><span class="ar"></span><span>Back to Academia</span></a>
+  </div>
+</div>
+
+<!-- ===== Hero ===== -->
+<section class="pd-hero" data-screen-label="01 Hero">
+  <div class="pd-hero-inner">
+    <div>
+      <div class="pd-tag reveal"><span class="l"></span><span>Side I · Academia · Program 01</span></div>
+      <h1>
+        <span class="reveal-mask"><span>Career <em>Architecture</em></span></span><br />
+        <span class="reveal-mask" style="--d:160ms"><span>Decision Design <em>Lab.</em></span></span>
+      </h1>
+      <p class="pd-tagline reveal" style="--d:340ms">
+        Clarity is not found. <em>It is designed.</em>
+      </p>
+      <div class="pd-hero-cta reveal" style="--d:500ms">
+        <button class="btn btn--solid hoverable" data-open-lead data-title="Career Architecture · Clarity Call" data-label="Career Architecture Lab">
+          Apply for the Lab <span class="arrow"></span>
+        </button>
+      </div>
+    </div>
+    <div class="pd-hero-meta reveal" style="--d:600ms">
+      <div class="pd-meta-row"><div class="lbl">Format</div><div class="val">1 : 1 with student &amp; family</div></div>
+      <div class="pd-meta-row"><div class="lbl">For</div><div class="val">Grade 9–12 · Post-12 stuck · College reconsidering</div></div>
+      <div class="pd-meta-row"><div class="lbl">Cohort</div><div class="val">Very limited · 2026 intake</div></div>
+      <div class="pd-meta-row"><div class="lbl">Designed by</div><div class="val">Gaurav Sharma &amp; Dr. Tanya Soin Gaurav</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Lead ===== -->
+<section class="pd-lead">
+  <div class="pd-lead-inner">
+    <div class="pd-section-eyebrow reveal"><span style="width:40px;height:1px;background:currentColor;"></span><span>Why this exists</span></div>
+    <h2 class="reveal" style="--d:120ms">Most students don't struggle because they lack <em>options.</em> They struggle because no one taught them how to <em>decide.</em></h2>
+    <p class="reveal" style="--d:240ms">A structured, thinking-first career lab — for students who want to choose with clarity, not confusion. Not a counselling questionnaire. Not an aptitude PDF. A wholesome, designed thinking journey that builds the decision-making capability students will use for the rest of their lives.</p>
+  </div>
+</section>
+
+<!-- ===== Framework ===== -->
+<section class="pd-fw">
+  <style>
+    .decide-list { list-style:none; padding:0; margin:0 auto; max-width:900px; }
+    .decide-row { display:grid; grid-template-columns:90px 240px 1fr; align-items:start; gap:0 28px; padding:28px 32px; border-top:1px solid rgba(11,11,11,0.1); cursor:default; transition:background 0.2s, padding 0.2s; }
+    .pd-dark .decide-row { border-top-color:rgba(232,228,218,0.12); }
+    .decide-row:last-child { border-bottom:1px solid rgba(11,11,11,0.1); }
+    .pd-dark .decide-row:last-child { border-bottom-color:rgba(232,228,218,0.12); }
+    .decide-row:hover { padding:28px 32px; background:var(--ivory-soft,#F5F0E8); }
+    .pd-dark .decide-row:hover { background:rgba(232,228,218,0.05); }
+    .decide-letter { font-family:var(--f-serif,'Playfair Display',serif); font-size:56px; font-weight:400; line-height:1; color:var(--gold-deep,#8C6A1A); }
+    .pd-dark .decide-letter { color:var(--gold,#C9A24D); }
+    .decide-title { font-size:18px; font-weight:600; letter-spacing:-0.01em; padding-top:10px; }
+    .decide-desc { font-size:15px; line-height:1.7; color:rgba(11,11,11,0.65); padding-top:10px; }
+    .pd-dark .decide-desc { color:var(--bone-mute,rgba(232,228,218,0.6)); }
+    @media(max-width:700px){
+      .decide-row { grid-template-columns:60px 1fr; gap:0 18px; padding:20px 0; }
+      .decide-row:hover { padding:20px 0; background:transparent; }
+      .decide-letter { font-size:40px; }
+      .decide-desc { grid-column:1/-1; margin-top:8px; padding-top:0; }
+    }
+  </style>
+  <div class="pd-fw-head">
+    <div class="gold-rule center reveal" style="justify-content:center;display:flex;"><span class="line" style="background:var(--gold-deep)"></span><span class="bead" style="background:var(--gold-deep)"></span><span class="line" style="background:var(--gold-deep)"></span></div>
+    <div class="pd-section-eyebrow reveal" style="--d:80ms;color:var(--gold-deep);margin-top:18px"><span style="width:40px;height:1px;background:currentColor;"></span><span>The SELF Decision Framework</span></div>
+    <h2 class="reveal" style="--d:120ms">Six stages. Used <em>deeply.</em></h2>
+    <p class="reveal" style="--d:240ms">A simple structure used in depth — across multiple sessions, conversations, and reflections with the student and family.</p>
+  </div>
+  <ul class="decide-list">
+    <li class="decide-row reveal hoverable">
+      <div class="decide-letter">D</div>
+      <div class="decide-title">Discover Self</div>
+      <div class="decide-desc">Go beyond marks, subjects, and labels. See yourself as you are — and as you could be.</div>
+    </li>
+    <li class="decide-row reveal hoverable" style="--d:80ms">
+      <div class="decide-letter">E</div>
+      <div class="decide-title">Explore Real Options</div>
+      <div class="decide-desc">See careers, roles, and paths as they actually are — not as they are advertised.</div>
+    </li>
+    <li class="decide-row reveal hoverable" style="--d:160ms">
+      <div class="decide-letter">C</div>
+      <div class="decide-title">Create Decision Filters</div>
+      <div class="decide-desc">Build your own criteria. Decide what fits, what doesn't, and why.</div>
+    </li>
+    <li class="decide-row reveal hoverable" style="--d:240ms">
+      <div class="decide-letter">I</div>
+      <div class="decide-title">Integrate Inputs</div>
+      <div class="decide-desc">Align self, opportunity, and reality. Hold the whole picture at once.</div>
+    </li>
+    <li class="decide-row reveal hoverable" style="--d:320ms">
+      <div class="decide-letter">D</div>
+      <div class="decide-title">Decide with Clarity</div>
+      <div class="decide-desc">Choose with ownership — not pressure, not noise, not guesswork.</div>
+    </li>
+    <li class="decide-row reveal hoverable" style="--d:400ms">
+      <div class="decide-letter">E</div>
+      <div class="decide-title">Evolve Continuously</div>
+      <div class="decide-desc">Because one decision is not your whole life. Capability compounds.</div>
+    </li>
+  </ul>
+</section>
+
+<!-- ===== Inclusions ===== -->
+<section class="pd-include">
+  <div class="pd-include-inner">
+    <div>
+      <div class="pd-section-eyebrow reveal"><span style="width:40px;height:1px;background:currentColor;"></span><span>What's inside the lab</span></div>
+      <h2 class="reveal" style="--d:120ms">Not advice. <em>Capability.</em></h2>
+      <p class="lede reveal" style="--d:240ms">Each lab is a multi-session journey with the student — and often, the family. Designed around the student's actual reality, not a generic curriculum.</p>
+    </div>
+    <ul class="pd-include-list">
+      <li class="reveal"><div class="num">01</div><div class="item">Deep self-discovery sessions<span class="sub">Strengths beyond marks, behaviour beyond labels, potential beyond peer comparison.</span></div></li>
+      <li class="reveal" style="--d:80ms"><div class="num">02</div><div class="item">Real-world options mapping<span class="sub">Careers as they actually exist — sectors, roles, growth paths, lived realities.</span></div></li>
+      <li class="reveal" style="--d:160ms"><div class="num">03</div><div class="item">Decision filter design<span class="sub">A personal criteria framework the student builds and owns.</span></div></li>
+      <li class="reveal" style="--d:240ms"><div class="num">04</div><div class="item">Family-aligned conversation<span class="sub">Bringing parents into the picture — not as judges, but as collaborators.</span></div></li>
+      <li class="reveal" style="--d:320ms"><div class="num">05</div><div class="item">Decision rehearsal &amp; ownership<span class="sub">Choosing on paper before choosing in life. Practising the muscle.</span></div></li>
+      <li class="reveal" style="--d:400ms"><div class="num">06</div><div class="item">Continuous follow-through<span class="sub">A decision-making system that holds up across the next 10 years.</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== Outcomes ===== -->
+<section class="pd-outcomes">
+  <div class="pd-outcomes-head">
+    <div class="pd-section-eyebrow reveal"><span style="width:40px;height:1px;background:currentColor;"></span><span>What you walk away with</span></div>
+    <h2 class="reveal" style="--d:120ms">Three quiet outcomes. <em>For life.</em></h2>
+  </div>
+  <div class="pd-outcomes-grid">
+    <div class="pd-out-card reveal">
+      <div class="ic">01 · Direction</div>
+      <h4>Clear direction aligned with your strengths</h4>
+      <p>Not a list of "good careers." A direction that fits who you actually are.</p>
+    </div>
+    <div class="pd-out-card reveal" style="--d:140ms">
+      <div class="ic">02 · System</div>
+      <h4>A decision-making system you'll use for life</h4>
+      <p>The next career decision, the next big call — you'll have a way to think through it.</p>
+    </div>
+    <div class="pd-out-card reveal" style="--d:280ms">
+      <div class="ic">03 · Confidence</div>
+      <h4>Confidence to choose — not guess</h4>
+      <p>Ownership over the decision. Capability to defend it. Courage to evolve it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Audience ===== -->
+<section class="pd-audience">
+  <div class="pd-aud-inner">
+    <div class="pd-aud-head">
+      <div class="pd-section-eyebrow reveal"><span style="width:40px;height:1px;background:currentColor;"></span><span>Who this is for</span></div>
+      <h2 class="reveal" style="--d:120ms">Designed for the moments <em>that matter.</em></h2>
+    </div>
+    <div class="pd-aud-grid">
+      <div class="pd-aud-cell"><div class="num">01</div><h4>Grade 9–10</h4><p>Choosing streams. Building self-awareness early.</p></div>
+      <div class="pd-aud-cell"><div class="num">02</div><h4>Grade 11–12</h4><p>Choosing colleges, programs, and direction with depth.</p></div>
+      <div class="pd-aud-cell"><div class="num">03</div><h4>After 12th — Stuck</h4><p>Re-evaluating direction without losing time or confidence.</p></div>
+      <div class="pd-aud-cell"><div class="num">04</div><h4>College · Questioning</h4><p>Mid-degree clarity for students re-thinking their path.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Other programs ===== -->
+<section class="pd-other">
+  <div class="pd-other-head">
+    <div>
+      <div class="pd-section-eyebrow"><span style="width:40px;height:1px;background:currentColor;"></span><span>Continue the journey</span></div>
+      <h2>Other <em>Academia</em> programs</h2>
+    </div>
+    <a href="../academia.html" class="btn hoverable" style="color: var(--gold-deep); border-color: var(--gold-deep);">Back to Academia <span class="arrow"></span></a>
+  </div>
+  <div class="pd-other-grid">
+    <a class="pd-other-card" href="young-leaders.html">
+      <div class="tag">Program 02 · Cohort</div>
+      <h4>Young Leaders Program · YLP &amp; YLP Pro</h4>
+      <p>Communication, presence, interviews, leadership. A high-engagement system built around the BUILD framework — for college-ready students.</p>
+      <div class="foot"><span>View program →</span><div class="go">→</div></div>
+    </a>
+    <a class="pd-other-card" href="beyond-teaching.html">
+      <div class="tag">Program 03 · FDP</div>
+      <h4>Beyond Teaching · Educator Impact</h4>
+      <p>Not "teach the teachers" — enhance the effectiveness, presence, and mentoring capability of already capable educators.</p>
+      <div class="foot"><span>View program →</span><div class="go">→</div></div>
+    </a>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="pd-cta" id="contact">
+  <div class="pd-cta-inner">
+    <div class="gold-rule center reveal" style="justify-content:center; display:flex;"><span class="line"></span><span class="bead"></span><span class="line"></span></div>
+    <div class="pd-section-eyebrow reveal" style="--d:80ms; color:var(--gold)"><span style="width:40px;height:1px;background:currentColor;"></span><span>Begin</span></div>
+    <h2 class="reveal" style="--d:160ms">Don't choose a path.<br/><em>Learn how to design one.</em></h2>
+    <p class="reveal" style="--d:240ms">A 30-minute clarity call. No pitch. We'll understand the student, the family, the reality — and tell you honestly whether the Lab is the right next step.</p>
+    <div class="btn-row reveal" style="--d:360ms">
+      <button class="btn btn--solid hoverable" data-open-lead data-title="Career Architecture · Clarity Call" data-label="Career Architecture Lab">Book a Clarity Call <span class="arrow"></span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="site-footer theme-light">
+  <div class="footer-grid">
+    <div>
+      <div class="foot-logo">SELF</div>
+      <div class="foot-by">Self Engineering for Leaders' Fortune</div>
+      <p class="foot-blurb">The development arm of <strong style="color:var(--gold); font-family:var(--f-display); font-weight:500; letter-spacing:0.06em;">Gaurav Sharma &amp; Associates</strong>. Self Development Programs — built quietly, deliberately, and at depth.</p>
+      <div class="foot-social">
+        <a href="https://www.linkedin.com/in/voiceitgaurav/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zM8 19H5V8h3v11zM6.5 6.73C5.53 6.73 4.75 5.95 4.75 5s.78-1.73 1.75-1.73 1.75.78 1.75 1.73-.78 1.73-1.75 1.73zM20 19h-3v-5.6c0-1.1-.9-2-2-2s-2 .9-2 2V19h-3V8h3v1.4c.7-1 1.7-1.6 3-1.6 2.21 0 4 1.79 4 4V19z"/></svg></a>
+        <a href="https://www.instagram.com/voiceitgaurav/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153.555.556.9 1.111 1.153 1.772.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.25a1.25 1.25 0 1 0-2.5 0 1.25 1.25 0 0 0 2.5 0zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg></a>
+        <a href="https://www.youtube.com/@voiceitgaurav" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        <a href="https://www.facebook.com/profile.php?id=100002611554241" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h5>Explore</h5>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../corporate.html">Corporate</a></li>
+        <li><a href="../academia.html">Academia</a></li>
+        <li><a href="../team.html">Team</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Programs</h5>
+      <ul>
+        <li><a href="executive-effectiveness.html">Executive Effectiveness</a></li>
+        <li><a href="core-skills.html">Core Skills</a></li>
+        <li><a href="diagnostic-audit.html">Diagnostic Audit</a></li>
+        <li><a href="career-architecture.html">Career Architecture</a></li>
+        <li><a href="young-leaders.html">Young Leaders · YLP</a></li>
+        <li><a href="beyond-teaching.html">Beyond Teaching · FDP</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Engage</h5>
+      <ul>
+        <li><a href="#" data-open-lead data-title="Book a Clarity Call" data-label="Clarity Call · Free 30 min">Book a Clarity Call</a></li>
+        <li><a href="mailto:namaste@selfbygs.com">namaste@selfbygs.com</a></li>
+        <li><a href="https://wa.me/+917891122201" target="_blank" rel="noopener">WhatsApp · +91 78911 22201</a></li>
+        <li><a href="../contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© SELF · 2026 · Gaurav Sharma &amp; Associates</span>
+    <span>Jaipur · Rajasthan · India</span>
+  </div>
+  <div class="footer-legal">
+    <div class="footer-legal-links">
+      <a href="../contact.html">Contact</a>
+      <a href="#privacy">Privacy Policy</a>
+      <a href="#terms">Terms</a>
+      <a href="#refund">Refund &amp; Cancellation</a>
+    </div>
+    <span class="loc">Jaipur · India · Remote</span>
+  </div>
+</footer>
+
+<!-- ===== Lead modal ===== -->
+<div class="lead-modal" id="lead-modal" role="dialog" aria-modal="true">
+  <div class="lead-card">
+    <aside class="lead-aside">
+      <div>
+        <div class="meta-row"><span class="dot"></span><span>Clarity Call · Free 30 min</span></div>
+        <h3 id="lead-title">Begin Your Clarity Call</h3>
+        <p>A short, honest conversation. We listen first, then we tell you whether SELF is a fit — or what is.</p>
+      </div>
+      <div class="quote">Don't choose a path.<br/>Learn how to design one.</div>
+    </aside>
+    <div class="lead-body">
+      <button class="lead-close" aria-label="Close">✕</button>
+      <div class="lead-steps">
+        <span class="lead-step-pill is-active"></span>
+        <span class="lead-step-pill"></span>
+        <span class="lead-step-pill"></span>
+        <span class="lead-step-pill"></span>
+      </div>
+      <div class="lead-step-wrap">
+        <div class="lead-step is-active">
+          <div class="step-eyebrow">Step 01 / 04</div>
+          <h4>Who is this for?</h4>
+          <div class="step-sub">Choose one — we'll tailor the rest of the conversation.</div>
+          <div class="chip-row">
+            <button class="chip is-active">Student · Career clarity</button>
+            <button class="chip">Student · YLP / Placement readiness</button>
+            <button class="chip">Parent · For my child</button>
+            <button class="chip">Educator · School / College</button>
+            <button class="chip">Institution · Bulk programs</button>
+            <button class="chip">L&amp;D · For my team</button>
+            <button class="chip">Founder / Leadership</button>
+          </div>
+          <div class="step-actions">
+            <button class="step-back" data-back disabled>← Back</button>
+            <button class="btn btn--solid hoverable" data-next>Continue <span class="arrow"></span></button>
+          </div>
+        </div>
+        <div class="lead-step">
+          <div class="step-eyebrow">Step 02 / 04</div>
+          <h4>Which intervention?</h4>
+          <div class="step-sub">Pick all that interest you.</div>
+          <div class="chip-row" data-multi="true">
+            <button class="chip is-active">Career Architecture · Decision Lab</button>
+            <button class="chip">Young Leaders Program (YLP)</button>
+            <button class="chip">YLP Pro · Placement</button>
+            <button class="chip">Beyond Teaching · FDP</button>
+            <button class="chip">Executive Effectiveness</button>
+            <button class="chip">Core Skills</button>
+            <button class="chip">Custom Solution</button>
+          </div>
+          <div class="step-actions">
+            <button class="step-back" data-back>← Back</button>
+            <button class="btn btn--solid hoverable" data-next>Continue <span class="arrow"></span></button>
+          </div>
+        </div>
+        <div class="lead-step">
+          <div class="step-eyebrow">Step 03 / 04</div>
+          <h4>How should we reach you?</h4>
+          <div class="step-sub">We respond within 1 business day.</div>
+          <div class="field"><label>Full name</label><input type="text" placeholder="Your name" /></div>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="field"><label>Email</label><input type="email" placeholder="you@example.com" /></div>
+            <div class="field"><label>Mobile</label><input type="tel" placeholder="+91 98xx xx xx xx" /></div>
+          </div>
+          <div class="field"><label>Organisation (optional)</label><input type="text" placeholder="Where you study or work" /></div>
+          <div class="step-actions">
+            <button class="step-back" data-back>← Back</button>
+            <button class="btn btn--solid hoverable" data-next>Continue <span class="arrow"></span></button>
+          </div>
+        </div>
+        <div class="lead-step">
+          <div class="step-eyebrow">Step 04 / 04</div>
+          <h4>One last thing.</h4>
+          <div class="step-sub">What's the real reason you're here?</div>
+          <div class="field"><label>Context</label><textarea rows="4" placeholder="I'm trying to figure out…"></textarea></div>
+          <div class="field"><label>Preferred time</label>
+            <select>
+              <option>Weekday · Morning (10am–12pm IST)</option>
+              <option>Weekday · Afternoon (1pm–4pm IST)</option>
+              <option>Weekday · Evening (5pm–8pm IST)</option>
+              <option>Weekend · I'll pick a slot</option>
+            </select>
+          </div>
+          <div class="step-actions">
+            <button class="step-back" data-back>← Back</button>
+            <button class="btn btn--solid hoverable" data-submit>Request the Call <span class="arrow"></span></button>
+          </div>
+        </div>
+      </div>
+      <div class="lead-success" style="display:none">
+        <div class="check">✓</div>
+        <h4 style="font-family: var(--f-serif); font-size: 32px; margin:0 0 10px;">Thank you — we'll be in touch.</h4>
+        <p style="color: var(--bone-mute); font-size: 15px;">Look out for a personal note from the SELF team within one business day.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../js/shared.js"></script>
+</body>
+</html>
